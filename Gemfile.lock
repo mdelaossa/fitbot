@@ -41,9 +41,6 @@ GEM
       json (~> 1.6)
       json_pure (~> 1.6)
       multi_json (~> 1.0)
-    dm-sqlite-adapter (1.2.0)
-      dm-do-adapter (~> 1.2.0)
-      do_sqlite3 (~> 0.10.6)
     dm-timestamps (1.2.0)
       dm-core (~> 1.2.0)
     dm-transactions (1.2.0)
@@ -59,8 +56,6 @@ GEM
     dm-validations (1.2.0)
       dm-core (~> 1.2.0)
     do_postgres (0.10.12)
-      data_objects (= 0.10.12)
-    do_sqlite3 (0.10.12)
       data_objects (= 0.10.12)
     domain_name (0.5.7)
       unf (~> 0.0.3)
@@ -120,7 +115,6 @@ DEPENDENCIES
   data_mapper
   dm-core
   dm-postgres-adapter
-  dm-sqlite-adapter
   do_postgres
   mechanize
   nokogiri
