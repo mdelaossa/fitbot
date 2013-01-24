@@ -1,2 +1,3 @@
 {"ts":1359040312616,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
 {"contributors":[],"silentsave":false,"ts":1359040139094,"patch":[[{"diffs":[[1,"bot: bundle exec ruby rachael.rb"]],"start1":0,"start2":0,"length1":0,"length2":32}]],"length":32,"saved":false}
+{"ts":1359040744299,"patch":[[{"diffs":[[0,"uby "],[-1,"rachael"],[1,"fitbot"],[0,".rb"]],"start1":18,"start2":18,"length1":14,"length2":13}]],"length":31,"saved":false}

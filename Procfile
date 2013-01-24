@@ -1,1 +1,1 @@
-bot: bundle exec ruby rachael.rb
+bot: bundle exec ruby fitbot.rb
