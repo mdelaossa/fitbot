@@ -20,7 +20,7 @@ class Reminder
               m.reply message, true
             end
 
-			m.reply "Reminder 2| Will be reminded #{time}: #{message}", true
+			m.reply "Reminder 2| Will be reminded #{realtime}: #{message}", true
 		rescue
 			m.reply "Reminder 2| Error", true
 		end
