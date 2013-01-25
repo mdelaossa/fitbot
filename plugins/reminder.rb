@@ -8,7 +8,7 @@ class Reminder
     
     @@timer = Rufus::Scheduler.start_new
     
-    match /(?:remind|timer) (.+)\s?\|\s?(.+)/i
+    match /(?:remind|timer) (.+?)(?:(?:\s?\|\s?)| to )(.+)/i
     
     def execute (m,time,message)
         return unless ignore_nick(m.user.nick).nil?

@@ -7,3 +7,4 @@
 {"ts":1359137868019,"patch":[[{"diffs":[[0," now').\""],[1,", true"],[0,"\r\n      "]],"start1":538,"start2":538,"length1":16,"length2":22}]],"length":851,"saved":false}
 {"ts":1359137927856,"patch":[[{"diffs":[[0,"rom now'"],[1,", 'next friday'"],[0,").\", tru"]],"start1":535,"start2":535,"length1":16,"length2":31}]],"length":866,"saved":false}
 {"ts":1359137967606,"patch":[[{"diffs":[[0,"RAL "],[-1,"TIM"],[1,"LANGUAG"],[0,"E (e"]],"start1":493,"start2":493,"length1":11,"length2":15}]],"length":870,"saved":false}
+{"ts":1359138751976,"patch":[[{"diffs":[[0," (.+"],[-1,")"],[1,"?)(?:(?:"],[0,"\\s?\\|\\s?"],[1,")| to )"],[0,"(.+)"]],"start1":205,"start2":205,"length1":17,"length2":31}]],"length":884,"saved":false}
