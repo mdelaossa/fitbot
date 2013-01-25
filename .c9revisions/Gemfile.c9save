@@ -1,0 +1,10 @@
+{"ts":1358958104184,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1358957957804,"patch":[[{"diffs":[[1,"source 'http://rubygems.org'\r\ngem \"cinch\"\r\ngem \"mechanize\"\r\ngem \"nokogiri\"\r\ngem \"bitly\"\r\ngem \"dm-core\"\r\ngem \"do_postgres\"\r\ngem 'pg', '0.10.0'\r\ngem 'dm-postgres-adapter'"]],"start1":0,"start2":0,"length1":0,"length2":168}]],"length":168,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1358960311461,"patch":[[{"diffs":[[0,"adapter'"],[1,"\r\ngem 'dm-sqlite-adapter'"]],"start1":160,"start2":160,"length1":8,"length2":33}]],"length":193,"saved":false}
+{"ts":1358960829560,"patch":[[{"diffs":[[0,"-sqlite-adapter'"],[1,"\r\ngem 'data-mapper'"]],"start1":177,"start2":177,"length1":16,"length2":35}]],"length":212,"saved":false}
+{"ts":1358960880494,"patch":[[{"diffs":[[0,"em 'data"],[-1,"-"],[1,"_"],[0,"mapper'"]],"start1":196,"start2":196,"length1":16,"length2":16}]],"length":212,"saved":false}
+{"ts":1358977387638,"patch":[[{"diffs":[[0,"_mapper'"],[1,"\r\ngem 'wunderground'"]],"start1":204,"start2":204,"length1":8,"length2":28}]],"length":232,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1359010535473,"patch":[[{"diffs":[[0,"rground'"],[1,"\r\ngem 'ruby-units'"]],"start1":224,"start2":224,"length1":8,"length2":26}]],"length":250,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1359039616426,"patch":[[{"diffs":[[0,"r'\r\n"],[-1,"gem 'dm-sqlite-adapter'\r\n"],[0,"gem "]],"start1":166,"start2":166,"length1":33,"length2":8}]],"length":225,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1359128359358,"patch":[[{"diffs":[[0,"y-units'"],[1,"\r\ngem 'chronic'\r\ngem 'actiontimer'"]],"start1":217,"start2":217,"length1":8,"length2":42}]],"length":259,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1359133889760,"patch":[[{"diffs":[[0,"em '"],[-1,"actiontim"],[1,"rufus-schedul"],[0,"er'"]],"start1":243,"start2":243,"length1":16,"length2":20}]],"length":263,"saved":false}

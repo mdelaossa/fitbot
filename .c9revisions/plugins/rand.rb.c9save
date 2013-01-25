@@ -1,0 +1,2 @@
+{"ts":1358959674026,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1358959501705,"patch":[[{"diffs":[[1,"# encoding: utf-8\r\n\r\nclass Pick\r\n    include Cinch::Plugin\r\n\r\n\tmatch /r(?:and)? (.+)/i\r\n\tdef execute(m, query)\r\n\t\treturn unless ignore_nick(m.user.nick).nil?\r\n\r\n\t\tbegin\r\n\t\t\toptions = query.split(/\\|/)\r\n\t\t\tm.reply options[rand(options.length)], true\r\n\t\trescue\r\n\t\t\tnil\r\n\t\tend\r\n\tend\r\nend"]],"start1":0,"start2":0,"length1":0,"length2":284}]],"length":284,"saved":false}
