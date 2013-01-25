@@ -7,7 +7,10 @@ GEM
       crack (>= 0.1.4)
       httparty (>= 0.7.6)
       oauth2 (>= 0.5.0, < 0.9)
+<<<<<<< HEAD
     chronic (0.9.0)
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
     cinch (2.0.3)
     crack (0.3.2)
     data_mapper (1.2.0)
@@ -96,10 +99,14 @@ GEM
     pg (0.10.0)
     rack (1.5.0)
     ruby-units (1.4.2)
+<<<<<<< HEAD
     rufus-scheduler (2.0.17)
       tzinfo (>= 0.3.23)
     stringex (1.5.1)
     tzinfo (0.3.35)
+=======
+    stringex (1.5.1)
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.5)
@@ -115,7 +122,10 @@ PLATFORMS
 
 DEPENDENCIES
   bitly
+<<<<<<< HEAD
   chronic
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
   cinch
   data_mapper
   dm-core
@@ -125,5 +135,8 @@ DEPENDENCIES
   nokogiri
   pg (= 0.10.0)
   ruby-units
+<<<<<<< HEAD
   rufus-scheduler
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
   wunderground

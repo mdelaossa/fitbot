@@ -22,6 +22,7 @@ data/sqlite.rb.i
 data/plugins/converter.rb.i
 data/plugins/wilks.rb.i
 data/postgres.rb.i
+<<<<<<< HEAD
 data/.c9revisions/Gemfile.c9save.i
 data/.c9revisions/Procfile.c9save.i
 data/.c9revisions/README.md.c9save.i
@@ -258,3 +259,5 @@ data/.git/objects/e2/b6649290dfb42967e85be533462d62d1e329e0.i
 data/.git/objects/ee/70e3db1880c724e37e93fb0b9adea13b53f837.i
 data/.git/objects/ef/c8a1e8a3664e2cc9235d80cf70655c84cc9260.i
 data/.git/objects/f0/2378d6adf1923157cafe85a05a29e000b0703c.i
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9

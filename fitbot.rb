@@ -93,7 +93,10 @@ require_relative './plugins/google.rb'              # Google
 require_relative './plugins/answers.rb'             # Answers
 require_relative './plugins/wilks.rb'               # Wilks
 require_relative './plugins/converter.rb'           # Converter
+<<<<<<< HEAD
 require_relative './plugins/reminder.rb'            # Reminder
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -104,7 +107,10 @@ bot = Cinch::Bot.new do
     c.nick              = $BOTNICK
     c.realname          = $BOTNICK
     c.user              = $BOTNICK
+<<<<<<< HEAD
     #c.verbose           = true
+=======
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
     c.channels          = ["##fitbot-control oiram",
                             "#fittit",
                             "##fitbot-test oiram"]
@@ -126,8 +132,12 @@ bot = Cinch::Bot.new do
                             Google,
                             Answers,
                             Wilks,
+<<<<<<< HEAD
                             Converter,
                             Reminder]
+=======
+                            Converter]
+>>>>>>> 069f7d3e9372c6c6f5abd1bb257c5ac69f1c79e9
   end
 
   on :message, "hello" do |m|
