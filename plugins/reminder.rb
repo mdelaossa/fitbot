@@ -16,6 +16,11 @@ class Reminder
         
             realtime = Chronic.parse time
             
+            if realtime.nil?
+                m.reply "Reminder 2| Wrong time. Remember, NATURAL TIME (ex. 'in two minutes', '5 hours from now')."
+                return
+            end
+            
             @@timer.at realtime do
               m.reply message, true
             end
