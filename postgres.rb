@@ -4,6 +4,15 @@ require 'dm-migrations'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://nwrbccnwejgxov:-QskzjvC5gQT4HW3QCtjtbFIf9@ec2-54-243-233-216.compute-1.amazonaws.com:5432/d6c661v9g22il')
 
+class ReminderDB
+    include DataMapper::Resource
+    
+    property(:id, Serial)
+    property(:nick, String)
+    property(:time, DateTime)
+    property(:channel, String)
+    property(:message, String)
+end
 
 class LastfmDB 
     include DataMapper::Resource
