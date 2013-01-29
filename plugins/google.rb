@@ -24,7 +24,7 @@ class Google
 			more  = @bitly.shorten("https://encrypted.google.com/search?hl=en&q=#{URI.escape(query)}")
 
 			m.reply search(1)
-			m.reply search(2)
+			#m.reply search(2)
 			m.reply "Google 2| More results #{more.shorten}"
 		rescue
 			m.reply "Google 2| Error"
