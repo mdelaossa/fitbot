@@ -15,8 +15,8 @@ class Google
 			@url = Nokogiri::HTML(@url)
 
 			def search(number)
-				title    = @url.xpath("//p[#{number}]/a").inner_html.gsub(/<\/?b>/, '')
-				url      = @url.xpath("//table[#{number+3}]/tr/td[@class='j']/font/a[last()]/@href").text.gsub('/search?q=related:', '').gsub('&hl=en', '')
+				title    = @url.xpath("//p/a").first.inner_html.gsub(/<\/?b>/, '')
+				url      = @url.xpath("//p/a").first.attributes["href"].value.gsub('/url?q=','').gsub(/&.+=.+/,'')
 
 				"Google 2| %s 2| %s" % [title, url]
 			end
