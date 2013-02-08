@@ -9,7 +9,7 @@ class LiftTracker
         getLiftForUser(m, m.user.nick)
     end
     
-    match /lift \S+/, method: :getLiftForUser
+    match /lift (\S+)$/, method: :getLiftForUser
     def getLiftForUser(m, user)
         return unless ignore_nick(m.user.nick).nil?
         begin
