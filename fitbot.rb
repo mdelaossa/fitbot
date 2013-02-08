@@ -27,7 +27,7 @@ require 'iconv'
 require 'bitly'
 
 # Global vars
-$BOTNICK       = "fitbot" # Bot nick
+$BOTNICK       = "fitbot-test" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTURL        = "http://codelogic.org/fitbot" # Help page
@@ -105,9 +105,9 @@ bot = Cinch::Bot.new do
     c.nick              = $BOTNICK
     c.realname          = $BOTNICK
     c.user              = $BOTNICK
-    #c.verbose           = true
+    c.verbose           = true
     c.channels          = ["##fitbot-control oiram",
-                            "#fittit",
+                            #"#fittit",
                             "##fitbot-test oiram"]
     c.plugins.prefix    = /^\./
     c.plugins.plugins   = [ Basic,

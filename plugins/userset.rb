@@ -8,6 +8,50 @@ class UserSet
         return false if string == false ||  string =~ (/(false|f|no|n|0|off)$/i)
         raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
     end
+    
+    # Set height/weight
+    
+    match /set height (\d+(?:\.\d+)?)\s?(\w+)/, method: :set_height
+    def set_height(m, height, unit) #will be saved in cm
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            height = Float(height)
+            case unit
+                when /in(?:ches)?/
+                    height = height * 2.54
+                when /f(?:ee)?t/
+                    height = height * 12 * 2.54
+                when /m(?:eter(?:s)?)?/
+                    height = height * 100
+                else raise "Invalid unit"
+            end
+            height = height.round(2)
+            Nick.first_or_create(:nick => m.user.nick.downcase).update(:height => height)
+            m.reply "Height set to: #{height}cm", true
+        rescue Exception => x
+            m.reply "Error: #{x.message}"
+        end
+    end
+    
+    match /set weight (\d+(?:\.\d+)?)\s?(\w+)/, method: :set_weight
+    def set_weight(m, weight, unit) #will be saved in kg
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            weight = Float(weight)
+            case unit
+                when /stone/
+                    weight = weight*6.35029318
+                when /lbs?|pounds?/
+                    weight = weight/2.2
+                else raise "Invalid unit"
+            end
+            weight = weight.round(2)
+            Nick.first_or_create(:nick => m.user.nick.downcase).update(:weight => weight)
+            m.reply "Weight set to: #{weight}kg", true
+        rescue Exception => x
+            m.reply "Error: #{x.message}"
+        end
+    end
   
     # Set metric preference
     

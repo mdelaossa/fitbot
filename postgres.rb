@@ -10,6 +10,8 @@ class Nick
     property :id,       Serial
     property :nick,     String
     property :metric,   Boolean,    :default => true
+    property :weight,   Float,      :default => 0
+    property :height,   Float,      :default => 0
     
     has n, :lifts
 end

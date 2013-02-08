@@ -9,7 +9,7 @@ class LiftTracker
         getLiftForUser(m, m.user.nick)
     end
     
-    match /lift (\S+)$/, method: :getLiftForUser
+    match /lift (\S+)$/i, method: :getLiftForUser
     def getLiftForUser(m, user)
         return unless ignore_nick(m.user.nick).nil?
         begin
@@ -20,8 +20,8 @@ class LiftTracker
             raise "No such nick" if nick.nil?
             
             lifts = getLifts(nick, metric)
-            m.reply "LiftTracker | No lifts for #{user}", true if lifts.nil?
-            m.reply "LiftTracker | Lifts for #{user} | #{lifts.join(", ")}", true
+            m.reply "LiftTracker | No lifts for #{user}", true if lifts.empty?
+            m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
             
     	rescue Exception => x
             error x.message
@@ -30,7 +30,21 @@ class LiftTracker
 		end
     end
     
-    match /lift add (\S+) (\S+) (\S+)(?: (\S+))?/, method: :addLift
+    match /lift add (\w+) (\d+(?:\.\d+)?)(?: (\d+))?$/i, method: :addLiftNoUnit
+    def addLiftNoUnit(m, lift, weight, reps)
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            nick = Nick.first_or_create :nick => m.user.nick.downcase
+            unit = nick.metric ? 'kg' : 'lb'
+            addLift(m, lift, weight, unit, reps)
+        rescue Exception => x
+            error x.message
+            error x.backtrace.inspect
+        	m.reply "LiftTracker | Error | #{x.message}"
+        end
+    end
+    
+    match /lift add (\w+) (\d+(?:\.\d+)?)\s?([a-zA-Z]+)(?: (\d+))?/i, method: :addLift
     def addLift(m, lift, weight, unit, reps)
         return unless ignore_nick(m.user.nick).nil?
         begin
@@ -52,7 +66,7 @@ class LiftTracker
         end
     end
     
-    match /lift (?:remove|rm) (\S+)/, method: :removeLift
+    match /lift (?:remove|rm) (\w+)/i, method: :removeLift
     def removeLift(m, lift)
         return unless ignore_nick(m.user.nick).nil?
         
@@ -103,4 +117,21 @@ class LiftTracker
         debug lifts.inspect
         lifts
     end
+    
+    def getHeight(nick, metric = true)
+        if metric
+            "#{(nick.height / 100).round(2)}m"
+        else
+            "#{(nick.height / 2.54 / 12).round(2)}ft"
+        end
+    end
+    
+    def getWeight(nick, metric = true)
+        if metric
+            "#{nick.weight}kg"
+        else
+            "#{(nick.weight * 2.2).round(2)}lb"
+        end
+    end
+    
 end
