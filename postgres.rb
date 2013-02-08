@@ -4,6 +4,28 @@ require 'dm-migrations'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://nwrbccnwejgxov:-QskzjvC5gQT4HW3QCtjtbFIf9@ec2-54-243-233-216.compute-1.amazonaws.com:5432/d6c661v9g22il')
 
+class Nick
+    include DataMapper::Resource
+    
+    property :id,       Serial
+    property :nick,     String
+    property :metric,   Boolean,    :default => true
+    
+    has n, :lifts
+end
+
+class Lift
+    include DataMapper::Resource
+    
+    property :id,       Serial
+    property :lift,     String
+    property :weight,   Float
+    property :unit,     String,     :format => /kg|lb/, :default => lambda { |r, p|  if r.nick.metric then 'kg' else 'lb' end }
+    property :reps,     Numeric,    :default => 1
+    
+    belongs_to :nick
+end
+
 class ReminderDB
     include DataMapper::Resource
     

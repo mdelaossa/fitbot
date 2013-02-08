@@ -2,6 +2,25 @@
 
 class UserSet
   include Cinch::Plugin
+  
+    def to_bool(string)
+        return true if string == true || string =~ (/(true|t|yes|y|1|on)$/i)
+        return false if string == false ||  string =~ (/(false|f|no|n|0|off)$/i)
+        raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
+    end
+  
+    # Set metric preference
+    
+    match /set metric (true|false|on|off)/i, method: :set_metric
+    def set_metric(m, preference)
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            Nick.first_or_create(:nick => m.user.nick.downcase).update(:metric => to_bool(preference))
+            m.reply "Metric preference set to: #{preference}", true
+        rescue Exception => x
+            m.reply "Error: #{x.message}"
+        end
+    end
 
 
     # Last.fm username

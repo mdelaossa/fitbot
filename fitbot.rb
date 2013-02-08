@@ -27,7 +27,7 @@ require 'iconv'
 require 'bitly'
 
 # Global vars
-$BOTNICK       = "fitbot" # Bot nick
+$BOTNICK       = "fitbot-test" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTURL        = "http://codelogic.org/fitbot" # Help page
@@ -94,6 +94,7 @@ require_relative './plugins/answers.rb'             # Answers
 require_relative './plugins/wilks.rb'               # Wilks
 require_relative './plugins/converter.rb'           # Converter
 require_relative './plugins/reminder.rb'            # Reminder
+require_relative './plugins/lift_tracker.rb'        # LiftTracker
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -104,9 +105,9 @@ bot = Cinch::Bot.new do
     c.nick              = $BOTNICK
     c.realname          = $BOTNICK
     c.user              = $BOTNICK
-    #c.verbose           = true
+    c.verbose           = true
     c.channels          = ["##fitbot-control oiram",
-                            "#fittit",
+                            #"#fittit",
                             "##fitbot-test oiram"]
     c.plugins.prefix    = /^\./
     c.plugins.plugins   = [ Basic,
@@ -127,12 +128,10 @@ bot = Cinch::Bot.new do
                             Answers,
                             Wilks,
                             Converter,
-                            Reminder]
+                            Reminder,
+                            LiftTracker]
   end
 
-  on :message, "hello" do |m|
-    m.reply "Hello, #{m.user.nick}"
-  end
 end
 
 bot.start
