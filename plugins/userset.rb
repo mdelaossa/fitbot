@@ -39,6 +39,8 @@ class UserSet
         begin
             weight = Float(weight)
             case unit
+                when /k(?:ilo)?g(?:ram)?s?/
+                    weight
                 when /stone/
                     weight = weight*6.35029318
                 when /lbs?|pounds?/
