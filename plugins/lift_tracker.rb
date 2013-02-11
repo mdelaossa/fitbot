@@ -17,15 +17,16 @@ class LiftTracker
             metric = nick.metric #Get metric preference before switching target
             
             nick = Nick.first :nick => user.downcase
-            raise "No such nick" if nick.nil?
-            
-            lifts = getLifts(nick, metric)
-            if lifts.empty?
+            if nick.nil?
                 m.reply "LiftTracker | No lifts for #{user}", true
             else
-                m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
+                lifts = getLifts(nick, metric)
+                if lifts.empty?
+                    m.reply "LiftTracker | No lifts for #{user}", true
+                else
+                    m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
+                end
             end
-            
     	rescue Exception => x
             error x.message
             error x.backtrace.inspect
