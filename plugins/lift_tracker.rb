@@ -20,8 +20,11 @@ class LiftTracker
             raise "No such nick" if nick.nil?
             
             lifts = getLifts(nick, metric)
-            m.reply "LiftTracker | No lifts for #{user}", true if lifts.empty?
-            m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
+            if lifts.empty?
+                m.reply "LiftTracker | No lifts for #{user}", true
+            else
+                m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
+            end
             
     	rescue Exception => x
             error x.message
