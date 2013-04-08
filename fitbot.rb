@@ -27,7 +27,7 @@ require 'iconv'
 require 'bitly'
 
 # Global vars
-$BOTNICK       = "fitbot" # Bot nick
+$BOTNICK       = "fitbott" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTURL        = "http://codelogic.org/fitbot" # Help page
@@ -107,7 +107,7 @@ bot = Cinch::Bot.new do
     c.user              = $BOTNICK
     #c.verbose           = true
     c.channels          = ["##fitbot-control oiram",
-                            "#fittit",
+                            #"#fittit",
                             "##fitbot-test oiram"]
     c.plugins.prefix    = /^\./
     c.plugins.plugins   = [ Basic,
@@ -130,6 +130,12 @@ bot = Cinch::Bot.new do
                             Converter,
                             Reminder,
                             LiftTracker]
+  end
+  
+  on :join do |m|
+    if m.user.nick =~ /qwebirc.+/
+        m.user.msg "Hi there! Please change your nick with the command /nick NICKNAME. You will not be able to speak in the channel until you do. Thanks and welcome to #fittit", true
+    end
   end
 
 end
