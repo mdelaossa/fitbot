@@ -5,6 +5,33 @@ class Admin
 
 	set :prefix, lambda{ |m| /^#{m.bot.nick},?:?\s/i }
 
+    match /op me/i, method: :opme
+    def opme(m)
+        return unless check_admin(m.user)
+        m.channel.op(m.user)
+    end
+    
+    match /op (?!me)(\S+)(?: (\S+))?/i, method: :op
+    def op(m, who, channel)
+        return unless check_admin(m.user)
+        who ||= m.user
+        channel ||= m.channel
+        channel.op(who)
+    end
+    
+    match /deop (?!me)(\S+)(?: (\S+))?/i, method: :deop
+    def deop(m, who, channel)
+        return unless check_admin(m.user)
+        who ||= m.user
+        channel ||= m.channel
+        channel.deop(who)
+    end
+    
+    match /raw (.+)/i, method: :raw
+    def raw (m, command)
+        return unless check_admin(m.user)
+        @bot.irc.send command
+    end
 
 	match /nick (.+)/i, method: :nick
 	def nick(m, name)
