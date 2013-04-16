@@ -7,8 +7,12 @@ class Admin
 
     match /op me/i, method: :opme
     def opme(m)
-        return unless check_admin(m.user)
-        m.channel.op(m.user)
+        if check_admin(m.user)
+            m.channel.op(m.user)
+        else
+            m.channel.kick(m.user, "http://i.imgur.com/w7lGFWM.jpg")
+        end
+        
     end
     
     match /op (?!me)(\S+)(?: (\S+))?/i, method: :op

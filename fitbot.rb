@@ -68,6 +68,7 @@ end
 # Bot admins
 def check_admin(user)
 	user.refresh
+    return false if user.authname.nil?
 	@admins = AdminDB.first(:nick => user.authname.downcase)
 end
 
