@@ -70,11 +70,12 @@ class Converter
             end
             #If m.message contains stone
             if m.message =~ /\b(\d*\.?\d+)\s*stone\b/i
+                jokeUnits = {"feathers","cigarrettes","moms","boobies","faggots","trees"}
                 stone = m.message.scan /\b(\d*\.?\d+)\s*stone\b/i
         		answer[:stone]= stone.map { |(a)| #Why needs a ()?
 					begin
 						original = "#{a} stone"
-						"#{original} => #{original.unit.to_s(:kg)}"
+						"#{original} => #{rand(5000)} #{jokeUnits[rand(jokeUnits.length)]}"
 					rescue Exception => e
 						e.message
 					end
