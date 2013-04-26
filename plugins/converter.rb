@@ -56,6 +56,30 @@ class Converter
 					end
 				}.join(" | ")
 			end
+            #If m.message contains cm
+            if m.message =~ /\b(\d*\.?\d+)\s*c(?:enti)?m(?:eters?)?\b/i
+                centimeters = m.message.scan /\b(\d*\.?\d+)\s*c(?:enti)?m(?:eters?)?\b/i
+    			answer[:centimeters]= centimeters.map { |(a)| #Why needs a ()?
+					begin
+						original = "#{a} cm"
+						"#{original} => #{original.unit.to_s(:ft)}"
+					rescue Exception => e
+						e.message
+					end
+				}.join(" | ")
+            end
+            #If m.message contains stone
+            if m.message =~ /\b(\d*\.?\d+)\s*stone\b/i
+                stone = m.message.scan /\b(\d*\.?\d+)\s*stone\b/i
+        		answer[:stone]= stone.map { |(a)| #Why needs a ()?
+					begin
+						original = "#{a} stone"
+						"#{original} => #{original.unit.to_s(:ft)}"
+					rescue Exception => e
+						e.message
+					end
+				}.join(" | ")
+            end
 			m.reply answer.values.join(" | ")
 		end
     end

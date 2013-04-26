@@ -21,6 +21,8 @@ class UserSet
                     height = height * 2.54
                 when /f(?:ee)?t/
                     height = height * 12 * 2.54
+                when /c(?:enti)?m(?:eter(?:s)?)?/
+                    height = height
                 when /m(?:eter(?:s)?)?/
                     height = height * 100
                 else raise "Invalid unit"
