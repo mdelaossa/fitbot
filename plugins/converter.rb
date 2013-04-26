@@ -74,7 +74,7 @@ class Converter
         		answer[:stone]= stone.map { |(a)| #Why needs a ()?
 					begin
 						original = "#{a} stone"
-						"#{original} => #{original.unit.to_s(:ft)}"
+						"#{original} => #{original.unit.to_s(:kg)}"
 					rescue Exception => e
 						e.message
 					end
