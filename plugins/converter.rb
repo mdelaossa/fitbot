@@ -30,6 +30,20 @@ class Converter
 					end
 				}.join(" | ")
 			end
+            #If m.message contains inches
+            if m.message =~ /\b(\d*\.?\d+)\s*(?:in|inches)\b|\b(\d*\.?\d+)"/i
+    			feet = m.message.scan /\b(\d*\.?\d+)\s*(?:in|inches)\b|\b(\d*\.?\d+)"/i
+				answer[:feet]= feet.map { |a, b|
+					begin
+						a = b if (a.nil?)
+						original = "#{a}\""
+						ans = original.unit >> "centimeters"
+						"#{original} => #{ans.scalar.to_f.round(3)} #{ans.units}"
+					rescue Exception
+						# ignored
+					end
+				}.join(" | ")
+			end
 			#If m.message contains feet|inches
 			if m.message =~ /\b(\d*\.?\d+)\s*(?:ft|feet)(?:\s*(\d+)\s*(?:in|inches))?\b|\b(\d*\.?\d+)(?:')(?:(\d+)(?:")?)?/i
 				feet = m.message.scan /\b(\d*\.?\d+)\s*(?:ft|feet)(?:\s*(\d+)\s*(?:in|inches))?\b|\b(\d*\.?\d+)(?:')(?:(\d+)(?:")?)?/i
