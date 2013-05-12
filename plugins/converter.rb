@@ -83,9 +83,9 @@ class Converter
 				}.join(" | ")
             end
             #If m.message contains stone
-            if m.message =~ /\b(\d*\.?\d+)\s*stone\b/i
+            if m.message =~ /\b(\d*\.?\d+)\s*stones?\b/i
                 jokeUnits = ["feathers","cigarrettes","moms","boobies","faggots","trees"]
-                stone = m.message.scan /\b(\d*\.?\d+)\s*stone\b/i
+                stone = m.message.scan /\b(\d*\.?\d+)\s*stones?\b/i
         		answer[:stone]= stone.map { |(a)| #Why needs a ()?
 					begin
 						original = "#{a} stone"
