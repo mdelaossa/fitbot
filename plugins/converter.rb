@@ -118,11 +118,11 @@ class Converter
     
     module Convert
     	def self.to_kg(num)
-			(Float(num)/2.2).round(3)
+			(Float(num)/2.20462).round(3)
 		end
 
 		def self.to_lb(num)
-			(Float(num)*2.2).round(3)
+			(Float(num)*2.20462).round(3)
 		end
 
 		def self.parse(expression)
