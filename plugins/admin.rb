@@ -184,19 +184,17 @@ class Admin
 	def list_admins(m)
 		return unless check_admin(m.user)
 		begin
-			agent = Mechanize.new
+        
+            pastebin = Pastebin.new
+			
 			rows = ""
-
 			AdminDB.all.each do |item|
 				rows = rows + item.id.to_s + ". " + item.nick + "\n"
 			end
 
-			page = agent.get "http://p.sjis.me/"
-			form = page.forms.first
-			form.content = rows
-			page = agent.submit form
+			url = pastebin.paste(rows)
 
-			m.reply page.search("//a[@name='plain']/@href").text, true
+			m.reply url, true
 		rescue
 			m.reply "Oops something went wrong", true
 			raise
@@ -319,19 +317,16 @@ class Admin
 	def list_channels(m)
 		return unless check_admin(m.user)
 		begin
-			agent = Mechanize.new
-			rows = ""
-
+			pastebin = Pastebin.new
+            
+            rows = ""
 			JoinDB.all.each do |item|
 				rows = rows + item.id.to_s + ". " + item.channel + "\n"
 			end
 
-			page = agent.get "http://p.sjis.me/"
-			form = page.forms.first
-			form.content = rows
-			page = agent.submit form
+			url = pastebin.paste rows
 
-			m.reply page.search("//a[@name='plain']/@href").text, true
+			m.reply url, true
 		rescue
 			m.reply "Oops something went wrong", true
 			raise
@@ -346,19 +341,16 @@ class Admin
 	def list_lastfm(m)
 		return unless check_admin(m.user)
 		begin
-			agent = Mechanize.new
+			pastebin = Pastebin.new
 			rows = ""
 
 			LastfmDB.all.each do |item|
 				rows = rows + item.id.to_s + ". " + item.nick + " = " + item.username + "\n"
 			end
 
-			page = agent.get "http://p.sjis.me/"
-			form = page.forms.first
-			form.content = rows
-			page = agent.submit form
+			url = pastebin.paste rows
 
-			m.reply page.search("//a[@name='plain']/@href").text, true
+    		m.reply url, true
 		rescue
 			m.reply "Oops something went wrong", true
 			raise
@@ -387,19 +379,16 @@ class Admin
 	def list_locations(m)
 		return unless check_admin(m.user)
 		begin
-			agent = Mechanize.new
+			pastebin = Pastebin.new
 			rows = ""
 
 			LocationDB.all.each do |item|
 				rows = rows + item.id.to_s + ". " + item.nick + " = " + item.location + "\n"
 			end
 
-			page = agent.get "http://p.sjis.me/"
-			form = page.forms.first
-			form.content = rows
-			page = agent.submit form
+			url = pastebin.paste rows
 
-			m.reply page.search("//a[@name='plain']/@href").text, true
+    		m.reply url, true
 		rescue
 			m.reply "Oops something went wrong", true
 			raise
@@ -457,19 +446,16 @@ class Admin
 	def list_insults(m)
 		return unless check_admin(m.user)
 		begin
-			agent = Mechanize.new
+			pastebin = Pastebin.new
 			rows = ""
 
 			InsultDB.all.each do |item|
 				rows = rows + item.id.to_s + ". " + item.insult + "\n"
 			end
 
-			page = agent.get "http://p.sjis.me/"
-			form = page.forms.first
-			form.content = rows
-			page = agent.submit form
+			url = pastebin.paste rows
 
-			m.reply page.search("//a[@name='plain']/@href").text, true
+    		m.reply url, true
 		rescue
 			m.reply "Oops something went wrong", true
 			raise

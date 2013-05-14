@@ -33,6 +33,27 @@ class FactoidDB
         end
     end
     
+    match /factoid list/i, method: :listFactoids
+    def listFactoids(m)
+        return unless check_admin(m.user)
+        begin
+            pastebin = Pastebin.new
+    		rows = ""
+
+			Factoid.all.each do |item|
+				rows = rows + item.name + " protected: " + item.protect + "\n"
+			end
+
+			url = pastebin.paste rows
+
+    		m.reply url, true
+        rescue Exception => x
+            error x.message
+            error x.backtrace.inspect
+    		m.reply "FactoidDB | Error | #{x.message}"
+        end
+    end
+    
     match /factoid (on|off|gprotect|nprotect)/i, method: :quiet
     def quiet(m, quiet)
         return unless check_admin(m.user)
@@ -52,6 +73,7 @@ class FactoidDB
         end
     end
     
+    match /get all (.+)$/i, method: :getAllFactoid
     match /fact(?:oid)? get all (.+)$/i, method: :getAllFactoid
     def getAllFactoid(m, name)
     return unless ignore_nick(m.user.nick).nil?
@@ -74,6 +96,7 @@ class FactoidDB
 		end
     end
     
+    match /get (.+?) \/(.+)\/$/i,method: :getSpecificFactoid
     match /fact(?:oid)? get (.+?) \/(.+)\/$/i,method: :getSpecificFactoid
     def getSpecificFactoid(m, name, regex)
         return unless ignore_nick(m.user.nick).nil?
@@ -98,6 +121,7 @@ class FactoidDB
 		end
     end
     
+    match /get (?!all)(.+?[^\/])$/i, method: :getFactoid
     match /fact(?:oid)? get (?!all)(.+?[^\/])$/i, method: :getFactoid
     def getFactoid(m, name)
         return unless ignore_nick(m.user.nick).nil?

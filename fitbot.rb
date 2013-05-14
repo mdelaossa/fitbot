@@ -98,6 +98,7 @@ require_relative './plugins/converter.rb'           # Converter
 require_relative './plugins/reminder.rb'            # Reminder
 require_relative './plugins/lift_tracker.rb'        # LiftTracker
 require_relative './plugins/factoid.rb'             # FactoidDB
+require_relative './plugins/pastebin.rb'            # Pastebin
 
 bot = Cinch::Bot.new do
   configure do |c|
