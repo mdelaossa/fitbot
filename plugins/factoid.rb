@@ -46,7 +46,7 @@ class FactoidDB
         when /gprotect/i
             $PROTECT = true
             m.reply "FactoidDB | Only admins can add factoids"
-        when /!gprotect/i
+        when /nprotect/i
             $PROTECT = false
             m.reply "FactoidDB | Everyone can add factoids"
         end
