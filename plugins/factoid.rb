@@ -41,7 +41,7 @@ class FactoidDB
     		rows = ""
 
 			Factoid.all.each do |item|
-				rows = rows + item.name + " protected: " + item.protect + "\n"
+				rows = rows + item.name + " protected: " + item.protect.to_s + "\n"
 			end
 
 			url = pastebin.paste rows
