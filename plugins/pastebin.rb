@@ -14,6 +14,7 @@ class Pastebin
     # The only option required is 'paste_code', which holds your string.
     #
     def initialize()
+        @options = {}
         @options["api_dev_key"] = DEVKEY
         @options["api_paste_private"] = 1
     end
