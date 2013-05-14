@@ -5,13 +5,13 @@ class FactoidDB
     
     $PROTECT = false
     
-    def protect
-        return false if check_admin(m.user)
+    def protect(user)
+        return false if check_admin(user)
         return $PROTECT
     end
     
-    def shutup
-        return false if check_admin(m.user)
+    def shutup(user)
+        return false if check_admin(user)
         return $SHUTUP
     end
     
