@@ -124,6 +124,12 @@ class FactoidDB
         begin
             name = name.downcase
             factoid = Factoid.first_or_create :name => name
+            if factoid.protect
+                    if not check_admin(m.user)
+                        m.reply "FactoidDB | Can't add to '#{factoid.name}': factoid protected"
+                        return
+                    end
+                end
             factoid.factoid_values.first_or_create :value => value
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
         rescue Exception => x
