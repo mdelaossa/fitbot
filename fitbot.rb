@@ -32,6 +32,7 @@ $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTURL        = "http://codelogic.org/fitbot" # Help page
 $BOTGIT        = ""
+$SHUTUP        = false
 
 # Twitter Feed
 $TWITTERFEED    = ""
@@ -96,6 +97,7 @@ require_relative './plugins/wilks.rb'               # Wilks
 require_relative './plugins/converter.rb'           # Converter
 require_relative './plugins/reminder.rb'            # Reminder
 require_relative './plugins/lift_tracker.rb'        # LiftTracker
+require_relative './plugins/factoid.rb'             # FactoidDB
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -108,6 +110,7 @@ bot = Cinch::Bot.new do
     c.user              = $BOTNICK
     #c.verbose           = true
     c.channels          = ["##fitbot-control oiram",
+                            "##fitbot",
                             "#fittit",
                             "#realfittit",
                             "##fitbot-test oiram"]
@@ -131,7 +134,8 @@ bot = Cinch::Bot.new do
                             Wilks,
                             Converter,
                             Reminder,
-                            LiftTracker]
+                            LiftTracker,
+                            FactoidDB]
   end
   
   on :join do |m|

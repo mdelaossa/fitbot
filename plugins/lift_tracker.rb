@@ -91,11 +91,11 @@ class LiftTracker
     end
     
     def to_kg (weight)
-        (weight / 2.2).round(2)
+        (weight / 2.20462).round(2)
     end
     
     def to_lb (weight)
-        (weight * 2.2).round(2)
+        (weight * 2.20462).round(2)
     end
     
     def getLifts (nick, metric = true)
@@ -134,7 +134,7 @@ class LiftTracker
         if metric
             "#{nick.weight}kg"
         else
-            "#{(nick.weight * 2.2).round(2)}lb"
+            "#{(to_lb(nick.weight)).round(2)}lb"
         end
     end
     

@@ -4,6 +4,22 @@ require 'dm-migrations'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://nwrbccnwejgxov:-QskzjvC5gQT4HW3QCtjtbFIf9@ec2-54-243-233-216.compute-1.amazonaws.com:5432/d6c661v9g22il')
 
+class Factoid
+    include DataMapper::Resource
+    
+    property :name,         String,     :unique => true,  :key => true
+    property :protect,      Boolean,    :default => false
+    
+    has n, :factoid_values
+end
+
+class FactoidValue
+    include DataMapper::Resource
+    
+    property :id,       Serial
+    property :value,    String
+end
+
 class Nick
     include DataMapper::Resource
     
