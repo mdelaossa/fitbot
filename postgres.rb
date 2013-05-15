@@ -17,7 +17,7 @@ class FactoidValue
     include DataMapper::Resource
     
     property :id,       Serial
-    property :value,    String
+    property :value,    String,     :length => 500
 end
 
 class Nick

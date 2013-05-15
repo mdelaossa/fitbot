@@ -154,8 +154,9 @@ class FactoidDB
                         return
                     end
                 end
-            factoid.factoid_values.first_or_create :value => value
+            val = factoid.factoid_values.first_or_create :value => value
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
+            debug val.inspect
         rescue Exception => x
             error x.message
             error x.backtrace.inspect
