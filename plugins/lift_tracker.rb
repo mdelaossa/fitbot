@@ -34,7 +34,7 @@ class LiftTracker
 		end
     end
     
-    match /lift add (\w+) (\d+(?:\.\d+)?)(?: (\d+))?$/i, method: :addLiftNoUnit
+    match /lift add (\w+) (\d+(?:\.\d+)?)(?:\s+(\d+))?$/i, method: :addLiftNoUnit
     def addLiftNoUnit(m, lift, weight, reps)
         return unless ignore_nick(m.user.nick).nil?
         begin
@@ -48,7 +48,7 @@ class LiftTracker
         end
     end
     
-    match /lift add (\w+) (\d+(?:\.\d+)?)\s?([a-zA-Z]+)(?: (\d+))?/i, method: :addLift
+    match /lift add (\w+) (\d+(?:\.\d+)?)\s?([a-zA-Z]+)(?:\s+(\d+))?/i, method: :addLift
     def addLift(m, lift, weight, unit, reps)
         return unless ignore_nick(m.user.nick).nil?
         begin

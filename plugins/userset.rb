@@ -3,6 +3,9 @@
 class UserSet
   include Cinch::Plugin
   
+  require 'mathn'
+  require 'ruby-units'
+  
     def to_bool(string)
         return true if string == true || string =~ (/(true|t|yes|y|1|on)$/i)
         return false if string == false ||  string =~ (/(false|f|no|n|0|off)$/i)
