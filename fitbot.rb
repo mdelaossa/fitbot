@@ -30,6 +30,7 @@ require 'bitly'
 $BOTNICK       = "fitbot" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
+$BOTOWNER2     = "sigma"
 $BOTURL        = "http://codelogic.org/fitbot" # Help page
 $BOTGIT        = ""
 $SHUTUP        = false
@@ -148,3 +149,53 @@ bot = Cinch::Bot.new do
 end
 
 bot.start
+
+
+
+//SUBLUMINAL
+
+bot2 = Cinch::Bot.new do
+  configure do |c|
+    c.server            = "irc.subluminal.net"
+    c.port              = 6667
+    c.ssl.use           = false
+    c.ssl.verify        = false
+    c.nick              = "sigbot"
+    c.realname          = "sigbot"
+    c.user              = "sigbot"
+    #c.verbose           = true
+    c.channels          = ["#boats",
+                            "#bots"]
+    c.plugins.prefix    = /^\./
+    c.plugins.plugins   = [ Basic,
+                            Admin,
+                            UserSet,
+                            UrbanDictionary,
+                            Weather,
+                            Lastfm,
+                            Uri,
+                            Translate,
+                            Twitter,
+                            Insult,
+                            Eightball,
+                            Pick,
+                            Youtube,
+                            Bing,
+                            Google,
+                            Answers,
+                            Wilks,
+                            Converter,
+                            Reminder,
+                            LiftTracker,
+                            FactoidDB]
+  end
+  
+  on :join do |m|
+    if m.user.nick =~ /qwebirc.+/
+        m.user.msg "Hi there! Please change your nick with the command /nick NICKNAME. You will not be able to speak in the channel until you do. Thanks and welcome to #fittit", true
+    end
+  end
+
+end
+
+bot2.start

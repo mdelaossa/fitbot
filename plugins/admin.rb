@@ -149,7 +149,7 @@ class Admin
 
 	match /add admin (.+)/i, method: :add_admin
 	def add_admin(m, username)
-		return unless m.user.nick.downcase == $BOTOWNER
+		return unless m.user.nick.downcase == $BOTOWNER || m.user.nick.downcase == $BOTOWNER2
 
 		begin
 			old = AdminDB.first(:nick => username.downcase)
@@ -167,7 +167,7 @@ class Admin
 
 	match /remove admin (.+)/i, method: :del_admin
 	def del_admin(m, username)
-		return unless m.user.nick.to_s.downcase == $BOTOWNER
+		return unless m.user.nick.to_s.downcase == $BOTOWNER || m.user.nick.downcase == $BOTOWNER2
 
 		begin
 			old = AdminDB.first(:nick => username.downcase)
