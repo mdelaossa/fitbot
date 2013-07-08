@@ -152,7 +152,7 @@ bot.start
 
 
 
-//SUBLUMINAL
+#SUBLUMINAL
 
 bot2 = Cinch::Bot.new do
   configure do |c|
