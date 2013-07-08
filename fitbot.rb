@@ -148,12 +148,12 @@ bot = Cinch::Bot.new do
 
 end
 
-bot.start
+#bot.start #moved to bottom after new Thread
 
 
 
 #SUBLUMINAL
-
+Thread.new {
 bot2 = Cinch::Bot.new do
   configure do |c|
     c.server            = "irc.subluminal.net"
@@ -199,3 +199,6 @@ bot2 = Cinch::Bot.new do
 end
 
 bot2.start
+}
+
+bot.start
