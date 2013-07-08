@@ -25,8 +25,8 @@ class Converter
     
     listen_to :channel
     def listen(m)
-        unless m.message =~ /^\.?convert/ || m.message =~ /^\.?r?wilks/
-        return unless ignore_nick(m.user.nick).nil? || @enabled == false
+        unless m.message =~ /^\.?convert/ || m.message =~ /^\.?r?wilks/  || @enabled == false
+        return unless ignore_nick(m.user.nick).nil?
     		answer = {}
 			#If the message includes pounds or kilograms
 			if m.message =~ /\b(?:(?<!-)|(?=\.))(?:((?:\d+(?:,\d+)*)?(?:\.|,)?\d+)\s*\s*-\s*)?((?:\d+(?:,\d+)*)?(?:\.)?\d+)\s*((?:pound|kilo(?:\s*gram)?|lb|kg|#)s?)(?:\b|(?<=#))/i
