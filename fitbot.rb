@@ -160,9 +160,9 @@ bot2 = Cinch::Bot.new do
     c.port              = 6667
     c.ssl.use           = false
     c.ssl.verify        = false
-    c.nick              = "sigbot"
-    c.realname          = "sigbot"
-    c.user              = "sigbot"
+    c.nick              = "epsilon"
+    c.realname          = "epsilon"
+    c.user              = "epsilon"
     #c.verbose           = true
     c.channels          = ["#boats",
                             "#bots"]

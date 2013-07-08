@@ -48,12 +48,12 @@ class Youtube
 
 				length = length_in_minutes(length.to_i)
 
-				"YouTube 4| \"%s\" 4| %s 4| %s views 4| %s/5 (%s|%s) 4| http://youtu.be/%s 4| More results: %s" % [name, length, views, rating[0..2], likes, dislikes, id, @page_url.shorten]
+				"YouTube | \"%s\" | %s | %s views | %s/5 (%s|%s) | http://youtu.be/%s | More results: %s" % [name, length, views, rating[0..2], likes, dislikes, id, @page_url.shorten]
 			end
 
 			m.reply search(1)
 		rescue
-			m.reply "YouTube 4| Error: Could not find video"
+			m.reply "YouTube | Error: Could not find video"
 		end
 	end
 end

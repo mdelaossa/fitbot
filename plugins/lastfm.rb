@@ -55,9 +55,9 @@ class Lastfm
 			sex = "–" if sex.length < 1
 			location = "–" if location.length < 1
 
-			realname = ""+realname+" " if realname.length > 1
+			realname = ""+realname+" " if realname.length > 1
 
-			reply = "#{realname}#{user} (#{age}/#{sex}/#{location}) 4| #{playcount} Scrobbles 4| Top Artists: "
+			reply = "#{realname}#{user} (#{age}/#{sex}/#{location}) | #{playcount} Scrobbles | Top Artists: "
 
 			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=overall&limit=5&api_key="+$LASTFMAPI, :read_timeout=>3).read)
 
@@ -79,7 +79,7 @@ class Lastfm
 		rescue
 			reply = "The user '#{username}' doesn't have a Last.fm account"
 		end
-		m.reply "Last.fm 4| #{reply}"
+		m.reply "Last.fm | #{reply}"
 	end
 
 
@@ -99,7 +99,7 @@ class Lastfm
 		begin
 			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=7day&limit=5&api_key="+$LASTFMAPI, :read_timeout=>3).read)
 			top_artists = result.xpath("//topartists/artist")[0..4]
-			reply = "Top 5 Weekly artists for #{username} 4| "
+			reply = "Top 5 Weekly artists for #{username} | "
 			top_artists.each do |artist|
 				name = artist.xpath("name").text
 				count = artist.xpath("playcount").text
@@ -116,7 +116,7 @@ class Lastfm
 		rescue
 			reply = "The user '#{username}' doesn't have a Last.fm account"
 		end
-		m.reply "Last.fm 4| #{reply}"
+		m.reply "Last.fm | #{reply}"
 	end
 
 
@@ -153,7 +153,7 @@ class Lastfm
 			score = score[2..4]
 			scr = "#{score.to_i/10}.#{score.to_i % 10}"
 
-			reply = "#{userone} vs #{usertwo} #{scr}% 4| #{commonlist}"
+			reply = "#{userone} vs #{usertwo} #{scr}% | #{commonlist}"
 		rescue Timeout::Error
 			if retrys > 0
 				retrys = retrys - 1
@@ -164,7 +164,7 @@ class Lastfm
 		rescue
 			reply = "Error"
 		end
-		m.reply "Last.fm 4| #{reply}"
+		m.reply "Last.fm | #{reply}"
 	end
 
 
@@ -199,7 +199,7 @@ class Lastfm
 				taglist = taglist + "#{tag}, "
 			end
 			taglist = taglist[0..taglist.length-3]
-			taglist = "4| #{taglist}" if taglist != ""
+			taglist = "| #{taglist}" if taglist != ""
 
 			if now == "true"
 				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist}"
@@ -216,7 +216,7 @@ class Lastfm
 		rescue
 			reply = "Error"
 		end
-		m.reply "Last.fm 4| #{reply}"
+		m.reply "Last.fm | #{reply}"
 	end
 
 
@@ -244,7 +244,7 @@ class Lastfm
 				taglist = taglist + "#{tag}, "
 			end
 			taglist = taglist[0..taglist.length-3]
-			taglist = "4| Tags: #{taglist}. " if taglist != ""
+			taglist = "| Tags: #{taglist}. " if taglist != ""
 
 			tracks = toptracks.xpath("//toptracks/track")
 			tracklist = ""
@@ -253,16 +253,16 @@ class Lastfm
 				tracklist = tracklist + "#{track}, "
 			end
 			tracklist = tracklist[0..tracklist.length-3]
-			tracklist = "Tracks: #{tracklist}. " if tracklist != ""
+			tracklist = "Tracks: #{tracklist}. " if tracklist != ""
 
 			plays     = plays.reverse.gsub(%r{([0-9]{3}(?=([0-9])))}, "\\1,").reverse
 			listeners = listeners.reverse.gsub(%r{([0-9]{3}(?=([0-9])))}, "\\1,").reverse
 
-			reply = "%s 4| %s plays, %s listeners 4| %s%s4| %s" % [artist, plays, listeners, tracklist, taglist, url]
+			reply = "%s | %s plays, %s listeners | %s%s| %s" % [artist, plays, listeners, tracklist, taglist, url]
 		rescue
 			reply = "Error"
 		end
-		m.reply "Last.fm 4| #{reply}"
+		m.reply "Last.fm | #{reply}"
 	end
 
 end

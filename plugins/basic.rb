@@ -31,7 +31,7 @@ class Basic
 
 	match /help$/i, method: :help
 	def help(m)
-		m.reply "Function list: 12#{$BOTURL} Owner: 12#{$BOTOWNER} Need more help? Fuck off", true
+		m.reply "Function list: #{$BOTURL} Owner: #{$BOTOWNER} Need more help? Fuck off", true
 	end
 
 end

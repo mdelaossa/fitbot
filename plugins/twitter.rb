@@ -73,11 +73,11 @@ class Twitter
 			time        = Time.parse(posted)
 			time        = minutes_in_words(time)
 
-			m.reply "Twitter 12| #{name} (@#{screenname}) 12| #{tweettext} 12| Posted #{time}"
+			m.reply "Twitter | #{name} (@#{screenname}) | #{tweettext} | Posted #{time}"
 		rescue Timeout::Error
-			m.reply "Twitter 12| Timeout Error. Maybe twitter is down?"
+			m.reply "Twitter | Timeout Error. Maybe twitter is down?"
 		rescue
-			m.reply "Twitter 12| #{query} 12| Could not get tweet"
+			m.reply "Twitter | #{query} | Could not get tweet"
 		end
 	end
 end

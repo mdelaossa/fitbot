@@ -19,19 +19,19 @@ class Bing
 				desc       = @url.xpath("//web:WebResult[#{number}]/web:Description", {"web" => "http://schemas.microsoft.com/LiveSearch/2008/04/XML/web"}).text
 				url        = @url.xpath("//web:WebResult[#{number}]/web:Url", {"web" => "http://schemas.microsoft.com/LiveSearch/2008/04/XML/web"}).text
 
-				title = title.gsub(/(|)/, "")
-				desc = desc.gsub(/(|)/, "")
+				title = title.gsub(/(|)/, "")
+				desc = desc.gsub(/(|)/, "")
 
-				"Bing 2| \"%s\" %s… 2| %s" % [title, desc[0..100], url]
+				"Bing | \"%s\" %s… | %s" % [title, desc[0..100], url]
 			end
 
 			more  = @bitly.shorten("http://www.bing.com/search?q=#{URI.escape(query)}")
 
 			m.reply search(1)
 			m.reply search(2)
-			m.reply "Bing 2| More results #{more.shorten}"
+			m.reply "Bing | More results #{more.shorten}"
 		rescue
-			m.reply "Bing 2| Error"
+			m.reply "Bing | Error"
 		end
 	end
 end

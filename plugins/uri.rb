@@ -115,11 +115,11 @@ class Uri
 							date      = doc.search("//div[@id='p#{postnumber}']//span[@class='dateTime']").text
 
 							subject = subject+" " if subject != ""
-							reply = " 3| "+reply if reply != ""
+							reply = " | "+reply if reply != ""
 							reply = reply[0..160]+" ..." if reply.length > 160
-							image = " 3| File: http:"+image if image.length > 1
+							image = " | File: http:"+image if image.length > 1
 
-							m.reply "4chan 3| %s3%s%s %s No.%s%s%s" % [subject, poster, trip, date, postnumber, image, reply]
+							m.reply "4chan | %s3%s%s %s No.%s%s%s" % [subject, poster, trip, date, postnumber, image, reply]
 
 						else # Board Index Title
 							page = @agent.get(link)
@@ -131,7 +131,7 @@ class Uri
 							end
 
 							uri = URI.parse(page.uri.to_s)
-							m.reply "Title 3| %s 3| %s" % [title, uri.host]
+							m.reply "Title | %s | %s" % [title, uri.host]
 						end
 
 					when "twitter.com"
@@ -157,7 +157,7 @@ class Uri
 								time        = Time.parse(posted)
 								time        = minutes_in_words(time)
 
-								m.reply "Twitter 12| #{name} (@#{screenname}) 12| #{tweettext} 12| Posted #{time}"
+								m.reply "Twitter | #{name} (@#{screenname}) | #{tweettext} | Posted #{time}"
 							elsif bang[4].include? "status"
 								twurl = Nokogiri::XML(open("http://api.twitter.com/1/statuses/show.xml?id=#{bang[5]}&include_entities=true", :read_timeout=>3).read)
 
@@ -177,12 +177,12 @@ class Uri
 								time        = Time.parse(posted)
 								time        = minutes_in_words(time)
 
-								m.reply "Twitter 12| #{name} (@#{screenname}) 12| #{tweettext} 12| Posted #{time}"
+								m.reply "Twitter | #{name} (@#{screenname}) | #{tweettext} | Posted #{time}"
 							else
-								m.reply "Title 3| Twitter 3| twitter.com"
+								m.reply "Title | Twitter | twitter.com"
 							end
 						rescue
-							m.reply "Title 3| Twitter 3| twitter.com"
+							m.reply "Title | Twitter | twitter.com"
 						end
 
 					else # Generic Title
@@ -195,7 +195,7 @@ class Uri
 						end
 
 						uri = URI.parse(page.uri.to_s)
-						m.reply "Title 3| %s 3| %s" % [title, uri.host]
+						m.reply "Title | %s | %s" % [title, uri.host]
 					end
 
 				# File
@@ -221,11 +221,11 @@ class Uri
 
 					uri = URI.parse(page.uri.to_s)
 
-					m.reply "File 3| %s%s %s 3| %s" % [filename, type, size, uri.host]
+					m.reply "File | %s%s %s | %s" % [filename, type, size, uri.host]
 				end
 
 			rescue Mechanize::ResponseCodeError => ex
-				m.reply "Title 3| #{ex.response_code} Error" 
+				m.reply "Title | #{ex.response_code} Error" 
 			rescue
 				nil
 			end

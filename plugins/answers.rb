@@ -36,9 +36,9 @@ class Answers
 
 			more  = @bitly.shorten("http://www.wolframalpha.com/input/?i=#{CGI.escape(query)}")
 
-			m.reply "Wolfram 7| %s 7| More info: %s" % [reply, more.shorten]
+			m.reply "Wolfram | %s | More info: %s" % [reply, more.shorten]
 		rescue
-			m.reply "Wolfram 7| Error"
+			m.reply "Wolfram | Error"
 		end
 	end
 end

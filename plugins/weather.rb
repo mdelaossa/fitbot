@@ -64,12 +64,12 @@ class Weather
 
 			return unless city.length > 1
 
-			text = "#{city} 2| #{condition} #{temp}. Humidity: #{humidity}. Wind: #{wind}"
+			text = "#{city} | #{condition} #{temp}. Humidity: #{humidity}. Wind: #{wind}"
 
 		rescue 
 			m.reply "Error getting weather for #{loc}"
 		end
-		m.reply "Weather 2| #{text}"
+		m.reply "Weather | #{text}"
 	end
 
 	match /f(?:o(?:recast)?)?(?: (.+))?$/iu, method: :forecast
@@ -87,7 +87,7 @@ class Weather
 			forecast  = url.xpath("//forecast_conditions")
 			city      = url.xpath("//forecast_information/city/@data")
 			city      = Iconv.conv("UTF-8", 'ISO-8859-1', city.to_s)
-			text      = "#{city} 2| "
+			text      = "#{city} | "
 
 			return unless city.length > 1
 
@@ -101,12 +101,12 @@ class Weather
 				highC       = (("#{high}".to_i)-32.0)*(5.0/9.0)
 				lowC        = (("#{low}".to_i)-32.0)*(5.0/9.0)
 
-				text = text + "#{day}: #{condition} #{highC.round}°C/#{lowC.round}°C (#{high}°F/#{low}°F) | "
+				text = text + "#{day}: #{condition} #{highC.round}°C/#{lowC.round}°C (#{high}°F/#{low}°F) | "
 			end
 			text = text[0..text.length-4]
 		rescue 
 			text = "Error getting forecast for #{loc}"
 		end
-		m.reply "Forecast 2| #{text}"
+		m.reply "Forecast | #{text}"
 	end
 end

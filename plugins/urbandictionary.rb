@@ -22,9 +22,9 @@ class UrbanDictionary
 				define = "#{define[0..255]}... #{more.shorten}"
 			end
 
-			m.reply "UrbanDictionary 06| #{word} 06| #{define}"
+			m.reply "UrbanDictionary | #{word} | #{define}"
 		rescue
-			m.reply "UrbanDictionary 06| #{word} 06| Could not find definition"
+			m.reply "UrbanDictionary | #{word} | Could not find definition"
 		end
 	end
 end

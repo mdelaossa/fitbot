@@ -18,16 +18,16 @@ class Google
 				title    = @url.xpath("//p/a").first.inner_html.gsub(/<\/?b>/, '')
 				url      = @url.xpath("//p/a").first.attributes["href"].value.gsub('/url?q=','').gsub(/&.+=.+/,'')
 
-				"Google 2| %s 2| %s" % [title, url]
+				"Google | %s | %s" % [title, url]
 			end
 
 			more  = @bitly.shorten("https://encrypted.google.com/search?hl=en&q=#{URI.escape(query)}")
 
 			m.reply search(1)
 			#m.reply search(2)
-			m.reply "Google 2| More results #{more.shorten}"
+			m.reply "Google | More results #{more.shorten}"
 		rescue
-			m.reply "Google 2| Error"
+			m.reply "Google | Error"
 		end
 	end
 end

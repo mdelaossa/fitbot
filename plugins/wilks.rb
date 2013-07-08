@@ -46,7 +46,7 @@ class Wilks
         
         reply = "Ratio: #{get_wilks(gender,weight,liftingTotal,unit)}"
         
-        m.reply "Wilks 2| #{reply}"
+        m.reply "Wilks | #{reply}"
     end
     
     match /rwilks (\w+) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\w+)/iu, method: :rwilks
@@ -58,6 +58,6 @@ class Wilks
         
         reply = "Lifting total: #{get_wilks(gender,weight,wilks,unit,true)}"
         
-        m.reply "Wilks 2| #{reply}"
+        m.reply "Wilks | #{reply}"
     end
 end
