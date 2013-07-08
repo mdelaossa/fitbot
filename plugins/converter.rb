@@ -9,9 +9,24 @@ require 'ruby-units'
 class Converter
     include Cinch::Plugin
     
+    @enabled = true
+    
+    match /autoconvert on$/i, method: :turnOn
+    def turnOn(m)
+        @enabled = true
+        m.reply "Autoconvert turned on"
+    end
+    
+    match /autoconvert off$/i, method: :turnOff
+    def turnOff(m)
+        @enabled = false
+        m.reply "Autoconvert turned off"
+    end
+    
     listen_to :channel
     def listen(m)
         unless m.message =~ /^\.?convert/ || m.message =~ /^\.?r?wilks/
+        return unless ignore_nick(m.user.nick).nil? || @enabled == false
     		answer = {}
 			#If the message includes pounds or kilograms
 			if m.message =~ /\b(?:(?<!-)|(?=\.))(?:((?:\d+(?:,\d+)*)?(?:\.|,)?\d+)\s*\s*-\s*)?((?:\d+(?:,\d+)*)?(?:\.)?\d+)\s*((?:pound|kilo(?:\s*gram)?|lb|kg|#)s?)(?:\b|(?<=#))/i
