@@ -12,35 +12,35 @@ class Lastfm
 		when 0..1      then "just now"
 		when 2..59     then "#{minutes.to_s} minutes ago"
 		when 60..1439        
-			words = (minutes/60)
+			words = (minutes/60).to_i
 			if words > 1
 				"#{words.to_s} hours ago"
 			else
 				"#{words.to_s} hour ago"
 			end
 		when 1440..11519     
-			words = (minutes/1440)
+			words = (minutes/1440).to_i
 			if words > 1
 				"#{words.to_s} days ago"
 			else
 				"#{words.to_s} day ago"
 			end
 		when 11520..43199    
-			words = (minutes/11520)
+			words = (minutes/11520).to_i
 			if words > 1
 				"#{words.to_s} weeks ago"
 			else
 				"#{words.to_s} week ago"
 			end
 		when 43200..525599   
-			words = (minutes/43200)
+			words = (minutes/43200).to_i
 			if words > 1
 				"#{words.to_s} months ago"
 			else
 				"#{words.to_s} month ago"
 			end
 		else                      
-			words = (minutes/525600)
+			words = (minutes/525600).to_i
 			if words > 1
 				"#{words.to_s} years ago"
 			else
