@@ -231,7 +231,7 @@ match /fact(?:oid)? unprotect (.+)/i, method: :unprotectFactoid
         end
     end
         
-    match /fact(?:oid)? (?:remove|rm) (.+?[^\/])$/i, method: :removeFactoid
+    match /fact(?:oid)? (?:remove|rm) ([^\/]+)$/i, method: :removeFactoid
     def removeFactoid(m, name)
         return unless ignore_nick(m.user.nick).nil?
         return unless !protect(m.user) and !shutup(m.user)
