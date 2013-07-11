@@ -4,7 +4,7 @@ class Lastfm
     include Cinch::Plugin
 
     def minutes_in_words(timestamp)
-    	minutes = (((Time.now - timestamp).abs)/60).round
+    	minutes = (((Time.now - timestamp).abs)/60).round.to_i
 
 		return nil if minutes < 0
 
