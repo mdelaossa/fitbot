@@ -233,9 +233,7 @@ class Lastfm
 			track   = result.xpath("//recenttracks/track[1]/name").text
 			now     = result.xpath("//recenttracks/track[1]/@nowplaying").text
 			album   = result.xpath("//recenttracks/track[1]/album").text
-            time    = result.xpath("//recenttracks/track[1]/date").text
-            timestamp = Time.parse(time)
-            timeago = minutes_in_words(timestamp)
+            
 
 			album   = " from #{album}" if album != ""
 
@@ -252,6 +250,9 @@ class Lastfm
 			if now == "true"
 				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist}"
 			else
+                time    = result.xpath("//recenttracks/track[1]/date").text
+                timestamp = Time.parse(time)
+                timeago = minutes_in_words(timestamp)
 				reply = "#{username} played #{timeago}: \"#{track}\" by #{artist}#{album} #{taglist}"
 			end
 		rescue Timeout::Error
