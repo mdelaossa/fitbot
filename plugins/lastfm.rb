@@ -3,6 +3,51 @@
 class Lastfm
     include Cinch::Plugin
 
+    def minutes_in_words(timestamp)
+    	minutes = (((Time.now - timestamp).abs)/60).round
+
+		return nil if minutes < 0
+
+		case minutes
+		when 0..1      then "just now"
+		when 2..59     then "#{minutes.to_s} minutes ago"
+		when 60..1439        
+			words = (minutes/60)
+			if words > 1
+				"#{words.to_s} hours ago"
+			else
+				"#{words.to_s} hour ago"
+			end
+		when 1440..11519     
+			words = (minutes/1440)
+			if words > 1
+				"#{words.to_s} days ago"
+			else
+				"#{words.to_s} day ago"
+			end
+		when 11520..43199    
+			words = (minutes/11520)
+			if words > 1
+				"#{words.to_s} weeks ago"
+			else
+				"#{words.to_s} week ago"
+			end
+		when 43200..525599   
+			words = (minutes/43200)
+			if words > 1
+				"#{words.to_s} months ago"
+			else
+				"#{words.to_s} month ago"
+			end
+		else                      
+			words = (minutes/525600)
+			if words > 1
+				"#{words.to_s} years ago"
+			else
+				"#{words.to_s} year ago"
+			end
+		end
+	end
 
 	# Check the DB for stored usernames
 
@@ -188,6 +233,9 @@ class Lastfm
 			track   = result.xpath("//recenttracks/track[1]/name").text
 			now     = result.xpath("//recenttracks/track[1]/@nowplaying").text
 			album   = result.xpath("//recenttracks/track[1]/album").text
+            time    = result.xpath("//recenttracks/track[1]/date").text
+            timestamp = Time.parse(time)
+            timeago = minutes_in_words(timestamp)
 
 			album   = " from #{album}" if album != ""
 
@@ -204,7 +252,7 @@ class Lastfm
 			if now == "true"
 				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist}"
 			else
-				reply = "#{username} last played: \"#{track}\" by #{artist}#{album} #{taglist}"
+				reply = "#{username} played #{timeago}: \"#{track}\" by #{artist}#{album} #{taglist}"
 			end
 		rescue Timeout::Error
 			if retrys > 0

@@ -15,6 +15,7 @@ require 'nokogiri'
 require 'openssl'
 
 require 'date'
+require 'time'
 require 'cgi'
 
 #Weather
