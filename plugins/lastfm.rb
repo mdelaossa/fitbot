@@ -261,7 +261,9 @@ class Lastfm
 			else
 				reply = "Timeout error"
 			end
-		rescue
+		rescue Exception => x
+            error x.message
+            error x.backtrace.inspect
 			reply = "Error"
 		end
 		m.reply "Last.fm | #{reply}"
