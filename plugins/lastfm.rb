@@ -195,8 +195,9 @@ class Lastfm
 			commonlist = commonlist[0..commonlist.length-3]
 			commonlist = "Common artists include: #{commonlist}" if commonlist != ""
 
-			score = score[2..4]
-			scr = "#{score.to_i/10}.#{score.to_i % 10}"
+			#score = score[2..4]
+			#scr = "#{score.to_i/10}.#{score.to_i % 10}"
+            scr = score.to_f.round(1)
 
 			reply = "#{userone} vs #{usertwo} #{scr}% | #{commonlist}"
 		rescue Timeout::Error
