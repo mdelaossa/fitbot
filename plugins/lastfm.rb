@@ -197,7 +197,7 @@ class Lastfm
 
 			#score = score[2..4]
 			#scr = "#{score.to_i/10}.#{score.to_i % 10}"
-            scr = score.to_f.round(1)
+            scr = (score.to_f * 100).round(1)
 
 			reply = "#{userone} vs #{usertwo} #{scr}% | #{commonlist}"
 		rescue Timeout::Error
