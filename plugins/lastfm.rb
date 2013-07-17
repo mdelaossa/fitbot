@@ -2,6 +2,7 @@
 
 class Lastfm
     include Cinch::Plugin
+    require 'cgi'
 
     def minutes_in_words(timestamp)
     	minutes = (((Time.now - timestamp).abs)/60).round.to_i
@@ -247,14 +248,17 @@ class Lastfm
 			end
 			taglist = taglist[0..taglist.length-3]
 			taglist = "| #{taglist}" if taglist != ""
+            
+            video = getVideo(track + " by " + artist)
+            video = "Not found" unless video.length > 1
 
 			if now == "true"
-				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist}"
+				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist} | Youtube: #{video}"
 			else
                 time    = result.xpath("//recenttracks/track[1]/date").text
                 timestamp = Time.parse(time)
                 timeago = minutes_in_words(timestamp)
-				reply = "#{username} played #{timeago}: \"#{track}\" by #{artist}#{album} #{taglist}"
+				reply = "#{username} played #{timeago}: \"#{track}\" by #{artist}#{album} #{taglist} | Youtube: #{video}"
 			end
 		rescue Timeout::Error
 			if retrys > 0
@@ -271,6 +275,28 @@ class Lastfm
 		m.reply "Last.fm | #{reply}"
 	end
 
+    def getVideo(query)
+        begin
+			
+			query = CGI.escape(query)
+
+			url = open("http://gdata.youtube.com/feeds/api/videos?q=#{query}&max-results=3&v=2&prettyprint=true&alt=rss")
+			url = Nokogiri::XML(url)
+		
+
+			def search(number)
+				return if url.xpath("//item[#{number}]/title").text.length < 1
+
+				id = url.xpath("//item[#{number}]/media:group/yt:videoid").text
+
+				"http://youtu.be/#{id}"
+			end
+
+			search(1)
+		rescue
+			error "Last.FM | Error: Could not find video for now playing with query: #{query}"
+		end
+    end
 
 
 	# Artist Info
