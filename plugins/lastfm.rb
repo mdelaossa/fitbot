@@ -293,8 +293,10 @@ class Lastfm
 			end
 
 			search(1)
-		rescue
+		rescue Exception => e
 			error "Last.FM | Error: Could not find video for now playing with query: #{query}"
+            error e.message
+            error e.backtrace.inspect
 		end
     end
 
