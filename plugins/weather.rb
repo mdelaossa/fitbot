@@ -33,7 +33,7 @@ class Weather
 		begin
         
             wunderground = Wunderground.new($WUNDERGROUNDAPI)
-        
+            wunderground.throws_exceptions = true
             argument = URI.escape(location)
             
             conditions = wunderground.conditions_for argument
@@ -66,10 +66,10 @@ class Weather
 
 			text = "#{city} | #{condition} #{temp}. Humidity: #{humidity}. Wind: #{wind}"
 
-		rescue 
-			m.reply "Error getting weather for #{loc}"
+            m.reply "Weather | #{text}"
+		rescue Exception => e
+			m.reply "Error getting weather for #{loc}: #{e.message}"
 		end
-		m.reply "Weather | #{text}"
 	end
 
 	match /f(?:o(?:recast)?)?(?: (.+))?$/iu, method: :forecast
