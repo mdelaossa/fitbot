@@ -250,7 +250,6 @@ class Lastfm
 			taglist = "| #{taglist}" if taglist != ""
             
             video = getVideo(track + " by " + artist)
-            video = "Not found" unless video.length > 1
 
 			if now == "true"
 				reply = "#{username} is playing: \"#{track}\" by #{artist}#{album} #{taglist} | Youtube: #{video}"
@@ -284,20 +283,20 @@ class Lastfm
 			url = Nokogiri::XML(url)
 		
 
-			def search(number)
-				return if url.xpath("//item[#{number}]/title").text.length < 1
+            video = "Not Found"
+			return if url.xpath("//item[#{number}]/title").text.length < 1
 
-				id = url.xpath("//item[#{number}]/media:group/yt:videoid").text
+			id = url.xpath("//item[1]/media:group/yt:videoid").text
 
-				"http://youtu.be/#{id}"
-			end
+			video = "http://youtu.be/#{id}"
 
-			search(1)
 		rescue Exception => e
 			error "Last.FM | Error: Could not find video for now playing with query: #{query}"
             error e.message
             error e.backtrace.inspect
+            video = "Not Found"
 		end
+        return video
     end
 
 
