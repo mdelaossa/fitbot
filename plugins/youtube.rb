@@ -2,6 +2,7 @@
 
 class Youtube
     include Cinch::Plugin
+    require 'cgi'
 
 	match /y(?:outube)? (.+)/i
 	match /yt (.+)/i
@@ -24,7 +25,7 @@ class Youtube
 		begin
 			bitly = Bitly.new($BITLYUSER, $BITLYAPI)
 
-			query = URI.escape(query)
+			query = CGI.escape(query)
 
 			@url = open("http://gdata.youtube.com/feeds/api/videos?q=#{query}&max-results=3&v=2&prettyprint=true&alt=rss")
 			@url = Nokogiri::XML(@url)
