@@ -46,7 +46,7 @@ class Converter
 				}.join(" | ")
 			end
             #If m.message contains inches
-            if m.message =~ /\b(\d*\.?\d+)\s*(?:in|inches)\b|\b(\d*\.?\d+)"/i
+            if m.message =~ /(?<!\$|€|£)\b(\d+\.?\d+)\s*(?:in|inches)\b|(?<!\$|€|£)\b(\d+\.?\d+)"/i
     			feet = m.message.scan /\b(\d*\.?\d+)\s*(?:in|inches)\b|\b(\d*\.?\d+)"/i
 				answer[:feet]= feet.map { |a, b|
 					begin
@@ -74,7 +74,7 @@ class Converter
 				}.join(" | ")
 			end
 			#If m.message contains meters
-			if m.message =~ /\b(\d*\.?\d+)\s*m(?:eters?)?\b/i
+			if m.message =~ /(?<!\$|€|£)\b(\d*\.?\d+)\s*m(?:eters?)?\b/i
 				meters = m.message.scan /(\d*\.?\d+)\s*m(?:eters?)?\b/i
 				answer[:meters]= meters.map { |(a)| #Why needs a ()?
 					begin
@@ -86,7 +86,7 @@ class Converter
 				}.join(" | ")
 			end
             #If m.message contains cm
-            if m.message =~ /\b(\d*\.?\d+)\s*c(?:enti)?m(?:eters?)?\b/i
+            if m.message =~ /(?<!\$|€|£)\b(\d*\.?\d+)\s*c(?:enti)?m(?:eters?)?\b/i
                 centimeters = m.message.scan /\b(\d*\.?\d+)\s*c(?:enti)?m(?:eters?)?\b/i
     			answer[:centimeters]= centimeters.map { |(a)| #Why needs a ()?
 					begin
@@ -98,7 +98,7 @@ class Converter
 				}.join(" | ")
             end
             #If m.message contains stone
-            if m.message =~ /\b(\d*\.?\d+)\s*stones?\b/i
+            if m.message =~ /(?<!\$|€|£)\b(\d*\.?\d+)\s*stones?\b/i
                 jokeUnits = ["feathers","cigarrettes","moms","boobies","faggots","trees"]
                 stone = m.message.scan /\b(\d*\.?\d+)\s*stones?\b/i
         		answer[:stone]= stone.map { |(a)| #Why needs a ()?
