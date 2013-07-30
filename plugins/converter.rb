@@ -9,24 +9,44 @@ require 'ruby-units'
 class Converter
     include Cinch::Plugin
     
-    @enabled = true
     
     match /autoconvert on$/i, method: :turnOn
     def turnOn(m)
-        @enabled = true
-        m.reply "Autoconvert turned on"
+        channel ||= m.channel.to_s
+
+    	begin
+			old = AutoconvertDB.first(:channel => channel.downcase)
+			old.destroy! unless old.nil?
+
+			m.reply "Autoconvert turned on"
+		rescue
+			m.reply "Oops something went wrong", true
+			raise
+		end
     end
     
     match /autoconvert off$/i, method: :turnOff
     def turnOff(m)
-        @enabled = false
-        m.reply "Autoconvert turned off"
+        channel ||= m.channel.to_s
+
+    	begin
+			old = AutoconvertDB.first(:channel => channel.downcase)
+			old.destroy! unless old.nil?
+
+			new = AutoconvertDB.new(:channel => channel.downcase)
+			new.save
+
+			m.reply "Autoconvert turned off"
+		rescue
+			m.reply "Oops something went wrong", true
+			raise
+		end
     end
     
     listen_to :channel
     def listen(m)
-        unless m.message =~ /^\.?convert/ || m.message =~ /^\.?r?wilks/  || @enabled == false
-        return unless ignore_nick(m.user.nick).nil?
+        unless m.message =~ /^\.?convert/ || m.message =~ /^\.?r?wilks/
+        return unless ignore_nick(m.user.nick).nil? and disable_passive(m.channel.name).nil?
     		answer = {}
 			#If the message includes pounds or kilograms
 			if m.message =~ /\b(?:(?<!-)|(?=\.))(?:((?:\d+(?:,\d+)*)?(?:\.|,)?\d+)\s*\s*-\s*)?((?:\d+(?:,\d+)*)?(?:\.)?\d+)\s*((?:pound|kilo(?:\s*gram)?|lb|kg|#)s?)(?:\b|(?<=#))/i

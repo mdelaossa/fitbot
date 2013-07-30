@@ -74,6 +74,12 @@ class LocationDB
 	property(:location, String)
 end 
 
+class AutoconvertDB
+    include DataMapper::Resource
+    property(:id, Serial)
+    property(:channel, String, :unique => true)
+end
+
 class PassiveDB
 	include DataMapper::Resource
 	property(:id, Serial)

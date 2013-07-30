@@ -68,6 +68,12 @@ def disable_passive_files(channel)
 	check.nil? ? (return nil) : (return true)
 end
 
+# Autoconvert on/off
+def disable_autoconvert(channel)
+    check = AutoconvertDB.first(:channel => channel.downcase)
+    check.nil? ? (return nil) : (return true)
+end
+
 # Bot admins
 def check_admin(user)
 	user.refresh
