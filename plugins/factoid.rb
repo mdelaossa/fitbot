@@ -89,7 +89,7 @@ class FactoidDB
                 vals = values.join(" || ")
                 if vals.length > 400
                     pastebin = Pastebin.new
-                    url = pastebin.paste vals
+                    url = pastebin.paste values.join ("\n")
                     m.reply "| FactoidDB | #{factoid.name} | Values: #{url}", true
                 else
                     m.reply "FactoidDB | #{factoid.name} | #{vals}", true
