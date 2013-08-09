@@ -86,7 +86,13 @@ class FactoidDB
             else        
                 values = []
                 factoid.factoid_values.all(:fields=>[:value]).each { |val| values << val.value }
-                m.reply "FactoidDB | #{factoid.name} | #{values.join(" || ")}", true
+                vals = values.join(" || ")
+                if vals.length > 400
+                    url = pastebin.paste vals
+                    m.reply "| FactoidDB | #{factoid.name} | Values: #{url}", true
+                else
+                    m.reply "FactoidDB | #{factoid.name} | #{vals}", true
+                end
                 debug factoid.factoid_values.all(:fields=>[:value]).inspect
             end
     	rescue Exception => x
