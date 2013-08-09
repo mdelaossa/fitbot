@@ -88,6 +88,7 @@ class FactoidDB
                 factoid.factoid_values.all(:fields=>[:value]).each { |val| values << val.value }
                 vals = values.join(" || ")
                 if vals.length > 400
+                    pastebin = Pastebin.new
                     url = pastebin.paste vals
                     m.reply "| FactoidDB | #{factoid.name} | Values: #{url}", true
                 else
