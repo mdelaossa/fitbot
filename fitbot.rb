@@ -32,7 +32,7 @@ $BOTNICK       = "fitbot" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTOWNER2     = "sigma"
-$BOTURL        = "http://codelogic.org/fitbot" # Help page
+$BOTURL        = "http://fitbot.codelogic.org" # Help page
 $BOTGIT        = ""
 $SHUTUP        = false
 
