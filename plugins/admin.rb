@@ -6,17 +6,15 @@ class Admin
 	set :prefix, lambda{ |m| /^#{m.bot.nick},?:?\s/i }
     
     def check_admin_helper(m, user)
-        isAdmin = check_admin(m.user)
-        m.channel.kick(m.user, "http://i.imgur.com/w7lGFWM.jpg") unless isAdmin
-        isAdmin
+        @admins = check_admin(user)
+        m.channel.kick(user, "http://i.imgur.com/w7lGFWM.jpg") unless @admins
+        return @admins
     end
 
     match /op me/i, method: :opme
     def opme(m)
         return unless check_admin_helper(m.user)
         m.channel.op(m.user)
-        
-        
     end
     
     match /op (?!me)(\S+)(?: (\S+))?/i, method: :op
