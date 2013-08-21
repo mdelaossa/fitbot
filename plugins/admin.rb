@@ -5,21 +5,21 @@ class Admin
 
 	set :prefix, lambda{ |m| /^#{m.bot.nick},?:?\s/i }
     
-    def check_admin_helper(m, user)
-        @admins = check_admin(user)
-        m.channel.kick(user, "http://i.imgur.com/w7lGFWM.jpg") unless @admins
-        return @admins
+    def check_admin_helper(m)
+        isAdmin = check_admin(m.user)
+        m.channel.kick(m.user, "http://i.imgur.com/w7lGFWM.jpg") unless isAdmin
+        isAdmin
     end
 
     match /op me/i, method: :opme
     def opme(m)
-        return unless check_admin_helper(m.user)
+        return unless check_admin_helper(m)
         m.channel.op(m.user)
     end
     
     match /op (?!me)(\S+)(?: (\S+))?/i, method: :op
     def op(m, who, channel)
-        return unless check_admin_helper(m.user)
+        return unless check_admin_helper(m)
         who ||= m.user
         channel ||= m.channel
         channel.op(who)
@@ -27,7 +27,7 @@ class Admin
     
     match /deop (?!me)(\S+)(?: (\S+))?/i, method: :deop
     def deop(m, who, channel)
-        return unless check_admin_helper(m.user)
+        return unless check_admin_helper(m)
         who ||= m.user
         channel ||= m.channel
         channel.deop(who)
@@ -35,20 +35,20 @@ class Admin
     
     match /raw (.+)/i, method: :raw
     def raw (m, command)
-        return unless check_admin_helper(m.user)
+        return unless check_admin_helper(m)
         @bot.irc.send command
     end
 
 	match /nick (.+)/i, method: :nick
 	def nick(m, name)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		@bot.nick = name
 	end
 
 
 	match /quit(?: (.+))?/i, method: :quit
 	def quit(m, msg)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		msg ||= "brb"
 		bot.quit(msg)
 	end
@@ -56,21 +56,21 @@ class Admin
 
 	match /msg (.+?) (.+)/i, method: :message
 	def message(m, who, text)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		User(who).send text
 	end
 
 
 	match /say (.+?) (.+)/i, method: :message_channel
 	def message_channel(m, chan, text)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		Channel(chan).send text
 	end
 
 
 	match /kick (\S+)(:? (.+))?/i, method: :kick
 	def kick(m, nick, reason)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		reason ||= "Get out"
 		m.channel.kick(nick, reason)
 	end
@@ -78,7 +78,7 @@ class Admin
 
 	match /ban (\S+)(:? (.+))?/i, method: :ban
 	def ban(m, nick, reason)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		reason ||= "Get out"
 		baddie = User(nick);
 		m.channel.ban(baddie.mask("*!*@%h"));
@@ -91,7 +91,7 @@ class Admin
 
 	match /ignore (.+)/i, method: :ignore
 	def ignore(m, username)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 
 		begin
 			old = IgnoreDB.first(:nick => username.downcase)
@@ -109,7 +109,7 @@ class Admin
 
 	match /unignore (.+)/i, method: :unignore
 	def unignore(m, username)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 
 		begin
 			old = IgnoreDB.first(:nick => username.downcase)
@@ -124,7 +124,7 @@ class Admin
 
 	match /list ignores/i, method: :list_ignores
 	def list_ignores(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			agent = Mechanize.new
 			rows = ""
@@ -184,7 +184,7 @@ class Admin
 
 	match /list admins/i, method: :list_admins
 	def list_admins(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
         
             pastebin = Pastebin.new
@@ -209,7 +209,7 @@ class Admin
 
 	match /passive on(?: (.+))?/i, method: :passive_on
 	def passive_on(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		channel ||= m.channel.to_s
 
 		begin
@@ -225,7 +225,7 @@ class Admin
 
 	match /passive off(?: (.+))?/i, method: :passive_off
 	def passive_off(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		channel ||= m.channel.to_s
 
 		begin
@@ -244,7 +244,7 @@ class Admin
 
 	match /file info on(?: (.+))?/i, method: :passive_files_on
 	def passive_files_on(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		channel ||= m.channel.to_s
 
 		begin
@@ -260,7 +260,7 @@ class Admin
 
 	match /file info off(?: (.+))?/i, method: :passive_files_off
 	def passive_files_off(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		channel ||= m.channel.to_s
 
 		begin
@@ -283,7 +283,7 @@ class Admin
 
 	match /join (.+)/i, method: :join
 	def join(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 
 		begin
 			old = JoinDB.first(:channel => channel.downcase)
@@ -301,7 +301,7 @@ class Admin
 
 	match /part(?: (.+))?/i, method: :part
 	def part(m, channel)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		channel ||= m.channel.to_s
 
 		begin
@@ -317,7 +317,7 @@ class Admin
 
 	match /list channels/i, method: :list_channels
 	def list_channels(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			pastebin = Pastebin.new
             
@@ -341,7 +341,7 @@ class Admin
 
 	match /list lastfm/i, method: :list_lastfm
 	def list_lastfm(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			pastebin = Pastebin.new
 			rows = ""
@@ -361,7 +361,7 @@ class Admin
 
 	match /remove lastfm (\d+)/i, method: :del_lastfm
 	def del_lastfm(m, number)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			old = LastfmDB.first(:id => number.to_i)
 			old.destroy! unless old.nil?
@@ -379,7 +379,7 @@ class Admin
 
 	match /list locations/i, method: :list_locations
 	def list_locations(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			pastebin = Pastebin.new
 			rows = ""
@@ -399,7 +399,7 @@ class Admin
 
 	match /remove location (\d+)/i, method: :del_location
 	def del_location(m, number)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			old = LocationDB.first(:id => number.to_i)
 			old.destroy! unless old.nil?
@@ -417,7 +417,7 @@ class Admin
 
 	match /add insult (.+)/i, method: :add_insult
 	def add_insult(m, text)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 
 		begin
 			new = InsultDB.new(:insult => text)
@@ -432,7 +432,7 @@ class Admin
 
 	match /remove insult (\d+)/i, method: :del_insult
 	def del_insult(m, number)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			old = InsultDB.first(:id => number.to_i)
 			old.destroy! unless old.nil?
@@ -446,7 +446,7 @@ class Admin
 
 	match /list insults/i, method: :list_insults
 	def list_insults(m)
-		return unless check_admin_helper(m.user)
+		return unless check_admin_helper(m)
 		begin
 			pastebin = Pastebin.new
 			rows = ""
