@@ -161,13 +161,21 @@ class FactoidDB
                         return
                     end
                 end
-            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => m.user.authname or m.user.nick })
+            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getName(m.user) })
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
         rescue Exception => x
             error x.message
             error x.backtrace.inspect
             m.reply "FactoidDB | Error | #{x.message}"
+        end
+    end
+    
+    def getName(user)
+        if user.authname.nil?
+            return user.nick
+        else
+            return user.authname
         end
     end
     
