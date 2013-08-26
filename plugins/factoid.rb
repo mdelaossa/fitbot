@@ -230,7 +230,11 @@ match /fact(?:oid)? unprotect (.+)/i, method: :unprotectFactoid
                 raise "Factoid does not exist"
             else
                 val = factoid.factoid_values.first(:value.like => "%#{regex}%")
-                m.reply "FactoidDB | '#{val.addedBy}' is to blame for: '#{factoid.name}' => '#{val.value}'", true
+                if val.addedBy.nil?
+                    m.reply "FactoidDB | No blame info for '#{factoid.name}' => '#{val.value}'", true
+                else
+                    m.reply "FactoidDB | '#{val.addedBy}' is to blame for: '#{factoid.name}' => '#{val.value}'", true
+                end
             end
         rescue Exception => x
             error x.message
