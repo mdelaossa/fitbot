@@ -161,7 +161,7 @@ class FactoidDB
                         return
                     end
                 end
-            val = factoid.factoid_values.first_or_create :value => value
+            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => m.user.authname or m.user.nick })
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
         rescue Exception => x
@@ -203,6 +203,26 @@ match /fact(?:oid)? unprotect (.+)/i, method: :unprotectFactoid
                 factoid.protect = false
                 factoid.save
                 m.reply "FactoidDB | Removed protection for factoid '#{factoid.name}'"
+            end
+        rescue Exception => x
+            error x.message
+            error x.backtrace.inspect
+            m.reply "FactoidDB | Error | #{x.message}"
+        end
+    end
+    
+    match /fact(?:oid)? blame (.+?) \s*\/(.+)\//i, method: :getAddedBy
+    def getAddedBy(m, name, regex)
+        return unless ignore_nick(m.user.nick).nil?
+        return unless !protect(m.user) and !shutup(m.user)
+        
+        begin
+            factoid = Factoid.first :name => name.downcase
+            if factoid.nil?
+                raise "Factoid does not exist"
+            else
+                val = factoid.factoid_values.first(:value.like => "%#{regex}%")
+                m.reply "FactoidDB | '#{val.addedBy}' is to blame for: '#{factoid.name}' => '#{val.value}'", true
             end
         rescue Exception => x
             error x.message

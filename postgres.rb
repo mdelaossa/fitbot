@@ -18,6 +18,7 @@ class FactoidValue
     
     property :id,       Serial
     property :value,    String,     :length => 500
+    property :addedBy,  String
 end
 
 class Nick
