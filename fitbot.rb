@@ -197,15 +197,49 @@ bot2 = Cinch::Bot.new do
                             FactoidDB]
   end
   
-  on :join do |m|
-    if m.user.nick =~ /qwebirc.+/
-        m.user.msg "Hi there! Please change your nick with the command /nick NICKNAME. You will not be able to speak in the channel until you do. Thanks and welcome to #fittit", true
-    end
-  end
-
 end
 
 bot2.start
+}
+
+#foonetic
+Thread.new {
+bot3 = Cinch::Bot.new do
+  configure do |c|
+    c.server            = "irc.foonetic.net"
+    c.port              = 6697
+    c.ssl.use           = true
+    c.ssl.verify        = false
+    c.nick              = "epsilon"
+    c.realname          = "epsilon"
+    c.user              = "epsilon"
+    #c.verbose           = true
+    c.channels          = ["#xkcd-pub"]
+    c.plugins.prefix    = /^\./
+    c.plugins.plugins   = [ Basic,
+                            Admin,
+                            UserSet,
+                            UrbanDictionary,
+                            Weather,
+                            Lastfm,
+                            Uri,
+                            Translate,
+                            Twitter,
+                            Insult,
+                            Eightball,
+                            Pick,
+                            Youtube,
+                            Bing,
+                            Google,
+                            Answers,
+                            Wilks,
+                            Converter,
+                            Reminder,
+                            LiftTracker,
+                            FactoidDB]
+  end
+end
+bot3.start
 }
 
 bot.start
