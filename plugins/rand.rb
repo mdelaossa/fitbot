@@ -12,7 +12,7 @@ class Pick
 			    options = query.split(/\|/)
 			    m.reply options[rand(options.length)], true
 			else
-			    options = query.split(/or/)
+			    options = query.split(/\sor\s/)
 			    m.reply options[rand(options.length)], true
 			end
 		rescue
