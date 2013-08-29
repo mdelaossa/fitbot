@@ -8,8 +8,12 @@ class Pick
 		return unless ignore_nick(m.user.nick).nil?
 
 		begin
-			options = query.split(/\|/)
-			m.reply options[rand(options.length)], true
+		    if query =~ /\|/
+			    options = query.split(/\|/)
+			    m.reply options[rand(options.length)], true
+			else
+			    options = query.split(/or/)
+			    m.reply options[rand(options.length)], true
 		rescue
 			nil
 		end
