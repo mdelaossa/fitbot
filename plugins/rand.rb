@@ -14,6 +14,7 @@ class Pick
 			else
 			    options = query.split(/or/)
 			    m.reply options[rand(options.length)], true
+			end
 		rescue
 			nil
 		end
