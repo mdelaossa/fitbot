@@ -49,7 +49,7 @@ class UserSet
                 when /stone/
                     weight = weight*6.35029318
                 when /lbs?|pounds?/
-                    weight = weight/2.2
+                    weight = weight/2.20462
                 else raise "Invalid unit"
             end
             weight = weight.round(2)
