@@ -168,8 +168,9 @@ bot2 = Cinch::Bot.new do
     c.ssl.use           = false
     c.ssl.verify        = false
     c.nick              = "epsilon"
-    c.realname          = "epsilon"
+    c.realname          = "Sigma"
     c.user              = "epsilon"
+    c.modes             = ["+B"]
     #c.verbose           = true
     c.channels          = ["#boats",
                             "#bots"]
