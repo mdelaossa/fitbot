@@ -13,7 +13,7 @@ class IsUp
 		begin
 			#url = CGI.escape(word)
 			#isup = Nokogiri::HTML(open(url))
-			resp = Net::HTTP.get_response(URI.parse(word))
+			#resp = Net::HTTP.get_response(URI.parse(word))
 			
 			response = nil
             Net::HTTP.start(word, 80) {|http|
