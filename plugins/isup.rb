@@ -17,7 +17,7 @@ class IsUp
 			
 			response = nil
             Net::HTTP.start(word, 80) {|http|
-             response = http.head(url)
+             response = http.head(word)
             }
             resp = response.code
 			
