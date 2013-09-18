@@ -15,7 +15,13 @@ class IsUp
 			#isup = Nokogiri::HTML(open(url))
 			resp = Net::HTTP.get_response(URI.parse(word))
 			
-			if resp.code.match('200')
+			response = nil
+            Net::HTTP.start(word, 80) {|http|
+             response = http.head(url)
+            }
+            resp = response.code
+			
+			if resp = '200'
 			    m.reply "IsUp | #{word} | Seems up to me! Sucks to be you."
 			else
 			    m.reply "IsUp | #{word} | Seems down to me"
