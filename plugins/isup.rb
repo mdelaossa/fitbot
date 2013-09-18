@@ -21,6 +21,7 @@ class IsUp
 			    m.reply "IsUp | #{word} | Seems up to me! Sucks to be you."
 			else
 			    m.reply "IsUp | #{word} | Seems down to me"
+			end
 		rescue
 			m.reply "IsUp | #{word} | Error occurred"
 		end
