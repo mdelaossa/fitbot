@@ -27,7 +27,7 @@ class IsUp
 			    m.reply "IsUp | #{word} | Seems down to me"
 			end
 		rescue
-			m.reply "IsUp | #{word} | Error occurred"
+			m.reply "IsUp | #{word} | Seems down to me"
 		end
 	end
 end
