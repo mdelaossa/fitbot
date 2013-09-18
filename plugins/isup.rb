@@ -2,6 +2,8 @@
 
 class IsUp
     include Cinch::Plugin
+    require 'uri'
+    require 'net/http'
 
 	match /isup (.+)/i, method: :isup
 
@@ -9,13 +11,9 @@ class IsUp
 		return unless ignore_nick(m.user.nick).nil?
 
 		begin
-			@bitly = Bitly.new($BITLYUSER, $BITLYAPI)
-
-			number ||= 1
-
-			url = CGI.escape(word)
+			#url = CGI.escape(word)
 			#isup = Nokogiri::HTML(open(url))
-			resp = Net::HTTP.get_response(URI.parse(url))
+			resp = Net::HTTP.get_response(URI.parse(word))
 			
 			if resp.code.match('200')
 			    m.reply "IsUp | #{word} | Seems up to me! Sucks to be you."
