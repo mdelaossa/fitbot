@@ -12,7 +12,7 @@ class Weather
 		if param == '' || param.nil?
 			location = LocationDB.first(:nick => m.user.nick.downcase)
 			if location.nil?
-				m.reply "location not provided nor on file."
+				m.reply "Weather | location not provided nor on file."
 				return nil
 			else
 				return location.location
@@ -37,6 +37,8 @@ class Weather
             argument = URI.escape(location)
             
             conditions = wunderground.conditions_for argument
+            
+            raise 'Unknown location' if conditions.nil?
             
             city        = conditions["current_observation"]["display_location"]["full"]
             condition   = conditions["current_observation"]["weather"]
@@ -68,7 +70,7 @@ class Weather
 
             m.reply "Weather | #{text}"
 		rescue Exception => e
-			m.reply "Error getting weather for #{loc}: #{e.message}"
+			m.reply "Weather | Error getting weather for #{loc}: #{e.message}"
 		end
 	end
 
