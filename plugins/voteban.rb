@@ -120,7 +120,7 @@ class VoteBan
 		        cancel(m)
 		    end
 		    
-			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
+			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vote yes|no"
 		rescue Exception => e
 			m.reply "VoteBan | Error: #{e}"
 		end
