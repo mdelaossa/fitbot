@@ -109,6 +109,7 @@ class VoteBan
 		    
 		    raise 'Vote already in progress' unless @@defendant.nil?
 		    raise "User not online" if user.nil?
+		    raise "User not online" if user.host.nil?
 		    raise "You can't ban that person!" if check_admin(user)
 		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    @@defendant = user
