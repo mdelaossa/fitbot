@@ -61,8 +61,8 @@ class VoteBan
 	match /vb (yes|no)/i, method: :vote
 	def vote(m, vote)
 	    return unless ignore_nick(m.user.nick).nil?
-	    raise "Can't vote twice" if @@voters.include? m.user
 	    begin
+	        raise "Can't vote twice" if @@voters.include? m.user
 	        @@voters << m.user
             case vote
                 when "yes"
