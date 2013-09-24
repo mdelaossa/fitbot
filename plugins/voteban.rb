@@ -22,6 +22,7 @@ class VoteBan
         begin
             return unless ignore_nick(m.user.nick).nil?
             return unless check_admin_helper(m) || m.user == @@starter
+            return if @@defendant.nil?
             nick = @@defendant
             @@defendant = nil
             @@yes = 0
@@ -49,33 +50,11 @@ class VoteBan
         rescue Exception => e
         end
     end
-
-	match /voteban (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
-	match /vb (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
-	def voteban(m, defendant)
-		return unless ignore_nick(m.user.nick).nil?
-		begin
-		    raise 'Vote already in progress' unless @@defendant.nil?
-		    raise "You can't ban that person!" if check_admin(User(defendant))
-		    
-		    @@defendant = User(defendant)
-		    @@starter = m.user
-		    @@voters << @@starter
-		    @@yes+=1
-		    
-		    @@timer.in '5m' do
-		        cancel(m)
-		    end
-		    
-			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
-		rescue Exception => e
-			m.reply "VoteBan | Error: #{e}"
-		end
-	end
-	
-	match /vb (yes|no)/i, method: :vote
+    
+    match /vb (yes|no)$/i, method: :vote
 	def vote(m, vote)
 	    return unless ignore_nick(m.user.nick).nil?
+	    return if @@defendant.nil?
 	    begin
 	        raise "Can't vote twice" if @@voters.include? m.user
 	        @@voters << m.user
@@ -112,4 +91,28 @@ class VoteBan
 	        m.reply "VoteBan | Error occured: #{e}", true
 	    end
 	end
+
+	match /voteban (.+)/i, method: :voteban
+	match /vb (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
+	def voteban(m, defendant)
+		return unless ignore_nick(m.user.nick).nil?
+		begin
+		    raise 'Vote already in progress' unless @@defendant.nil?
+		    raise "You can't ban that person!" if check_admin(User(defendant))
+		    
+		    @@defendant = User(defendant)
+		    @@starter = m.user
+		    @@voters << @@starter
+		    @@yes+=1
+		    
+		    @@timer.in '5m' do
+		        cancel(m)
+		    end
+		    
+			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
+		rescue Exception => e
+			m.reply "VoteBan | Error: #{e}"
+		end
+	end
+	
 end
