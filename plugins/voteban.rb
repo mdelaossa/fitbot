@@ -32,8 +32,10 @@ class VoteBan
     def registered(m)
         if @registered
             @registered = false
+            m.reply "Registration not required anymore"
         else
             @registered = true
+            m.reply "Registration now required"
         end
     end
 
