@@ -7,14 +7,33 @@ class VoteBan
     @yes = 0
     @no = 0
     @threshold = 4
+    @starter = nil
+    
+    match /vb cancel/i, method: :cancel
+    def cancel(m)
+        return unless ignore_nick(m.user.nick).nil?
+        return unless check_admin_helper(m) || m.user == @starter
+        @defendant = nil
+        @yes = 0
+        @no = 0
+        m.reply "VoteBan | Vote on #{defendant} cancelled"
+    end
+    
+    match /vb threshold \d+/i, method: :threshold
+    def threshold(m, num)
+        return unless check_admin_helper(m)
+        @threshold = num
+        m.reply "VoteBan | Threshold changed to #{num}"
+    end
 
 	match /voteban (.+)/i, method: :voteban
-	match /vb (?!yes|no)(.+)/i, method: :voteban
+	match /vb (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 		    raise 'Vote already in progress' if not @defendant.nil?
 		    @defendant = User(defendant)
+		    @starter = m.user
 		    @yes++
 			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
 		rescue Exception => e
