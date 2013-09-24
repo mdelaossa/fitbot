@@ -9,6 +9,7 @@ class VoteBan
     @@timer = Rufus::Scheduler.start_new
 
     @@defendant = nil
+    @@hostmask = nil
     @@yes = 0
     @@no = 0
     @@threshold = 4
@@ -25,6 +26,7 @@ class VoteBan
             return if @@defendant.nil?
             nick = @@defendant
             @@defendant = nil
+            @@hostmask = nil
             @@yes = 0
             @@no = 0
             @@voters = []
@@ -56,9 +58,9 @@ class VoteBan
 	    return unless ignore_nick(m.user.nick).nil?
 	    return if @@defendant.nil?
 	    begin
-	        raise "Can't vote twice" if @@voters.include? m.user
+	        raise "Can't vote twice" if @@voters.include? m.user.authname
 	        raise "Only registered nicks can vote" if m.user.authname.nil?
-	        @@voters << m.user
+	        @@voters << m.user.authname
             case vote
                 when "yes"
                     @@yes += 1
@@ -68,9 +70,13 @@ class VoteBan
             end
             
             if @@yes >= @@threshold 
-                m.channel.ban(@@defendant.mask("*!*@%h"));
-		        m.channel.kick(@@defendant, "The people have spoken")
+                m.channel.ban(@@hostmask)
+		        m.channel.kick(@@defendant, "The people have spoken. 30 minute ban.")
+		        @@timer.in '30m' do
+		            m.channel.unban(@@hostmask)
+		        end
 		        @@defendant = nil
+		        @@hostmask = nil
 		        @@yes = 0
 		        @@no = 0
 		        @@voters = []
@@ -80,6 +86,7 @@ class VoteBan
             if @@no >= @@threshold
                 nick = @@defendant
                 @@defendant = nil
+                @@hostmask = nil
 		        @@yes = 0
 		        @@no = 0
 		        @@voters = []
@@ -100,10 +107,12 @@ class VoteBan
 		begin
 		    raise 'Vote already in progress' unless @@defendant.nil?
 		    raise "You can't ban that person!" if check_admin(User(defendant))
+		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    
 		    @@defendant = User(defendant)
+		    @@hostmask = @@defendant.mask("*!*@%h")
 		    @@starter = m.user
-		    @@voters << @@starter
+		    @@voters << @@starter.authname
 		    @@yes+=1
 		    
 		    @@timer.in '5m' do
