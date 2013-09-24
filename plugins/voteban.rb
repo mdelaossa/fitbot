@@ -109,7 +109,7 @@ class VoteBan
 		    raise "You can't ban that person!" if check_admin(User(defendant))
 		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    user = User(defendant)
-		    raise "User not online" if user.online?
+		    raise "User not online" if user.mask.nil?
 		    @@defendant = user
 		    @@hostmask = @@defendant.mask("*!*@%h")
 		    @@starter = m.user
