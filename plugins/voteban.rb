@@ -10,17 +10,8 @@ class VoteBan
     @@starter = nil
     @@voters = []
     
-=begin
-    def initialize(*args)
-        super
-        @@defendant = nil
-        @@yes = 0
-        @@no = 0
-        @@threshold = 4
-        @@starter = nil
-    end
-=end
-    
+
+    match /voteban cancel/i, method: :cancel
     match /vb cancel/i, method: :cancel
     def cancel(m)
         return unless ignore_nick(m.user.nick).nil?
@@ -28,17 +19,28 @@ class VoteBan
         @@defendant = nil
         @@yes = 0
         @@no = 0
+        @@voters = []
         m.reply "VoteBan | Vote on #{defendant} cancelled"
     end
     
+    match /voteban threshold \d+/i, method: :threshold
     match /vb threshold \d+/i, method: :threshold
     def threshold(m, num)
         return unless check_admin(m)
         @@threshold = num
         m.reply "VoteBan | Threshold changed to #{num}"
     end
+    
+    match /voteban/i, method: :tally
+    match /vb/i, method: :tally
+    def tally(m)
+        begin
+            m.reply "VoteBan | #{@@defendant} Tally: Yes - #{@@yes} No - #{@@no}" unless @@defendant.nil?
+        rescue Exception => e
+        end
+    end
 
-	match /voteban (.+)/i, method: :voteban
+	match /voteban (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
 	match /vb (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
@@ -47,6 +49,7 @@ class VoteBan
 		    
 		    @@defendant = User(defendant)
 		    @@starter = m.user
+		    @@voters << @@starter
 		    @@yes+=1
 		    
 			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
@@ -58,7 +61,9 @@ class VoteBan
 	match /vb (yes|no)/i, method: :vote
 	def vote(m, vote)
 	    return unless ignore_nick(m.user.nick).nil?
+	    raise "Can't vote twice" if @@voters.include? m.user
 	    begin
+	        @@voters << m.user
             case vote
                 when "yes"
                     @@yes += 1
@@ -73,6 +78,7 @@ class VoteBan
 		        @@defendant = nil
 		        @@yes = 0
 		        @@no = 0
+		        @@voters = []
 		        m.reply "VoteBan | Another win for democracy!"
             end
             
@@ -81,6 +87,7 @@ class VoteBan
                 @@defendant = nil
 		        @@yes = 0
 		        @@no = 0
+		        @@voters = []
 		        m.reply "VoteBan | Vote failed. #{nick} got lucky this time." 
             end
             
