@@ -105,11 +105,12 @@ class VoteBan
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
-		    raise 'Vote already in progress' unless @@defendant.nil?
-		    raise "You can't ban that person!" if check_admin(User(defendant))
-		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    user = User(defendant)
+		    
+		    raise 'Vote already in progress' unless @@defendant.nil?
 		    raise "User not online" if user.nil?
+		    raise "You can't ban that person!" if check_admin(user)
+		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    @@defendant = user
 		    @@hostmask = @@defendant.mask("*!*@%h")
 		    @@starter = m.user
