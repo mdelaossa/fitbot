@@ -4,12 +4,6 @@ class Admin
     include Cinch::Plugin
 
 	set :prefix, lambda{ |m| /^#{m.bot.nick},?:?\s/i }
-    
-    def check_admin_helper(m)
-        isAdmin = check_admin(m.user)
-        m.channel.kick(m.user, "http://i.imgur.com/w7lGFWM.jpg") unless isAdmin
-        isAdmin
-    end
 
     match /op me/i, method: :opme
     def opme(m)

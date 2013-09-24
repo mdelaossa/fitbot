@@ -81,6 +81,12 @@ def check_admin(user)
 	@admins = AdminDB.first(:nick => user.authname.downcase)
 end
 
+def check_admin_helper(m)
+    isAdmin = check_admin(m.user)
+    m.channel.kick(m.user, "http://i.imgur.com/w7lGFWM.jpg") unless isAdmin
+    isAdmin
+end
+
 
 # Basic plugins
 require_relative './plugins/basic.rb'

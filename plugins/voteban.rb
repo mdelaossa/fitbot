@@ -15,7 +15,7 @@ class VoteBan
     match /vb cancel/i, method: :cancel
     def cancel(m)
         return unless ignore_nick(m.user.nick).nil?
-        return unless check_admin(m) || m.user == @@starter
+        return unless check_admin_helper(m) || m.user == @@starter
         @@defendant = nil
         @@yes = 0
         @@no = 0
@@ -26,7 +26,7 @@ class VoteBan
     match /voteban threshold \d+/i, method: :threshold
     match /vb threshold \d+/i, method: :threshold
     def threshold(m, num)
-        return unless check_admin(m)
+        return unless check_admin_helper(m)
         @@threshold = num
         m.reply "VoteBan | Threshold changed to #{num}"
     end
