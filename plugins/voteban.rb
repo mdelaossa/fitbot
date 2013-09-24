@@ -21,7 +21,7 @@ class VoteBan
     def cancel(m)
         begin
             return unless ignore_nick(m.user.nick).nil?
-            return unless check_admin_helper(m) || m.user == @@starter
+            return unless check_admin(m.user) || m.user == @@starter
             return if @@defendant.nil?
             nick = @@defendant
             @@defendant = nil
@@ -78,6 +78,7 @@ class VoteBan
 		        @@no = 0
 		        @@voters = []
 		        m.reply "VoteBan | Another win for democracy!"
+		        return
             end
             
             if @@no >= @@threshold
@@ -87,6 +88,7 @@ class VoteBan
 		        @@no = 0
 		        @@voters = []
 		        m.reply "VoteBan | Vote failed. #{nick} got lucky this time." 
+		        return
             end
             
             m.reply "VoteBan | Vote added. #{@@defendant} tally: Yes - #{@@yes} No - #{@@no}"
