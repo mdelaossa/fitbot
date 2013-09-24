@@ -32,6 +32,7 @@ class VoteBan
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 		    raise 'Vote already in progress' unless @defendant.nil?
+		    
 		    @defendant = User(defendant)
 		    @starter = m.user
 		    @yes+=1
@@ -47,11 +48,11 @@ class VoteBan
 	    return unless ignore_nick(m.user.nick).nil?
 	    begin
             case vote
-            when "yes"
-                @yes+=1
-            when "no"
-                @no+=1
-            else raise "That's not a valid vote. Yes or no only."
+                when "yes"
+                    @yes += 1
+                when "no"
+                    @no += 1
+                else raise "That's not a valid vote. Yes or no only."
             end
             
             if @yes >= @threshold 
