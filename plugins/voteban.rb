@@ -9,7 +9,6 @@ class VoteBan
     @@timer = Rufus::Scheduler.start_new
 
     @@defendant = nil
-    @@hostmask = nil
     @@yes = 0
     @@no = 0
     @@threshold = 4
@@ -26,7 +25,6 @@ class VoteBan
             return if @@defendant.nil?
             nick = @@defendant
             @@defendant = nil
-            @@hostmask = nil
             @@yes = 0
             @@no = 0
             @@voters = []
@@ -70,13 +68,12 @@ class VoteBan
             end
             
             if @@yes >= @@threshold 
-                m.channel.ban(@@hostmask)
+                m.channel.ban(@@defendant.mask("*!*@%h"))
 		        m.channel.kick(@@defendant, "The people have spoken. 30 minute ban.")
 		        @@timer.in '30m' do
-		            m.channel.unban(@@hostmask)
+		            m.channel.unban(@@defendant.mask("*!*@%h"))
 		        end
 		        @@defendant = nil
-		        @@hostmask = nil
 		        @@yes = 0
 		        @@no = 0
 		        @@voters = []
@@ -86,7 +83,6 @@ class VoteBan
             if @@no >= @@threshold
                 nick = @@defendant
                 @@defendant = nil
-                @@hostmask = nil
 		        @@yes = 0
 		        @@no = 0
 		        @@voters = []
@@ -113,7 +109,6 @@ class VoteBan
 		    raise "You can't ban that person!" if check_admin(user)
 		    raise "Only registered nicks can vote" if m.user.authname.nil?
 		    @@defendant = user
-		    @@hostmask = @@defendant.mask("*!*@%h")
 		    @@starter = m.user
 		    @@voters << @@starter.authname
 		    @@yes+=1
