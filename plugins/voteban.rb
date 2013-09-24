@@ -31,8 +31,8 @@ class VoteBan
         m.reply "VoteBan | Threshold changed to #{num}"
     end
     
-    match /voteban/i, method: :tally
-    match /vb/i, method: :tally
+    match /voteban$/i, method: :tally
+    match /vb$/i, method: :tally
     def tally(m)
         begin
             m.reply "VoteBan | #{@@defendant} Tally: Yes - #{@@yes} No - #{@@no}" unless @@defendant.nil?
