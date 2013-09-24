@@ -31,10 +31,11 @@ class VoteBan
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
-		    raise 'Vote already in progress' if not @defendant.nil?
+		    raise 'Vote already in progress' unless @defendant.nil?
 		    @defendant = User(defendant)
 		    @starter = m.user
 		    @yes++
+		    
 			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
 		rescue Exception => e
 			m.reply "VoteBan | Error: #{e}"
@@ -46,9 +47,9 @@ class VoteBan
 	    return unless ignore_nick(m.user.nick).nil?
 	    begin
             case vote
-            when 'yes'
+            when "yes"
                 @yes++
-            when 'no'
+            when "no"
                 @no++
             else raise "That's not a valid vote. Yes or no only."
             end

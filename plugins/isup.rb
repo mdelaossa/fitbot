@@ -21,7 +21,7 @@ class IsUp
             }
             resp = response.code
 			
-			if resp = '200'
+			if resp == '200'
 			    m.reply "IsUp | #{word} | Seems up to me! Sucks to be you."
 			else
 			    m.reply "IsUp | #{word} | Seems down to me"
