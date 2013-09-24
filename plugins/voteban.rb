@@ -53,7 +53,7 @@ class VoteBan
         end
     end
     
-    match /vb (yes|no)$/i, method: :vote
+    match /vote (yes|no)$/i, method: :vote
 	def vote(m, vote)
 	    return unless ignore_nick(m.user.nick).nil?
 	    return if @@defendant.nil?
@@ -100,16 +100,17 @@ class VoteBan
 	    end
 	end
 
-	match /voteban (.+)/i, method: :voteban
-	match /vb (?!yes|no|cancel|threshold)(.+)/i, method: :voteban
+	match /voteban (?!(?:cancel|threshold \d+)$)(.+)/i, method: :voteban
+	match /vb (?!(?:cancel|threshold \d+)$)(.+)/i, method: :voteban
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 		    raise 'Vote already in progress' unless @@defendant.nil?
 		    raise "You can't ban that person!" if check_admin(User(defendant))
 		    raise "Only registered nicks can vote" if m.user.authname.nil?
-		    
-		    @@defendant = User(defendant)
+		    user = User(defendant)
+		    raise "User not online" if user.online?
+		    @@defendant = user
 		    @@hostmask = @@defendant.mask("*!*@%h")
 		    @@starter = m.user
 		    @@voters << @@starter.authname
