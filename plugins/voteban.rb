@@ -46,7 +46,7 @@ class VoteBan
     match /vb$/i, method: :tally
     def tally(m)
         begin
-            m.reply "VoteBan | #{@@defendant} Tally: Yes - #{@@yes} No - #{@@no}" unless @@defendant.nil?
+            m.reply "VoteBan | #{@@defendant} tally: Yes - #{@@yes} No - #{@@no}" unless @@defendant.nil?
         rescue Exception => e
         end
     end
@@ -57,6 +57,7 @@ class VoteBan
 	    return if @@defendant.nil?
 	    begin
 	        raise "Can't vote twice" if @@voters.include? m.user
+	        raise "Only registered nicks can vote" if m.user.authname.nil?
 	        @@voters << m.user
             case vote
                 when "yes"
@@ -85,7 +86,7 @@ class VoteBan
 		        m.reply "VoteBan | Vote failed. #{nick} got lucky this time." 
             end
             
-            m.reply "VoteBan | Vote added. #{@@defendant} Tally: Yes - #{@@yes} No - #{@@no}"
+            m.reply "VoteBan | Vote added. #{@@defendant} tally: Yes - #{@@yes} No - #{@@no}"
             
 	    rescue Exception => e
 	        m.reply "VoteBan | Error occured: #{e}", true
