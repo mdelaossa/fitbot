@@ -34,7 +34,7 @@ class VoteBan
 		    raise 'Vote already in progress' unless @defendant.nil?
 		    @defendant = User(defendant)
 		    @starter = m.user
-		    @yes++
+		    @yes+=1
 		    
 			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
 		rescue Exception => e
@@ -48,9 +48,9 @@ class VoteBan
 	    begin
             case vote
             when "yes"
-                @yes++
+                @yes+=1
             when "no"
-                @no++
+                @no+=1
             else raise "That's not a valid vote. Yes or no only."
             end
             
