@@ -2,6 +2,11 @@
 
 class VoteBan
     include Cinch::Plugin
+    
+    require 'rufus/scheduler'
+    require 'chronic'
+    
+    @@timer = Rufus::Scheduler.start_new
 
     @@defendant = nil
     @@yes = 0
@@ -14,13 +19,18 @@ class VoteBan
     match /voteban cancel/i, method: :cancel
     match /vb cancel/i, method: :cancel
     def cancel(m)
-        return unless ignore_nick(m.user.nick).nil?
-        return unless check_admin_helper(m) || m.user == @@starter
-        @@defendant = nil
-        @@yes = 0
-        @@no = 0
-        @@voters = []
-        m.reply "VoteBan | Vote on #{defendant} cancelled"
+        begin
+            return unless ignore_nick(m.user.nick).nil?
+            return unless check_admin_helper(m) || m.user == @@starter
+            nick = @@defendant
+            @@defendant = nil
+            @@yes = 0
+            @@no = 0
+            @@voters = []
+            m.reply "VoteBan | Vote on #{nick} cancelled"
+        rescue
+            m.reply "VoteBan | No vote currently in progress"
+        end
     end
     
     match /voteban threshold \d+/i, method: :threshold
@@ -51,6 +61,10 @@ class VoteBan
 		    @@starter = m.user
 		    @@voters << @@starter
 		    @@yes+=1
+		    
+		    @@timer.in '5m' do
+		        cancel(m)
+		    end
 		    
 			m.reply "VoteBan | #{defendant} | Vote started! Please vote on this ban with .vb yes|no"
 		rescue Exception => e
@@ -91,7 +105,7 @@ class VoteBan
 		        m.reply "VoteBan | Vote failed. #{nick} got lucky this time." 
             end
             
-            m.reply "VoteBan | Vote added. Tally: Yes - #{@@yes} No - #{@@no}"
+            m.reply "VoteBan | Vote added. #{@@defendant} Tally: Yes - #{@@yes} No - #{@@no}"
             
 	    rescue Exception => e
 	        m.reply "VoteBan | Error occured: #{e}", true
