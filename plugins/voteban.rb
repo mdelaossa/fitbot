@@ -56,6 +56,7 @@ class VoteBan
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 		    raise 'Vote already in progress' unless @@defendant.nil?
+		    raise "You can't ban that person!" if check_admin(User(defendant))
 		    
 		    @@defendant = User(defendant)
 		    @@starter = m.user
