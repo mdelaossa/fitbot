@@ -25,7 +25,17 @@ class VoteBan
         @threshold = 4
         @starter = nil
         @voters = []
+        @registered = true
     end    
+
+    match /voteban registered/, method: :registered
+    def registered(m)
+        if @registered
+            @registered = false
+        else
+            @registered = true
+        end
+    end
 
     match /voteban cancel/i, method: :cancel
     match /vb cancel/i, method: :cancel
@@ -67,7 +77,7 @@ class VoteBan
 	    return unless ignore_nick(m.user.nick).nil?
 	    begin
 	        raise "Can't vote twice" if @voters.include? m.user.authname
-	        raise "Only registered nicks can vote" if m.user.authname.nil?
+	        raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
 	        raise "No vote in progress" if @defendant.nil?
 	        @voters << m.user.authname
             case vote
@@ -109,8 +119,8 @@ class VoteBan
 	    end
 	end
 
-	match /voteban (?!(?:cancel|threshold \d+)$)(.+)/i, method: :voteban
-	match /vb (?!(?:cancel|threshold \d+)$)(.+)/i, method: :voteban
+	match /voteban (?!(?:registered|cancel|threshold \d+)$)(.+)/i, method: :voteban
+	match /vb (?!(?:registered|cancel|threshold \d+)$)(.+)/i, method: :voteban
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
@@ -120,7 +130,7 @@ class VoteBan
 		    raise "User not online" if user.nil?
 		    raise "User not online" if user.host.nil?
 		    raise "You can't ban that person!" if check_admin(user)
-		    raise "Only registered nicks can vote" if m.user.authname.nil?
+		    raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
 		    @defendant = user
 		    @starter = m.user
 		    @voters << @starter.authname
