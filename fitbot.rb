@@ -108,6 +108,7 @@ require_relative './plugins/lift_tracker.rb'        # LiftTracker
 require_relative './plugins/factoid.rb'             # FactoidDB
 require_relative './plugins/pastebin.rb'            # Pastebin
 require_relative './plugins/isup.rb'                # IsUp
+require_relative './plugins/voteban.rb'             # VoteBan
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -146,7 +147,8 @@ bot = Cinch::Bot.new do
                             Reminder,
                             LiftTracker,
                             FactoidDB,
-                            IsUp]
+                            IsUp,
+                            VoteBan]
   end
   
   on :join do |m|
@@ -198,7 +200,8 @@ bot2 = Cinch::Bot.new do
                             Reminder,
                             LiftTracker,
                             FactoidDB,
-                            IsUp]
+                            IsUp,
+                            VoteBan]
   end
   
 end
@@ -242,7 +245,8 @@ bot3 = Cinch::Bot.new do
                             Reminder,
                             LiftTracker,
                             FactoidDB,
-                            IsUp]
+                            IsUp,
+                            VoteBan]
   end
 end
 bot3.start
