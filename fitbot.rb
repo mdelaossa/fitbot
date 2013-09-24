@@ -28,7 +28,7 @@ require 'iconv'
 require 'bitly'
 
 # Global vars
-$BOTNICK       = "fitbot" # Bot nick
+$BOTNICK       = "rippletits" # Bot nick
 $BOTPASSWORD   = "oiram" # Nickserv password
 $BOTOWNER      = "sigma00" # Make sure this is lowercase
 $BOTOWNER2     = "sigma"

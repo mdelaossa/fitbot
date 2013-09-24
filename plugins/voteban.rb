@@ -8,6 +8,7 @@ class VoteBan
     @@no = 0
     @@threshold = 4
     @@starter = nil
+    @@voters = []
     
 =begin
     def initialize(*args)
@@ -23,7 +24,7 @@ class VoteBan
     match /vb cancel/i, method: :cancel
     def cancel(m)
         return unless ignore_nick(m.user.nick).nil?
-        return unless check_admin_helper(m) || m.user == @@starter
+        return unless check_admin(m) || m.user == @@starter
         @@defendant = nil
         @@yes = 0
         @@no = 0
@@ -32,7 +33,7 @@ class VoteBan
     
     match /vb threshold \d+/i, method: :threshold
     def threshold(m, num)
-        return unless check_admin_helper(m)
+        return unless check_admin(m)
         @@threshold = num
         m.reply "VoteBan | Threshold changed to #{num}"
     end
@@ -67,7 +68,7 @@ class VoteBan
             end
             
             if @@yes >= @@threshold 
-                m.channel.ban(@@defendant.mask("*!*@@%h"));
+                m.channel.ban(@@defendant.mask("*!*@%h"));
 		        m.channel.kick(@@defendant, "The people have spoken")
 		        @@defendant = nil
 		        @@yes = 0
