@@ -32,7 +32,7 @@ class Reminder
 		rescue Exception => x
             error x.message
             error x.backtrace.inspect
-			m.reply "Reminder | Error", true
+			m.user.send "Reminder | Error"
 		end
     end
     
