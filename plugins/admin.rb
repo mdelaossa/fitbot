@@ -60,6 +60,12 @@ class Admin
 		return unless check_admin_helper(m)
 		Channel(chan).send text
 	end
+	
+	match /do (.+?) (.+)/i, method: :action_channel
+	def action_channel(m, chan, action)
+	    return unless check_admin_helper(m)
+	    Channel(chan).action action
+	end
 
 
 	match /kick (\S+)(:? (.+))?/i, method: :kick
