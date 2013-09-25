@@ -17,7 +17,7 @@ class Reminder
             realtime = Chronic.parse time
             
             if realtime.nil?
-                m.reply "Reminder | Wrong time. Remember, NATURAL LANGUAGE (ex. 'in two minutes', '5 hours from now', 'next friday').", true
+                m.user.send "Reminder | Wrong time. Remember, NATURAL LANGUAGE (ex. 'in two minutes', '5 hours from now', 'next friday')."
                 return
             end
             
@@ -28,7 +28,7 @@ class Reminder
                 m.user.send message
             end
 
-			m.reply "Reminder | Will be reminded at #{realtime}: #{message}", true
+			m.user.send "Reminder | Will be reminded at #{realtime}: #{message}"
 		rescue Exception => x
             error x.message
             error x.backtrace.inspect
