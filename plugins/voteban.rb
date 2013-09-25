@@ -117,7 +117,7 @@ class VoteBan
 		    raise "You can't ban that person!" if check_admin(defendant)
 		    raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
 		    
-		    @ballots << Ballot.new defendant, m.user, m.channel
+		    @ballots << Ballot.new(defendant, m.user, m.channel)
 		    
 		    @@timer.in '5m' do
 		        cancel(m)
