@@ -25,7 +25,7 @@ class Reminder
             
             @@timer.at realtime do
                 reminder.destroy
-                m.reply message, true
+                m.user.send message
             end
 
 			m.reply "Reminder | Will be reminded at #{realtime}: #{message}", true
@@ -47,7 +47,7 @@ class Reminder
             debug "Added reminder #{reminder}"
             @@timer.at reminder[:time] do
                 reminder.destroy
-                Channel(reminder[:channel]).send "#{reminder[:nick]}: #{reminder[:message]}"
+                User(reminder[:nick]).send "#{#{reminder[:message]}"
             end
         end
     end
