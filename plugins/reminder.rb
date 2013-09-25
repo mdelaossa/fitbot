@@ -47,7 +47,7 @@ class Reminder
             debug "Added reminder #{reminder}"
             @@timer.at reminder[:time] do
                 reminder.destroy
-                User(reminder[:nick]).send "#{#{reminder[:message]}"
+                User(reminder[:nick]).send "#{reminder[:message]}"
             end
         end
     end
