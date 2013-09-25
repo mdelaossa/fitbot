@@ -115,6 +115,7 @@ require_relative './plugins/factoid.rb'             # FactoidDB
 require_relative './plugins/pastebin.rb'            # Pastebin
 require_relative './plugins/isup.rb'                # IsUp
 require_relative './plugins/voteban.rb'             # VoteBan
+require_relative './plugins/voteban/ballot.rb'      # VoteBan
 
 bot = Cinch::Bot.new do
   configure do |c|

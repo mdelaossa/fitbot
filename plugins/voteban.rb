@@ -7,29 +7,22 @@ class VoteBan
     require 'chronic'
     
     @@timer = Rufus::Scheduler.start_new
-
-=begin
-    @@defendant = nil
-    @@yes = 0
-    @@no = 0
-    @@threshold = 4
-    @@starter = nil
-    @@voters = []
-=end
-
+    
     def initialize(*args)
-        super
-        @defendant = nil
-        @yes = 0
-        @no = 0
-        @threshold = 4
-        @starter = nil
-        @voters = []
+        super *args
+        @ballots = []
         @registered = true
-    end    
+        @threshold = 4
+    end
+
+    def find_ballot(channel)
+        @ballots.find { |ballot| ballot.channel == channel}
+    end
 
     match /voteban registered/, method: :registered
     def registered(m)
+        return unless ignore_nick(m.user.nick).nil?
+        return unless check_admin_helper(m)
         if @registered
             @registered = false
             m.reply "Registration not required anymore"
@@ -44,16 +37,15 @@ class VoteBan
     def cancel(m)
         begin
             return unless ignore_nick(m.user.nick).nil?
-            return unless check_admin(m.user) || m.user == @starter
-            return if @defendant.nil?
-            nick = @defendant
-            @defendant = nil
-            @yes = 0
-            @no = 0
-            @voters = []
-            m.reply "VoteBan | Vote on #{nick} cancelled"
-        rescue
-            m.reply "VoteBan | No vote currently in progress"
+            ballot = find_ballot(m.channel)
+            raise 'No vote in progress' if ballot.nil?
+            raise 'Only the starter or an admin can cancel' unless check_admin(m.user) || m.user == ballot.starter
+            
+            @ballots.delete ballot
+
+            m.reply "VoteBan | Vote on #{ballot.defendant} cancelled"
+        rescue Exception => e
+            m.reply "VoteBan | Error: #{e}"
         end
     end
     
@@ -69,8 +61,11 @@ class VoteBan
     match /vb$/i, method: :tally
     def tally(m)
         begin
-            m.reply "VoteBan | #{@defendant} tally: Yes - #{@yes} No - #{@no}" unless @defendant.nil?
+            ballot = find_ballot(m.channel)
+            raise 'No vote in progress' if ballot.nil?
+            m.reply "VoteBan | #{ballot.tally}"
         rescue Exception => e
+            m.reply "VoteBan | Error: #{e}"
         end
     end
     
@@ -78,43 +73,31 @@ class VoteBan
 	def vote(m, vote)
 	    return unless ignore_nick(m.user.nick).nil?
 	    begin
-	        raise "Can't vote twice" if @voters.include? m.user.authname
 	        raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
-	        raise "No vote in progress" if @defendant.nil?
-	        @voters << m.user.authname
-            case vote
-                when "yes"
-                    @yes += 1
-                when "no"
-                    @no += 1
-                else raise "That's not a valid vote. Yes or no only."
-            end
+	        
+	        ballot = find_ballot(m.channel)
+	        raise "No vote in progress" if ballot.nil?
+
+            ballot.vote vote, m.user 
             
-            if @yes >= @threshold 
-                m.channel.ban(@defendant.mask("*!*@%h"))
-		        m.channel.kick(@defendant, "The people have spoken. 30 minute ban.")
+            if ballot.yes >= @threshold 
+                m.channel.ban(ballot.defendant.mask("*!*@%h"))
+		        m.channel.kick(ballot.defendant, "The people have spoken. 30 minute ban.")
 		        @@timer.in '30m' do
-		            m.channel.unban(@defendant.mask("*!*@%h"))
+		            m.channel.unban(ballot.defendant.mask("*!*@%h"))
 		        end
-		        @defendant = nil
-		        @yes = 0
-		        @no = 0
-		        @voters = []
+		        @ballots.delete ballot ##end ballot
 		        m.reply "VoteBan | Another win for democracy!"
 		        return
             end
             
-            if @no >= @threshold
-                nick = @defendant
-                @defendant = nil
-		        @yes = 0
-		        @no = 0
-		        @voters = []
-		        m.reply "VoteBan | Vote failed. #{nick} got lucky this time." 
+            if ballot.no >= @threshold
+                @ballots.delete ballot ##end ballot
+		        m.reply "VoteBan | Vote failed. #{ballot.defendant} got lucky this time." 
 		        return
             end
             
-            m.reply "VoteBan | Vote added. #{@defendant} tally: Yes - #{@yes} No - #{@no}"
+            m.reply "VoteBan | Vote added. #{ballot.tally}"
             
 	    rescue Exception => e
 	        m.reply "VoteBan | Error occured: #{e}", true
@@ -126,17 +109,15 @@ class VoteBan
 	def voteban(m, defendant)
 		return unless ignore_nick(m.user.nick).nil?
 		begin
-		    user = User(defendant)
+		    defendant = User(defendant)
 		    
-		    raise 'Vote already in progress' unless @defendant.nil?
-		    raise "User not online" if user.nil?
-		    raise "User not online" if user.host.nil?
-		    raise "You can't ban that person!" if check_admin(user)
+		    raise 'Vote already in progress' unless find_ballot(m.channel).nil?
+		    raise "User not online" if defendant.nil?
+		    raise "User not online" if defendant.host.nil?
+		    raise "You can't ban that person!" if check_admin(defendant)
 		    raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
-		    @defendant = user
-		    @starter = m.user
-		    @voters << @starter.authname
-		    @yes+=1
+		    
+		    @ballots << Ballot.new defendant, m.user, m.channel
 		    
 		    @@timer.in '5m' do
 		        cancel(m)
