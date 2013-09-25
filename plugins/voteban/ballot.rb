@@ -1,5 +1,5 @@
 class Ballot
-
+    attr_accessor :timeout_job
     attr_reader :yes, :no, :defendant, :starter, :voters, :channel
     
     def initialize ( defendant, starter, channel )

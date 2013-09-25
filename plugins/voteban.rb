@@ -42,6 +42,7 @@ class VoteBan
             raise 'Only the starter or an admin can cancel' unless check_admin(m.user) || m.user == ballot.starter
             
             @ballots.delete ballot
+            ballot.timeout_job.unschedule
 
             m.reply "VoteBan | Vote on #{ballot.defendant} cancelled"
         rescue Exception => e
@@ -87,12 +88,14 @@ class VoteBan
 		            m.channel.unban(ballot.defendant.mask("*!*@%h"))
 		        end
 		        @ballots.delete ballot ##end ballot
+		        ballot.timeout_job.unschedule
 		        m.reply "VoteBan | Another win for democracy!"
 		        return
             end
             
             if ballot.no >= @threshold
                 @ballots.delete ballot ##end ballot
+                ballot.timeout_job.unschedule
 		        m.reply "VoteBan | Vote failed. #{ballot.defendant} got lucky this time." 
 		        return
             end
@@ -117,9 +120,10 @@ class VoteBan
 		    raise "You can't ban that person!" if check_admin(defendant)
 		    raise "Only registered nicks can vote" if m.user.authname.nil? and @registered
 		    
-		    @ballots << Ballot.new(defendant, m.user, m.channel)
+		    ballot = Ballot.new(defendant, m.user, m.channel)
+		    @ballots << ballot
 		    
-		    @@timer.in '5m' do
+		    ballot.timeout_job = @@timer.schedule_in '5m' do
 		        cancel(m)
 		    end
 		    
