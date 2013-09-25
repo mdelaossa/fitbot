@@ -32,7 +32,7 @@ class Weather
 
 		begin
         
-            wunderground = Wunderground.new($WUNDERGROUNDAPI)
+            wunderground = Wunderground.new($CONFIG.apis.wunderground)
             wunderground.throws_exceptions = true
             argument = URI.escape(location)
             

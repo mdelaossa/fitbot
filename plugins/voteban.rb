@@ -22,7 +22,7 @@ class VoteBan
     match /voteban registered/, method: :registered
     def registered(m)
         return unless ignore_nick(m.user.nick).nil?
-        return unless check_admin_helper(m)
+        return unless check_admin_kick(m)
         if @registered
             @registered = false
             m.reply "Registration not required anymore"
@@ -53,7 +53,7 @@ class VoteBan
     match /voteban threshold \d+/i, method: :threshold
     match /vb threshold \d+/i, method: :threshold
     def threshold(m, num)
-        return unless check_admin_helper(m)
+        return unless check_admin_kick(m)
         @threshold = num
         m.reply "VoteBan | Threshold changed to #{num}"
     end

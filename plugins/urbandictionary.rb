@@ -9,7 +9,7 @@ class UrbanDictionary
 		return unless ignore_nick(m.user.nick).nil?
 
 		begin
-			@bitly = Bitly.new($BITLYUSER, $BITLYAPI)
+			@bitly = Bitly.new($CONFIG.apis.bitly.user, $CONFIG.apis.bitly.api)
 
 			number ||= 1
 

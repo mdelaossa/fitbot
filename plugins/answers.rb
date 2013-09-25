@@ -9,9 +9,9 @@ class Answers
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 
-			@bitly = Bitly.new($BITLYUSER, $BITLYAPI)
+			@bitly = Bitly.new($CONFIG.apis.bitly.user, $CONFIG.apis.bitly.api)
 
-			@url = open("http://api.wolframalpha.com/v2/query?appid=#{$WOLFRAMAPI}&input=#{CGI.escape(query)}")
+			@url = open("http://api.wolframalpha.com/v2/query?appid=#{$CONFIG.apis.wolfram}&input=#{CGI.escape(query)}")
 			@url = Nokogiri::XML(@url)
 
 			output = ""

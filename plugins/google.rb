@@ -9,7 +9,7 @@ class Google
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 
-			@bitly = Bitly.new($BITLYUSER, $BITLYAPI)
+			@bitly = Bitly.new($CONFIG.apis.bitly.user, $CONFIG.apis.bitly.api)
 
 			@url = open("https://encrypted.google.com/search?hl=en&q=#{URI.escape(query)}", "User-Agent" => "Lynx/2.8.6rel.5 libwww-FM/2.14")
 			@url = Nokogiri::HTML(@url)

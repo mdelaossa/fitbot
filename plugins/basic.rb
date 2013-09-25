@@ -1,6 +1,6 @@
 class Basic
     include Cinch::Plugin
-
+=begin
 	# Identify with Nickserv then join channels
 	listen_to :connect, method: :identify
 	def identify(m)
@@ -20,7 +20,7 @@ class Basic
 			User("nickserv").send("identify #{$BOTPASSWORD}")
 		end
 	end
-
+=end
 	# Rejoin channel if kicked
 	listen_to :kick
 	def listen(m)
@@ -31,7 +31,7 @@ class Basic
 
 	match /help$/i, method: :help
 	def help(m)
-		m.reply "Function list: #{$BOTURL} Need more help? Fuck off", true
+		m.reply "Function list: #{CONFIG['bot']['url']} Need more help? Fuck off", true
 	end
 
 end

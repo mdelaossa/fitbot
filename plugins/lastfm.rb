@@ -86,7 +86,7 @@ class Lastfm
 		retrys = 2
 
 		begin
-			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=#{username}&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=#{username}&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 
 			user          = result.xpath("//user/name").text
 			realname      = result.xpath("//user/realname").text
@@ -105,7 +105,7 @@ class Lastfm
 
 			reply = "#{realname}#{user} (#{age}/#{sex}/#{location}) | #{playcount} Scrobbles | Top Artists: "
 
-			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=overall&limit=5&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=overall&limit=5&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 
 			top_artists = result.xpath("//topartists/artist")[0..4]
 
@@ -143,7 +143,7 @@ class Lastfm
 		retrys = 2
 
 		begin
-			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=7day&limit=5&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{username}&period=7day&limit=5&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 			top_artists = result.xpath("//topartists/artist")[0..4]
 			reply = "Top 5 Weekly artists for #{username} | "
 			top_artists.each do |artist|
@@ -184,7 +184,7 @@ class Lastfm
 		retrys = 2
 
 		begin
-			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=tasteometer.compare&type1=user&type2=user&value1=#{userone}&value2=#{usertwo}&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=tasteometer.compare&type1=user&type2=user&value1=#{userone}&value2=#{usertwo}&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 			score = result.xpath("//score").text
 
 			common = result.xpath("//artists/artist")[0..4]
@@ -229,7 +229,7 @@ class Lastfm
 		retrys = 2
 
 		begin
-			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{username}&limit=1&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			result = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{username}&limit=1&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 
 			artist  = result.xpath("//recenttracks/track[1]/artist").text
 			track   = result.xpath("//recenttracks/track[1]/name").text
@@ -239,7 +239,7 @@ class Lastfm
 
 			album   = " from #{album}" if album != ""
 
-			tagurl = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=#{URI.escape(artist)}&api_key="+$LASTFMAPI, :read_timeout=>3).read)
+			tagurl = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=#{URI.escape(artist)}&api_key="+$CONFIG.apis.lastfm, :read_timeout=>3).read)
 			tags = tagurl.xpath("//toptags/tag")[0..3]
 			taglist = ""
 			tags.each do |gettags|
@@ -308,8 +308,8 @@ class Lastfm
 		return unless ignore_nick(m.user.nick).nil?
 
 		begin
-			artistinfo = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{URI.escape(query)}&api_key="+$LASTFMAPI))
-			toptracks  = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=#{URI.escape(query)}&limit=3&autocorrect=1&api_key="+$LASTFMAPI))    
+			artistinfo = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{URI.escape(query)}&api_key="+$CONFIG.apis.lastfm))
+			toptracks  = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=#{URI.escape(query)}&limit=3&autocorrect=1&api_key="+$CONFIG.apis.lastfm))    
 
 			artist     = artistinfo.xpath("//lfm/artist/name").text
 			plays      = artistinfo.xpath("//lfm/artist/stats/playcount").text

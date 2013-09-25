@@ -9,9 +9,9 @@ class Bing
 		return unless ignore_nick(m.user.nick).nil?
 		begin
 
-			@bitly = Bitly.new($BITLYUSER, $BITLYAPI)
+			@bitly = Bitly.new($CONFIG.apis.bitly.user, $CONFIG.apis.bitly.api)
 
-			@url = open("http://api.bing.net/xml.aspx?AppId=#{$BINGAPI}&Version=2.1&Market=en-US&Query=#{URI.escape(query)}&Sources=web&Web.Count=2&Options=EnableHighlighting&Web.Options=DisableQueryAlterations+DisableHostCollapsing")
+			@url = open("http://api.bing.net/xml.aspx?AppId=#{$CONFIG.apis.bing}&Version=2.1&Market=en-US&Query=#{URI.escape(query)}&Sources=web&Web.Count=2&Options=EnableHighlighting&Web.Options=DisableQueryAlterations+DisableHostCollapsing")
 			@url = Nokogiri::XML(@url)
 
 			def search(number)
