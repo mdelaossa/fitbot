@@ -16,7 +16,7 @@ class Google
 
 			def search(number)
 				title    = @url.xpath("//p/a").first.inner_html.gsub(/<\/?b>/, '')
-				url      = @url.xpath("//p/a").first.attributes["href"].value.gsub('/url?q=','').gsub(/&.+=.+/,'')
+				url      = URI.unescape(@url.xpath("//p/a").first.attributes["href"].value.gsub('/url?q=','').gsub(/&.+=.+/,''))
 
 				"Google | %s | %s" % [title, url]
 			end
