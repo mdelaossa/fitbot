@@ -54,7 +54,14 @@ class Admin
 		return unless check_admin_kick(m)
 		@bot.nick = name
 	end
-
+	
+    match /invite (\S+)(?: (\S+))?/i, method: :invite
+    def invite(m, who, channel)
+        return unless check_admin_kick(m)
+        who ||= m.user
+        channel ||= m.channel
+        channel.invite(who)
+    end
 
 	match /quit(?: (.+))?/i, method: :quit
 	def quit(m, msg)
