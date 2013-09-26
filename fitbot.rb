@@ -42,6 +42,12 @@ class Hash ##nicer accesors for hashmap values
     end
 end
 
+def class_from_string(str) ##For loading modules from config
+  str.split('::').inject(Object) do |mod, class_name|
+    mod.const_get(class_name)
+  end
+end
+
 # Global vars
 $CONFIG        = YAML.load_file 'config.yml'
 $SHUTUP        = false
@@ -104,15 +110,15 @@ $CONFIG.servers.each { |values|
                 c.nick            = values.nick
                 c.realname        = values.realname
                 c.user            = values.user
-                #c.password        = values.password
-                c.modes           = values.modes
-                c.channels        = values.channels
+                c.password        = values.password
+                c.modes           = values.modes || []
+                c.channels        = values.channels || []
                 c.plugins.prefix  = values.plugins.prefix
-                c.plugins.plugins = values.plugins.plugins.collect { |plugin| Object.const_get(plugin) }
+                c.plugins.plugins = values.plugins.plugins.collect { |plugin| class_from_string(plugin) } || []
                 c.plugins.options[Cinch::Plugins::Identify] = {
                   :username => values.user,
                   :password => values.nickpass,
-                  :type     => :nickserv,
+                  :type     => :nickserv
                 }
             end
         end
