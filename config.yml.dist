@@ -1,0 +1,100 @@
+:bot:
+    :owner: # Only add the owner, other admins can be added as admins. Multiple nicks allowed due to multiserver support
+        - NICK HERE ## LOWERCASE ONLY
+        - DELETE THIS IF YOU DON'T NEED ANOTHER NICK FOR ANOTHER SERVER
+    :url: URL FOR HELP FILE
+    :git: GIT URL
+:database: "POSTGRES DATABASE URL"
+:apis: #APIs go here
+    :bing: "APIHERE" # For bing search and Translate plugins. Don't work right now
+    :bitly:
+        :user: "USERHERE" # bitly username
+        :api: "APIHERE" # bitly api key  
+    :lastfm: "APIHERE" # For all last.fm functions
+    :wolfram: "APIHERE" # For Answers
+    :wunderground: "APIHERE" # For Weather
+:servers:
+    - ##important for new server, note the space after the dash
+        :server: ADDRESS
+        :port: PORT
+        :ssl: ##
+            :use: true/false
+            :verify: true/false
+        :nick: NICKNAME
+        :realname: REALNAME
+        :user: USERNAME
+        :nickpass: PASS FOR NICKSERV
+        :modes: # modes to set on connect
+            - "+B" #some networks have a 'bot' mode
+        :channels: ##
+            - '#CHANNEL1 PASS'
+            - '#CHANNEL 2'
+            - '#CHANNEL 3'
+        :plugins: ##
+            :prefix: !ruby/regexp '/^\./' #prefix for bot commands. Currently a period '.'
+            :plugins: #Plugins to load
+                - Basic
+                - Admin
+                - UserSet
+                - UrbanDictionary
+                - Weather
+                - Lastfm
+                - Uri
+                - Translate
+                - Twitter
+                - Insult
+                - Eightball
+                - Pick
+                - Youtube
+                - Bing
+                - Google
+                - Answers
+                - Wilks
+                - Converter
+                - Reminder
+                - LiftTracker
+                - FactoidDB
+                - IsUp
+                - VoteBan
+        
+    - ##important for new server, note the space after the dash
+        :server: 
+        :port: 
+        :ssl:####
+            :use: 
+            :verify: 
+        :nick: 
+        :realname: 
+        :user: 
+        :nickpass: 
+        :modes: ##
+            - ""
+        :channels: ##
+            - "#"
+            - "#"
+        :plugins: ##
+            :prefix: !ruby/regexp '//'
+            :plugins: ##
+                - Basic
+                - Admin
+                - UserSet
+                - UrbanDictionary
+                - Weather
+                - Lastfm
+                - Uri
+                - Translate
+                - Twitter
+                - Insult
+                - Eightball
+                - Pick
+                - Youtube
+                - Bing
+                - Google
+                - Answers
+                - Wilks
+                - Converter
+                - Reminder
+                - LiftTracker
+                - FactoidDB
+                - IsUp
+                - VoteBan
