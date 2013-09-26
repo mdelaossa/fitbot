@@ -27,6 +27,22 @@ class Admin
         channel.deop(who)
     end
     
+    match /voice (\S+)(?: (\S+))?/i, method: :voice
+    def voice(m, who, channel)
+        return unless check_admin_kick(m)
+        who ||= m.user
+        channel ||= m.channel
+        channel.voice(who)
+    end
+    
+    match /devoice (\S+)(?: (\S+))?/i, method: :devoice
+    def devoice(m, who, channel)
+        return unless check_admin_kick(m)
+        who ||= m.user
+        channel ||= m.channel
+        channel.devoice(who)
+    end
+    
     match /raw (.+)/i, method: :raw
     def raw (m, command)
         return unless check_admin_kick(m)
