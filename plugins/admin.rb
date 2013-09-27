@@ -15,6 +15,7 @@ class Admin
     def op(m, who, channel)
         return unless check_admin_kick(m)
         who ||= m.user
+        channel = Channel(channel) unless channel.nil?
         channel ||= m.channel
         channel.op(who)
     end
@@ -23,6 +24,7 @@ class Admin
     def deop(m, who, channel)
         return unless check_admin_kick(m)
         who ||= m.user
+        channel = Channel(channel) unless channel.nil?
         channel ||= m.channel
         channel.deop(who)
     end
@@ -31,6 +33,7 @@ class Admin
     def voice(m, who, channel)
         return unless check_admin_kick(m)
         who ||= m.user
+        channel = Channel(channel) unless channel.nil?
         channel ||= m.channel
         channel.voice(who)
     end
@@ -39,6 +42,7 @@ class Admin
     def devoice(m, who, channel)
         return unless check_admin_kick(m)
         who ||= m.user
+        channel = Channel(channel) unless channel.nil?
         channel ||= m.channel
         channel.devoice(who)
     end
@@ -59,6 +63,7 @@ class Admin
     def invite(m, who, channel)
         return unless check_admin_kick(m)
         who ||= m.user
+        channel = Channel(channel) unless channel.nil?
         channel ||= m.channel
         channel.invite(who)
     end
