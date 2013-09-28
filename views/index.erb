@@ -1,0 +1,78 @@
+
+<html>
+<title> fitbot help </title>
+<body>
+<pre>
+fitbot help
+<a href="https://github.com/mdelaossa/fitbot">github repo</a>
+                                                                                                                                  
+Module: Lift                                                                                                                      
+                                                                                                                                  
+.lift &lt;nickname&gt; : returns current saved data for nick. If nick is not supplied, returns data for current user.                   
+.lift add &lt;name&gt; &lt;weight&gt; &lt;unit&gt; &lt;reps&gt; : adds a new lift PR or replaces a current one with the same name.                        
+.lift remove &lt;name&gt; : removes lift with &lt;name&gt;. Alias: .lift rm
+                                                                                                                                  
+                                                                                                                                  
+Module: Weather                                                                                                                   
+                                                                                                                                  
+.weather &lt;location&gt; : returns weather for location. If the user has set a location with .set location &lt;location&gt; then it can be omitted
+                                                                                                                                  
+Module: Set                                                                                                                       
+
+.set metric &lt;on|off&gt; : sets your preference for displayed units
+                                                                                                                                  
+.set location &lt;location&gt;                                                                                                          
+.set weight &lt;weight&gt; &lt;unit&gt;                                                                                                       
+.set height &lt;height&gt; &lt;unit&gt; 
+
+Module: Urban Dictionary
+
+.urban [number] &lt;word&gt; : [number] is optional. Replies with the first or [number] definition for &lt;word&gt; in urbandictionary.com
+
+Module: Rand
+
+.rand item1 or item2 or item3 ...
+.rand item1 | item2 | item3 ... : picks one item at random out of all choices given. | takes precedence over 'or'
+
+Module: Reminder
+
+.remindme &lt;time&gt; (to, |, that) &lt;thing&gt; : reminds you about &lt;thing&gt; in &lt;time&gt;. &lt;time&gt; MUST be in the form of 'in X TIMEPERIOD', for example: in three minutes, in 1 day, in 5 hours.
+
+Module: FactoidDB                                                                                                                     
+                                                                                                                                      
+.fact[oid] add &lt;key&gt; | &lt;value&gt; : add &lt;value&gt; to &lt;key&gt;                                                                                                                                                                                               
+.fact[oid] get &lt;key&gt; [/&lt;query&gt;/] : Retrieve a single random value from &lt;key&gt;, or the first value to match &lt;query&gt; if provided.                                                                                                                      
+alias: .get &lt;key&gt;                                                                                                               
+                                                                                                                                      
+.fact[oid] get all &lt;key&gt; : Retrieve all values from &lt;key&gt;                                                                 
+alias: .get all &lt;key&gt;                                                                                                           
+                                                                                                                                      
+.factoid rm &lt;key&gt; [/&lt;query&gt;/] : Removes &lt;key&gt; and all its values from the database, or just the first value that matches &lt;query&gt; if provided.                                                                                                       
+
+.factoid blame &lt;key&gt; [/&lt;query&gt;/] : Returns who added that key-value pair to the database.
+                                                                                                                                      
+.factoid protect &lt;key&gt; : Protects a &lt;key&gt; so only ops can delete or add to it                                             
+                                                                                                                                      
+.factoid unprotect &lt;key&gt; : Removes protection from key                                                                          
+                                                                                                                                      
+.factoid on|off : Turns automatic triggering on or off                                                                                
+                                                                                                                                      
+.factoid gprotect : Turns on global protect, non-ops can't use factoid system                                                         
+                                                                                                                                      
+.factoid nprotect : Turns off global protect, everyone can use factoid system                        
+
+Module: VoteBan
+
+.voteban &lt;nick&gt; : Starts a vote for banning &lt;nick&gt;. 4 votes needed to ban or save. 5 minute timeout.
+alias: .vb &lt;nick&gt;
+
+.voteban cancel : Cancels the current vote. Only the initiator and admins can do this.
+
+.vote &lt;yes|no&gt; : Vote on current ballot.
+
+.voteban : Shows the current tally
+alias: .vb
+
+</pre>
+</body>
+</html>
