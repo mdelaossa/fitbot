@@ -49,7 +49,7 @@ def class_from_string(str) ##For loading modules from config
 end
 
 # Global vars
-$CONFIG        = YAML.load_file 'config.yml'
+$CONFIG        = YAML.load_file 'config.yml.testing'
 $SHUTUP        = false
 
 
@@ -102,8 +102,8 @@ Thread.new {
     require 'sinatra'
     require 'sinatra/base'
     my_app = Sinatra.new { 
-        set :bind, ENV['IP']
-        set :port, ENV['PORT']
+        set :bind, ENV['IP'] unless ENV['IP'].nil?
+        set :port, ENV['PORT'] unless ENV['PORT'].nil?
         get('/') { "hi" } 
     }
     my_app.run!
