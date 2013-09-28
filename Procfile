@@ -1,1 +1,1 @@
-web: bundle exec ruby fitbot.rb -p $PORT
+bot: bundle exec ruby fitbot.rb -p $PORT
