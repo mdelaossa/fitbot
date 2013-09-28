@@ -8,6 +8,7 @@ require 'dm-postgres-adapter'
 require 'do_postgres'
 
 # Web stuff
+require './web'
 require 'mechanize'
 require 'addressable/uri'
 require 'uri'
@@ -49,7 +50,7 @@ def class_from_string(str) ##For loading modules from config
 end
 
 # Global vars
-$CONFIG        = YAML.load_file 'config.yml'
+$CONFIG        = YAML.load_file 'config.yml.testing'
 $SHUTUP        = false
 
 
@@ -97,18 +98,6 @@ def check_admin_kick(m)
 end
 
 @bots = []
-
-Thread.new {
-    require 'sinatra'
-    require 'sinatra/base'
-    my_app = Sinatra.new { 
-        set :bind, ENV['IP'] unless ENV['IP'].nil?
-        set :port, ENV['PORT'] unless ENV['PORT'].nil?
-        get('/') { "hi" } 
-    }
-    my_app.run!
-}
-
 
 $CONFIG.servers.each { |values|
 
