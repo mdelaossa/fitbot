@@ -1,1 +1,33 @@
-Hello <%= name %>
+<% if name.nil? %>
+    <% require 'dm-aggregates' %>
+    fitbot LiftTracker
+    <table border=0>
+    <% Nick.all.each { |nick| %>
+        <% if nick.lifts.count > 0 %>
+            <tr>
+                <td><a href="/lifts/<%= nick.nick %>"><%= nick.nick %></a></td>
+            </tr>
+        <% end %>
+    <% } %>
+    </table>
+<% else %>
+    <% 
+    liftuser = Nick.first :nick => name.downcase 
+    if liftuser.nil?
+    %>
+    No lifts for <%=name%>
+    <%
+    else
+    %>
+    Lifts for <%=name%>
+    <table id="lifts">
+        <%liftuser.lifts.each { |lift| %>
+            <tr>
+                <td><%=lift.lift%></td><td><%=lift.weight%></td><td><%=lift.unit%></td><td><%=lift.reps%></td>
+            </tr>
+        <% } %>
+    </table>
+    <%
+    end
+    %>
+<% end %>
