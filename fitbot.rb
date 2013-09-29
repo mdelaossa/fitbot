@@ -130,6 +130,12 @@ $CONFIG.servers.each { |values|
     
     @bots << thread
     
+    trap('SIGTERM') do ##For some reason threads aren't stopping on heroku. Attempted fix
+        @bots.each { |thread|
+            thread.terminate
+        }
+    end
+    
 }
 
 @bots.each {|thread| thread.join}
