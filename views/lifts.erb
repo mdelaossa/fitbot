@@ -2,7 +2,7 @@
     <% require 'dm-aggregates' %>
     fitbot LiftTracker
     <table border=0>
-    <% Nick.all.each { |nick| %>
+    <% Nick.all(:order => [:nick.asc]).each { |nick| %>
         <% if nick.lifts.count > 0 %>
             <tr>
                 <td><a href="/lifts/<%= nick.nick %>"><%= nick.nick %></a></td>
