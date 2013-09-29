@@ -51,7 +51,7 @@ end
 
 
 # Global vars
-$CONFIG        = YAML.load_file 'config.yml'
+$CONFIG        = YAML.load_file 'config.yml.testing'
 $SHUTUP        = false
 
 
