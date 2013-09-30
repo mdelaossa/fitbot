@@ -4,7 +4,6 @@ class VoteBan
     include Cinch::Plugin
     
     require 'rufus/scheduler'
-    require 'chronic'
     
     @@timer = Rufus::Scheduler.start_new
     
