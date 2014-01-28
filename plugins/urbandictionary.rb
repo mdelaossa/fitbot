@@ -15,7 +15,7 @@ class UrbanDictionary
 
 			url = "http://www.urbandictionary.com/define.php?term=#{CGI.escape(word)}"
 			urban = Nokogiri::HTML(open(url))
-			define = urban.search("//div[@class='definition']")[number.to_i-1].text.gsub(/\s+/, ' ')
+			define = urban.search("//div[@class='meaning']")[number.to_i-1].text.gsub(/\s+/, ' ')
 
 			if define.length > 255
 				more = @bitly.shorten("http://www.urbandictionary.com/define.php?term=#{CGI.escape(word)}")
