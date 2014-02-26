@@ -38,9 +38,11 @@ class Reminder
     
     def initialize(*args)
         super
-        loadFromDB()
+        @@timer.in '30s' do
+            loadFromDB()
+        end
     end
-    
+
     def loadFromDB()
         reminders = ReminderDB.all
         reminders.each do |reminder|
