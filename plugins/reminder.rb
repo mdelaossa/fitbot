@@ -21,7 +21,7 @@ class Reminder
                 return
             end
             
-            reminder = ReminderDB.create( :nick => m.user.nick.downcase, :time => realtime, :message => message, :channel => m.channel )
+            reminder = ReminderDB.create( :nick => m.user.nick.downcase, :time => realtime, :message => message, :channel => m.channel, :network => @bot.irc.network.name )
             
             @@timer.at realtime do
                 reminder.destroy
@@ -44,7 +44,7 @@ class Reminder
     end
 
     def loadFromDB()
-        reminders = ReminderDB.all
+        reminders = ReminderDB.all(:network => @bot.irc.network.name)
         reminders.each do |reminder|
             if reminder[:time] < DateTime.now then
                 debug "Reminder time passed, sending #{reminder}"

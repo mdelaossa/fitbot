@@ -53,6 +53,7 @@ class ReminderDB
     property(:time, DateTime)
     property(:channel, String)
     property(:message, String)
+    property(:network, String)
 end
 
 class LastfmDB 
