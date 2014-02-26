@@ -44,10 +44,16 @@ class Reminder
     def loadFromDB()
         reminders = ReminderDB.all
         reminders.each do |reminder|
-            debug "Added reminder #{reminder}"
-            @@timer.at reminder[:time] do
+            if reminder[:time] < Time.now
+                debug "Reminder time passed, sending #{reminder}"
+                User(reminder[:nick]).send "#{reminder[:message]} | [late is better than never!]"
                 reminder.destroy
-                User(reminder[:nick]).send "#{reminder[:message]}"
+            else
+                debug "Added reminder #{reminder}"
+                @@timer.at reminder[:time] do
+                    User(reminder[:nick]).send "#{reminder[:message]}"
+                    reminder.destroy
+                end
             end
         end
     end
