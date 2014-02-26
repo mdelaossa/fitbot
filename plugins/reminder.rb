@@ -46,7 +46,7 @@ class Reminder
     def loadFromDB()
         reminders = ReminderDB.all
         reminders.each do |reminder|
-            if Time.parse(reminder[:time]) < Time.now then
+            if reminder[:time] < DateTime.now then
                 debug "Reminder time passed, sending #{reminder}"
                 @@timer.in '20s' do
                     User(reminder[:nick]).send "#{reminder[:message]} | [late is better than never!]"
