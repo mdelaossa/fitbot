@@ -46,8 +46,10 @@ class Reminder
         reminders.each do |reminder|
             if reminder[:time] < Time.now
                 debug "Reminder time passed, sending #{reminder}"
-                User(reminder[:nick]).send "#{reminder[:message]} | [late is better than never!]"
-                reminder.destroy
+                @@timer.in '20s' do
+                    User(reminder[:nick]).send "#{reminder[:message]} | [late is better than never!]"
+                    reminder.destroy
+                end
             else
                 debug "Added reminder #{reminder}"
                 @@timer.at reminder[:time] do
