@@ -24,7 +24,7 @@ class LiftTracker
                 if lifts.empty?
                     m.reply "LiftTracker | No lifts for #{user}", true
                 else
-                    m.reply "LiftTracker | #{user} (#{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
+                    m.reply "LiftTracker | #{user} (#{nick.gender} #{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(", ")}", true
                 end
             end
     	rescue Exception => x

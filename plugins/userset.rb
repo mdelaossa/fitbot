@@ -12,7 +12,7 @@ class UserSet
         raise ArgumentError.new("invalid value for Boolean: \"#{string}\"")
     end
     
-    # Set height/weight
+    # Set height/weight/sex
     
     match /set height (\d+(?:\.\d+)?)\s?(\w+)/, method: :set_height
     def set_height(m, height, unit) #will be saved in cm
@@ -55,6 +55,24 @@ class UserSet
             weight = weight.round(2)
             Nick.first_or_create(:nick => m.user.nick.downcase).update(:weight => weight)
             m.reply "Weight set to: #{weight}kg", true
+        rescue Exception => x
+            m.reply "Error: #{x.message}"
+        end
+    end
+    
+    match /set gender (\S+)/, method: :set_gender
+    def set_gender(m, gender)
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            case gender
+                when /m(?:ale)?/
+                    sex = "Male"
+                when /f(?:emale)?/
+                    sex = "Female"
+                else raise "Invalid gender"
+            end
+            Nick.first_or_create(:nick => m.user.nick.downcase).update(:gender => sex)
+            m.reply "Gender set to: #{sex}", true
         rescue Exception => x
             m.reply "Error: #{x.message}"
         end
