@@ -20,13 +20,13 @@ class UserSet
         begin
             height = Float(height)
             case unit
-                when /in(?:ches)?/
+                when /in(?:ches)?/i
                     height = height * 2.54
-                when /f(?:ee)?t/
+                when /f(?:ee)?t/i
                     height = height * 12 * 2.54
-                when /c(?:enti)?m(?:eter(?:s)?)?/
+                when /c(?:enti)?m(?:eter(?:s)?)?/i
                     height = height
-                when /m(?:eter(?:s)?)?/
+                when /m(?:eter(?:s)?)?/i
                     height = height * 100
                 else raise "Invalid unit"
             end
@@ -44,11 +44,11 @@ class UserSet
         begin
             weight = Float(weight)
             case unit
-                when /k(?:ilo)?g(?:ram)?s?/
+                when /k(?:ilo)?g(?:ram)?s?/i
                     weight
-                when /stone/
+                when /stone/i
                     weight = weight*6.35029318
-                when /lbs?|pounds?/
+                when /lbs?|pounds?/i
                     weight = weight/2.20462
                 else raise "Invalid unit"
             end
@@ -65,9 +65,9 @@ class UserSet
         return unless ignore_nick(m.user.nick).nil?
         begin
             case gender
-                when /m(?:ale)?/
+                when /^m(?:ale)?/i
                     sex = "Male"
-                when /f(?:emale)?/
+                when /^f(?:emale)?/i
                     sex = "Female"
                 else raise "Invalid gender"
             end
