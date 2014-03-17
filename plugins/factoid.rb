@@ -26,7 +26,7 @@ class FactoidDB
                     m.reply "#{factoid.factoid_values.all.sample.value}", false
                 else
                     Factoid.wildcard.all.each { |x| 
-                        if m.message.downcase =~ /#{x.name}/
+                        if m.message.downcase =~ /\b#{x.name}\b/
                             m.reply "#{x.factoid_values.all.sample.value}", false
                         end
                     }
