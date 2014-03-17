@@ -25,10 +25,11 @@ class FactoidDB
                 if !factoid.nil?
                     m.reply "#{factoid.factoid_values.all.sample.value}", false
                 else
-                    factoid = Factoid.wildcard.first :name.like => "%#{m.message.downcase}%"
-                    if !factoid.nil?
-                        m.reply "#{factoid.factoid_values.all.sample.value}", false
-                    end
+                    Factoid.wildcard.all.each { |x| 
+                        if m.message.downcase =~ /#{x.name}/
+                            m.reply "#{x.factoid_values.all.sample.value}", false
+                        end
+                    }
                 end
         	rescue Exception => x
                 error x.message
