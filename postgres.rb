@@ -9,8 +9,13 @@ class Factoid
     
     property :name,         String,     :unique => true,  :key => true
     property :protect,      Boolean,    :default => false
+    property :wildcard,     Boolean,    :default => false #wildcard matching
     
     has n, :factoid_values
+    
+    def self.wildcard
+        all(:wildcard => true)
+    end
 end
 
 class FactoidValue
