@@ -154,7 +154,7 @@ class FactoidDB
 		end
     end
     
-    match /fact(?:oid)? add wild(?:card)? (.+?)\s*\|\s*(.+)$/i, method: :addWildcardFactoid
+    match /fact(?:oid)? wild(?:card)? (.+?)\s*\|\s*(.+)$/i, method: :addWildcardFactoid
     def addWildcardFactoid(m, name, value)
         return unless ignore_nick(m.user.nick).nil?
         return unless !protect(m.user) and !shutup(m.user)
