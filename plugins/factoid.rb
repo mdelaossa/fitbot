@@ -24,11 +24,6 @@ class FactoidDB
                 factoid = Factoid.first :name => m.message.downcase
                 if !factoid.nil?
                     m.reply "#{factoid.factoid_values.all.sample.value}", false
-                else
-                    factoid = Factoid.wildcard.first :name.like => "%#{m.message.downcase}%"
-                    if !factoid.nil?
-                        m.reply "#{factoid.factoid_values.all.sample.value}", false
-                    end
                 end
         	rescue Exception => x
                 error x.message
@@ -151,29 +146,6 @@ class FactoidDB
             error x.backtrace.inspect
 			m.reply "FactoidDB | Error | #{x.message}"
 		end
-    end
-    
-    match /fact(?:oid)? add wild(?:card)? (.+?)\s*\|\s*(.+)$/i, method: :addWildcardFactoid
-    def addWildcardFactoid(m, name, value)
-        return unless ignore_nick(m.user.nick).nil?
-        return unless !protect(m.user) and !shutup(m.user)
-        begin
-            name = name.downcase
-            factoid = Factoid.wildcard.first_or_create :name => name, :wildcard => true
-            if factoid.protect
-                    if not check_admin(m.user)
-                        m.reply "FactoidDB | Can't add to '#{factoid.name}': factoid protected"
-                        return
-                    end
-                end
-            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getAuthOrNick(m.user) })
-            m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
-            debug val.inspect
-        rescue Exception => x
-            error x.message
-            error x.backtrace.inspect
-            m.reply "FactoidDB | Error | #{x.message}"
-        end
     end
     
     match /fact(?:oid)? add (.+?)\s*\|\s*(.+)$/i, method: :addFactoid
