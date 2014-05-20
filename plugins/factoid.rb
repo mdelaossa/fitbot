@@ -202,6 +202,22 @@ class FactoidDB
         end
     end
     
+    match /fact(?:oid)? wildcard (on|off) (.+)/i, method: :toggleWildcard
+    def toggleWildcard(m, name)
+        return unless ignore_nick(m.user.nick).nil?
+        begin
+            factoid = Factoid.first :name => name.downcase
+            raise "Factoid does not exist" if factoid.nil?
+            factoid.wildcard = factoid.wildcard == true ? false : true
+            factoid.save
+            m.reply "FactoidDB | Toggled wildcard for factoid #{factoid.name}"
+        rescue Exception => x
+            error x.message
+            error x.backtrace.inspect
+            m.reply "FactoidDB | Error | #{x.message}"
+        end
+    end
+    
     def getAuthOrNick(user)
         if user.authname.nil?
             return user.nick
