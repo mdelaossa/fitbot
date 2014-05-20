@@ -168,7 +168,7 @@ class FactoidDB
                     return
                 end
             end
-            factoid.update (:wildcard => true)
+            factoid.update :wildcard => true
             val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getAuthOrNick(m.user) })
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
