@@ -160,13 +160,15 @@ class FactoidDB
         return unless !protect(m.user) and !shutup(m.user)
         begin
             name = name.downcase
-            factoid = Factoid.wildcard.first_or_create :name => name, :wildcard => true
+            factoid = Factoid.first :name => name
+            factoid ||= Factoid.create :name => name, :wildcard => true
             if factoid.protect
-                    if not check_admin(m.user)
-                        m.reply "FactoidDB | Can't add to '#{factoid.name}': factoid protected"
-                        return
-                    end
+                if not check_admin(m.user)
+                    m.reply "FactoidDB | Can't add to '#{factoid.name}': factoid protected"
+                    return
                 end
+            end
+            factoid.update (:wildcard => true)
             val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getAuthOrNick(m.user) })
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
