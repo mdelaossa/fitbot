@@ -3,7 +3,7 @@
 class Pick
     include Cinch::Plugin
 
-	match /choice (.+)/i
+	match /choose (.+)/i
 	match /r(?:and)? (.+)/i
 	def execute(m, query)
 		return unless ignore_nick(m.user.nick).nil?
