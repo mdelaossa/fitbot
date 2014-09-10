@@ -203,7 +203,7 @@ class FactoidDB
     end
     
     match /fact(?:oid)? wildcard (?:on|off|toggle) (.+)/i, method: :toggleWildcard
-    def toggleWildcard(m, name, name)
+    def toggleWildcard(m, name)
         return unless ignore_nick(m.user.nick).nil?
         begin
             factoid = Factoid.first :name => name.downcase

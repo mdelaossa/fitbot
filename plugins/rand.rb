@@ -3,6 +3,7 @@
 class Pick
     include Cinch::Plugin
 
+	match /choice (.+)/i
 	match /r(?:and)? (.+)/i
 	def execute(m, query)
 		return unless ignore_nick(m.user.nick).nil?
@@ -10,11 +11,12 @@ class Pick
 		begin
 		    if query =~ /\|/
 			    options = query.split(/\|/)
-			    m.reply options[rand(options.length)], true
+			elsif query =~ /,/
+				options = query.split(/,/)
 			else
 			    options = query.split(/\sor\s/)
-			    m.reply options[rand(options.length)], true
 			end
+			m.reply options[rand(options.length)], true
 		rescue
 			nil
 		end
