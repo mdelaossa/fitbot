@@ -1,4 +1,5 @@
 .hg/
 config.yml
+config.yml.testing
 .c9revisions/
 .c9/
