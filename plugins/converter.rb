@@ -63,7 +63,7 @@ class Converter
 					rescue Exception
 						# ignored
 					end
-				}.join(" | ")
+				}.compact.join(" | ")
 			end
             #If m.message contains inches
             if m.message =~ /(?<!\$|€|£)\b(\d+\.?\d+)\s*(?:in|inches)\b|(?<!\$|€|£)\b(\d+\.?\d+)"/i
