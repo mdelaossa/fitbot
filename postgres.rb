@@ -62,6 +62,18 @@ class ReminderDB
     property(:network, String)
 end
 
+class Messages
+    include DataMapper::Resource
+    
+    property(:id, Serial)
+    property(:sender, String)
+    property(:recipient, String)
+    property(:sent_at, DateTime)
+    property(:text, String)
+    property(:channel, String)
+    property(:network, String)
+end
+
 class LastfmDB 
     include DataMapper::Resource
 	property(:id, Serial)
