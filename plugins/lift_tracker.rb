@@ -126,7 +126,8 @@ class LiftTracker
         if metric
             "#{(nick.height / 100).round(2)}m"
         else
-            "#{(nick.height / 2.54 / 12).round(2)}ft"
+            height_in_ft = (nick.height / 2.54 / 12)
+            "#{height_in_ft.to_i}ft #{((height_in_ft - height_in_ft.to_i)*120).to_i}in" #decimals * 12 /10 * 100
         end
     end
     
