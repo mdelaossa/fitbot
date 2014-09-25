@@ -25,7 +25,7 @@ class Tell
   
   def execute(m, recipient, message)
     begin
-      outbox = Messages.create(:sender => m.user.nick.downcase, :recipient => recipient.downcase, :sent_at => Time.now, :text => message, :channel => m.channel, :network => @bot.irc.network.name)
+      outbox = Messages.create(:sender => m.user.nick, :recipient => recipient.downcase, :sent_at => Time.now, :text => message, :channel => m.channel, :network => @bot.irc.network.name)
       if outbox.nil?
         error "Error creating message:"
         error outbox
