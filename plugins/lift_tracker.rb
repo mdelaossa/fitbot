@@ -127,7 +127,7 @@ class LiftTracker
             "#{(nick.height / 100).round(2)}m"
         else
             height_in_ft = (nick.height / 2.54 / 12)
-            "#{height_in_ft.to_i}ft #{((height_in_ft - height_in_ft.to_i)*12).round(0)}in" #decimals * 12 /10 * 10
+            "#{height_in_ft.to_i}'#{((height_in_ft - height_in_ft.to_i)*12).round(0)}\" #decimals * 12 /10 * 10
         end
     end
     
