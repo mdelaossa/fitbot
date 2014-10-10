@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.require :default, :test
+
 def class_from_string(str) ##For loading modules from config
   str.split('::').inject(Object) do |mod, class_name|
     mod.const_get(class_name)
@@ -52,7 +55,6 @@ class Fitbot
     require "cinch/plugins/identify"
 
     # Global vars
-    $CONFIG        = YAML.load_file 'config.yml'
     $SHUTUP        = false
     
     
@@ -60,8 +62,10 @@ class Fitbot
     $TWITTERFEED    = ""
     $TWITTERCHANNEL = ""
     
-    require_relative './postgres.rb'
-    
+    def self.load_config(file='config.yml')
+        $CONFIG        = YAML.load_file file
+        require_relative './postgres.rb'
+    end
     
     
     @@bots = []
