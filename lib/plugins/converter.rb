@@ -8,6 +8,7 @@ require 'ruby-units'
 
 class Converter
     include Cinch::Plugin
+    include UtilityFunctions
     
     
     match /autoconvert on$/i, method: :turnOn

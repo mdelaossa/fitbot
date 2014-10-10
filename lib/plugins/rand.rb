@@ -2,6 +2,7 @@
 
 class Pick
     include Cinch::Plugin
+    include UtilityFunctions
 
 	match /choose (.+)/i
 	match /r(?:and)? (.+)/i

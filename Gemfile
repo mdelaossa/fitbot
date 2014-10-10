@@ -18,5 +18,5 @@ gem 'require_all'
 gem 'cinch-identify'
 gem 'sinatra'
 gem 'thin'
-gem 'simplecov', :require => false, :group => :test
+gem 'simplecov', group: :test
 gem 'rspec', group: :test

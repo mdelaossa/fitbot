@@ -1,6 +1,7 @@
 # encoding: utf-8
 class Tell
   include Cinch::Plugin
+  include UtilityFunctions
   
   def relative_time(start_time)
     diff_seconds = Time.now - start_time

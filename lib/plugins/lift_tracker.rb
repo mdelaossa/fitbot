@@ -2,6 +2,7 @@
 
 class LiftTracker
     include Cinch::Plugin
+    include UtilityFunctions
     
     match /lift$/i, method: :getLift
     def getLift(m)

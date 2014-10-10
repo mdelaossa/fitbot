@@ -7,6 +7,7 @@ require 'mathn'
 
 class Wilks
     include Cinch::Plugin
+    include UtilityFunctions
     
     def get_wilks(gender, weight, total, scale, reverse = false)
         weight = weight.to_f
