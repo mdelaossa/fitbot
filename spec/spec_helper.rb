@@ -96,3 +96,4 @@ RSpec.configure do |config|
 
 end
 
+require './lib/fitbot'

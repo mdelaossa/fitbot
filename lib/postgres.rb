@@ -1,9 +1,6 @@
 require 'data_mapper'
 require 'dm-migrations'
 
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || $CONFIG.database)
-
 class Factoid
     include DataMapper::Resource
     
@@ -138,5 +135,5 @@ end
 
 DataMapper.finalize
 
-#DataMapper.auto_migrate!
+#DataMapper.auto_migrate! #destructive
 #DataMapper.auto_upgrade!

@@ -1,5 +1,5 @@
 require 'bundler'
-Bundler.require :default, :test
+Bundler.require :default
 
 def class_from_string(str) ##For loading modules from config
   str.split('::').inject(Object) do |mod, class_name|
@@ -57,16 +57,20 @@ class Fitbot
     # Global vars
     $SHUTUP        = false
     
-    
     # Twitter Feed
     $TWITTERFEED    = ""
     $TWITTERCHANNEL = ""
     
+    require_relative './postgres.rb'
+    
     def self.load_config(file='config.yml')
         $CONFIG        = YAML.load_file file
-        require_relative './postgres.rb'
     end
     
+    def self.db_connection(db_url= ENV['DATABASE_URL'], upgrade= true)
+        DataMapper.setup(:default, db_url || $CONFIG.database)
+        DataMapper.auto_upgrade! if upgrade
+    end
     
     @@bots = []
     
