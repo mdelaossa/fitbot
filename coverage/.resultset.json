@@ -1,7 +1,15 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/rof/src/github.com/mdelaossa/fitbot/spec/bot_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
     },
-    "timestamp": 1412965055
+    "timestamp": 1412979174
   }
 }
