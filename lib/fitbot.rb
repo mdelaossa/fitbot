@@ -80,8 +80,6 @@ class Fitbot
     
     def self.start
         
-        FitbotWeb.start
-        
         @@bots.select!(&:alive?) ##Forget about dead threads
         
         $CONFIG.servers.each { |values|
