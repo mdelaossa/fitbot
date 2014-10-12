@@ -18,6 +18,6 @@ gem 'require_all'
 gem 'cinch-identify'
 gem 'sinatra'
 gem 'thin'
-gem 'dm-sqlite-adapter', group: :test
+gem 'dm-sqlite-adapter'
 gem 'simplecov', group: :test
 gem 'rspec', group: :test
