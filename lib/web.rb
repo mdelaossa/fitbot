@@ -26,7 +26,5 @@ Thread.new {
         ########
     }
     
-    Thread.current[:web] = my_app
-    
     my_app.run!
 }

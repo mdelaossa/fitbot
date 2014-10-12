@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require :default
 
+require './lib/web'
+
 def class_from_string(str) ##For loading modules from config
   str.split('::').inject(Object) do |mod, class_name|
     mod.const_get(class_name)
@@ -28,7 +30,6 @@ class Fitbot
     require 'do_postgres'
     
     # Web stuff
-    require './lib/web'
     require 'mechanize'
     require 'addressable/uri'
     require 'uri'
