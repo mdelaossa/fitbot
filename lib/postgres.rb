@@ -1,5 +1,9 @@
 require 'data_mapper'
 require 'dm-migrations'
+require 'dm-core'
+require 'dm-postgres-adapter'
+require 'do_postgres'
+require 'dm-sqlite-adapter' if ENV['environment'] == 'development'
 
 class Factoid
     include DataMapper::Resource

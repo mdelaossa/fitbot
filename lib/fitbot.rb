@@ -1,5 +1,4 @@
 require 'bundler'
-Bundler.require :default
 
 def class_from_string(str) ##For loading modules from config
   str.split('::').inject(Object) do |mod, class_name|
@@ -21,11 +20,6 @@ class Fitbot
     require 'rubygems'
     require 'cinch'
     require 'require_all'
-    
-    # Database stuff
-    require 'dm-core'
-    require 'dm-postgres-adapter'
-    require 'do_postgres'
     
     # Web stuff
     require 'mechanize'
@@ -60,13 +54,12 @@ class Fitbot
     $TWITTERFEED    = ""
     $TWITTERCHANNEL = ""
     
-    require_relative './postgres.rb'
-    
     def self.load_config(file='config.yml')
         $CONFIG        = YAML.load_file file
     end
     
     def self.db_connection(db_url= ENV['DATABASE_URL'], upgrade= true)
+        require_relative './postgres.rb'
         DataMapper.setup(:default, db_url || $CONFIG.database)
         DataMapper.auto_upgrade! if upgrade
     end
