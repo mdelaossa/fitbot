@@ -55,6 +55,7 @@ class Fitbot
     $TWITTERCHANNEL = ""
     
     def self.load_config(file='config.yml')
+        file = 'config.yml.testing' if ENV['environment'] == 'development'
         $CONFIG        = YAML.load_file file
     end
     
