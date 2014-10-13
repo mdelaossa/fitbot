@@ -1,8 +1,6 @@
 require 'bundler'
 Bundler.require :default
 
-require './lib/web'
-
 def class_from_string(str) ##For loading modules from config
   str.split('::').inject(Object) do |mod, class_name|
     mod.const_get(class_name)
@@ -71,6 +69,10 @@ class Fitbot
     def self.db_connection(db_url= ENV['DATABASE_URL'], upgrade= true)
         DataMapper.setup(:default, db_url || $CONFIG.database)
         DataMapper.auto_upgrade! if upgrade
+    end
+    
+    def self.web_load
+        require './lib/web'
     end
     
     @@bots = []
