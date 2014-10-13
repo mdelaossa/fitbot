@@ -11,7 +11,7 @@ require 'sinatra/base'
     end
     
     get '/:name.json' do |name|
-        Nick.first(:nick => name.downcase).to_json(:only => [:nick, :weight, :height])
+        Nick.first(:nick => name.downcase).to_json(:only => [:nick, :weight, :height, :gender])
     end
     
     get '/lifts/:name.json' do |name|

@@ -35,7 +35,7 @@ class Nick
     property :metric,   Boolean,    :default => true
     property :weight,   Float,      :default => 0
     property :height,   Float,      :default => 0
-    property :gender,   String
+    property :gender,   String,     :default => "Male"
     
     has n, :lifts
 end
