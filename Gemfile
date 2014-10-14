@@ -3,7 +3,7 @@ ruby '1.9.3'
 
 gem "cinch"
 gem "mechanize"
-gem "nokogiri"
+gem "nokogiri", '1.6.0'
 gem "bitly"
 gem "dm-core"
 gem "do_postgres"
@@ -18,6 +18,7 @@ gem 'require_all'
 gem 'cinch-identify'
 gem 'sinatra'
 gem 'thin'
+gem 'feedjira'
 gem 'dm-sqlite-adapter', group: [:development, :test]
 gem 'simplecov', group: :test
 gem 'rspec', group: :test

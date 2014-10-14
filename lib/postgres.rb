@@ -137,6 +137,13 @@ class GreenText
 	property(:text, Text)
 end 
 
+class JobSubscription
+    include DataMapper::Resource
+    property(:id, Serial)
+    property(:channel, String, :unique_index => :channel_network_index)
+    property(:network, String, :unique_index => :channel_network_index)
+end
+
 DataMapper.finalize
 
 #DataMapper.auto_migrate! #destructive
