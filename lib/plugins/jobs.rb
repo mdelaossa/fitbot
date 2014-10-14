@@ -3,10 +3,8 @@ class Jobs
   include Cinch::Plugin
   include UtilityFunctions
   
-  require 'rufus/scheduler'
   require 'feedjira'
-  
-  @@timer = Rufus::Scheduler.start_new
+
   @@feed = nil #RSS feed
   @@feed_url = 'http://careers.stackoverflow.com/jobs/feed?allowsremote=True'
   @@last_job = nil #Holds the last job so we can tell when the feed is updated
@@ -45,13 +43,7 @@ class Jobs
     end
   end
   
-  def initialize(*args)
-    super
-    @@timer.every '5m', :first_in => '5s' do
-        populate_feed()
-    end
-  end
-  
+  timer 300, method: :populate_feed
   def populate_feed()
     @@feed ||= Feedjira::Feed.fetch_and_parse(@@feed_url)
     @@feed = Feedjira::Feed.update(@@feed)
