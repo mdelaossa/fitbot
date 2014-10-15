@@ -5,7 +5,7 @@ class Jobs
   
   require 'feedjira'
 
-  @@feed = nil #RSS feed
+  @feed = nil #RSS feed
   @@feed_url = 'http://careers.stackoverflow.com/jobs/feed?allowsremote=True'
   
   match /jobs\s+((?:un)?sub)/i, method: :subscribe, group: :jobs
@@ -16,12 +16,12 @@ class Jobs
     number ||= 1
     number = number.to_i
     number = 4 if number > 4
-    populate_feed if @@feed.nil?
+    populate_feed if @feed.nil?
     
     reply = ""
     
     number.times do |time|
-      job = @@feed.entries[time]
+      job = @feed.entries[time]
       reply += "✎| #{job.title} · #{job.url}\n"
     end
     
@@ -46,10 +46,10 @@ class Jobs
   
   def populate_feed
     info 'Populating feed'
-    @@feed ||= Feedjira::Feed.fetch_and_parse(@@feed_url)
-    @@feed = Feedjira::Feed.update(@@feed)
+    @feed ||= Feedjira::Feed.fetch_and_parse(@@feed_url)
+    @feed = Feedjira::Feed.update(@feed)
 
-    if @@feed.updated?
+    if @feed.updated?
       info 'Feed updated'
       new_job_notification
     end
@@ -57,7 +57,7 @@ class Jobs
   
   def new_job_notification
     message = ""
-    @@feed.new_entries.each_with_index do |job, index|
+    @feed.new_entries.each_with_index do |job, index|
       break if index >= 4
       message += "✎| #{job.title} · #{job.url}\n"
     end
