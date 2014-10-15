@@ -7,14 +7,16 @@ class Jobs
 
   @@feed = nil #RSS feed
   @@feed_url = 'http://careers.stackoverflow.com/jobs/feed?allowsremote=True'
-  @@last_job = nil #Holds the last job so we can tell when the feed is updated
   
-  match /jobs(?:\s+(\d+))?/i, method: :get_jobs
+  match /jobs\s+((?:un)?sub)/i, method: :subscribe, group: :jobs
+  match /jobs(?:\s+(\d+))?/i, method: :get_jobs, group: :jobs
+  timer 300, method: :populate_feed
+  
   def get_jobs(m, number)
     number ||= 1
     number = number.to_i
     number = 4 if number > 4
-    populate_feed() if @@feed.nil?
+    populate_feed if @@feed.nil?
     
     reply = ""
     
@@ -27,7 +29,6 @@ class Jobs
     
   end
   
-  match /jobs\s+((?:un)?sub)/i, method: :subscribe
   def subscribe(m, action)
     begin
       case action
@@ -43,17 +44,18 @@ class Jobs
     end
   end
   
-  timer 300, method: :populate_feed
-  def populate_feed()
+  def populate_feed
+    info 'Populating feed'
     @@feed ||= Feedjira::Feed.fetch_and_parse(@@feed_url)
     @@feed = Feedjira::Feed.update(@@feed)
-    
+
     if @@feed.updated?
+      info 'Feed updated'
       new_job_notification
     end
   end
   
-  def new_job_notification()
+  def new_job_notification
     message = ""
     @@feed.new_entries.each_with_index do |job, index|
       break if index >= 4
@@ -62,7 +64,7 @@ class Jobs
     #TODO: send update to channels subscribed
     channels = JobSubscription.all(:network => @bot.irc.network.name)
     channels.each do |channel|
-      Channel(channel).send message
+      Channel(channel.channel).send message
     end
   end
   
