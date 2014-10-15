@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby '1.9.3'
 
-gem "cinch"
+gem "cinch", '~> 2.0'
 gem "mechanize"
 gem "nokogiri", '1.6.0'
 gem "bitly"

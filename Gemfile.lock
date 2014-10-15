@@ -8,7 +8,7 @@ GEM
       httparty (>= 0.7.6)
       oauth2 (>= 0.5.0, < 0.9)
     chronic (0.9.0)
-    cinch (2.0.3)
+    cinch (2.1.0)
     cinch-identify (1.5.0)
       cinch (~> 2.0)
     crack (0.3.2)
@@ -166,7 +166,7 @@ PLATFORMS
 DEPENDENCIES
   bitly
   chronic
-  cinch
+  cinch (~> 2.0)
   cinch-identify
   data_mapper
   dm-core
