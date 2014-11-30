@@ -309,6 +309,7 @@ match /fact(?:oid)? unprotect (.+)/i, method: :unprotectFactoid
                 end
                 val = factoid.factoid_values.first(:value.like => "%#{regex}%")
                 val.destroy
+                factoid.destroy if factoid.factoid_values.length == 0
                 m.reply "FactoidDB | Deleted factoid: '#{factoid.name}' => '#{val.value}'", true
             end
         rescue Exception => x
