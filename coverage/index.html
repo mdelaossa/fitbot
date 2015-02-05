@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-05T17:21:59+00:00">2015-02-05T17:21:59+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-05T21:16:00+00:00">2015-02-05T21:16:00+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">21.54%</span></span>
+    (<span class="covered_percent"><span class="red">21.64%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>30</b> files in total.
-    <b>1880</b> relevant lines. 
-    <span class="green"><b>405</b> lines covered</span> and
-    <span class="red"><b>1475</b> lines missed </span>
+    <b>1881</b> relevant lines. 
+    <span class="green"><b>407</b> lines covered</span> and
+    <span class="red"><b>1474</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -182,11 +182,11 @@
       
       <tr>
         <td class="strong"><a href="#66017b68fa068c111ef0a270ade7582b14528a1a" class="src_link" title="lib/plugins/lift_tracker.rb">lib/plugins/lift_tracker.rb</a></td>
-        <td class="red strong">19.78 %</td>
-        <td>143</td>
-        <td>91</td>
-        <td>18</td>
-        <td>73</td>
+        <td class="red strong">21.74 %</td>
+        <td>145</td>
+        <td>92</td>
+        <td>20</td>
+        <td>72</td>
         <td>0.2</td>
       </tr>
       
@@ -359,7 +359,7 @@
           <div class="file_list_container" id="Plugins">
   <h2>
     <span class="group_name">Plugins</span>
-    (<span class="covered_percent"><span class="red">20.04%</span></span>
+    (<span class="covered_percent"><span class="red">20.15%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -370,9 +370,9 @@
   <a name="Plugins"></a>
   <div>
     <b>27</b> files in total.
-    <b>1781</b> relevant lines. 
-    <span class="green"><b>357</b> lines covered</span> and
-    <span class="red"><b>1424</b> lines missed </span>
+    <b>1782</b> relevant lines. 
+    <span class="green"><b>359</b> lines covered</span> and
+    <span class="red"><b>1423</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -510,11 +510,11 @@
       
       <tr>
         <td class="strong"><a href="#66017b68fa068c111ef0a270ade7582b14528a1a" class="src_link" title="lib/plugins/lift_tracker.rb">lib/plugins/lift_tracker.rb</a></td>
-        <td class="red strong">19.78 %</td>
-        <td>143</td>
-        <td>91</td>
-        <td>18</td>
-        <td>73</td>
+        <td class="red strong">21.74 %</td>
+        <td>145</td>
+        <td>92</td>
+        <td>20</td>
+        <td>72</td>
         <td>0.2</td>
       </tr>
       
@@ -12263,11 +12263,11 @@
         <div class="source_table" id="66017b68fa068c111ef0a270ade7582b14528a1a">
   <div class="header">
     <h3>lib/plugins/lift_tracker.rb</h3>
-    <h4><span class="red">19.78 %</span> covered</h4>
+    <h4><span class="red">21.74 %</span> covered</h4>
     <div>
-      <b>91</b> relevant lines. 
-      <span class="green"><b>18</b> lines covered</span> and
-      <span class="red"><b>73</b> lines missed.</span>
+      <b>92</b> relevant lines. 
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>72</b> lines missed.</span>
     </div>
   </div>
   
@@ -12289,844 +12289,856 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">class LiftTracker</code>
+          <code class="ruby">require 'ruby-units'</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">    include Cinch::Plugin</code>
+          <code class="ruby">require 'mathn'</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">    include UtilityFunctions</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">    </code>
+          <code class="ruby">class LiftTracker</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">    match /lift$/i, method: :getLift</code>
+          <code class="ruby">    include Cinch::Plugin</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
+          <code class="ruby">    include UtilityFunctions</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    match /lift$/i, method: :getLift</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
           <code class="ruby">    def getLift(m)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="9">
+        <li class="missed" data-hits="0" data-linenumber="12">
           
           
           <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="10">
+        <li class="missed" data-hits="0" data-linenumber="13">
           
           
           <code class="ruby">        getLiftForUser(m, m.user.nick)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
+        <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
           <code class="ruby">    match /lift (\S+)$/i, method: :getLiftForUser</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
           <code class="ruby">    def getLiftForUser(m, user)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="15">
+        <li class="missed" data-hits="0" data-linenumber="18">
           
           
           <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="16">
+        <li class="missed" data-hits="0" data-linenumber="19">
           
           
           <code class="ruby">        begin</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="17">
-          
-          
-          <code class="ruby">    		nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="18">
-          
-          
-          <code class="ruby">            metric = nick.metric #Get metric preference before switching target</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby">            </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="20">
           
           
-          <code class="ruby">            nick = Nick.first :nick =&gt; user.downcase</code>
+          <code class="ruby">    		nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="21">
           
           
-          <code class="ruby">            if nick.nil?</code>
+          <code class="ruby">            metric = nick.metric #Get metric preference before switching target</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby">                m.reply &quot;LiftTracker | No lifts for #{user}&quot;, true</code>
+          <code class="ruby">            </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="missed" data-hits="0" data-linenumber="23">
           
           
-          <code class="ruby">            else</code>
+          <code class="ruby">            nick = Nick.first :nick =&gt; user.downcase</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">                lifts = getLifts(nick, metric)</code>
+          <code class="ruby">            if nick.nil?</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">                if lifts.empty?</code>
+          <code class="ruby">                m.reply &quot;LiftTracker | No lifts for #{user}&quot;, true</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">                    m.reply &quot;LiftTracker | No lifts for #{user}&quot;, true</code>
+          <code class="ruby">            else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="missed" data-hits="0" data-linenumber="27">
           
           
-          <code class="ruby">                else</code>
+          <code class="ruby">                lifts = getLifts(nick, metric)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="28">
           
           
-          <code class="ruby">                    m.reply &quot;LiftTracker | #{user} (#{nick.gender} #{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(&quot;, &quot;)}&quot;, true</code>
+          <code class="ruby">                if lifts.empty?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="missed" data-hits="0" data-linenumber="29">
           
           
-          <code class="ruby">                end</code>
+          <code class="ruby">                    m.reply &quot;LiftTracker | No lifts for #{user}&quot;, true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">            end</code>
+          <code class="ruby">                else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="31">
           
           
-          <code class="ruby">    	rescue Exception =&gt; x</code>
+          <code class="ruby">                    m.reply &quot;LiftTracker | #{user} (#{nick.gender} #{getHeight(nick, metric)} #{getWeight(nick, metric)}) | #{lifts.join(&quot;, &quot;)}&quot;, true</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="32">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">            error x.message</code>
+          <code class="ruby">                end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="33">
+        <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">            error x.backtrace.inspect</code>
+          <code class="ruby">            end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="34">
           
           
+          <code class="ruby">    	rescue Exception =&gt; x</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="35">
+          
+          
+          <code class="ruby">            error x.message</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="36">
+          
+          
+          <code class="ruby">            error x.backtrace.inspect</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="37">
+          
+          
           <code class="ruby">			m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
           <code class="ruby">    match /lift add (\w+) (\d+(?:\.\d+)?)(?:\s+(\d+))?$/i, method: :addLiftNoUnit</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">    def addLiftNoUnit(m, lift, weight, reps)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
-          
-          
-          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="41">
-          
-          
-          <code class="ruby">        begin</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="42">
-          
-          
-          <code class="ruby">            nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="43">
           
           
-          <code class="ruby">            unit = nick.metric ? 'kg' : 'lb'</code>
+          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="44">
           
           
-          <code class="ruby">            addLift(m, lift, weight, unit, reps)</code>
+          <code class="ruby">        begin</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="45">
           
           
-          <code class="ruby">        rescue Exception =&gt; x</code>
+          <code class="ruby">            nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="46">
           
           
-          <code class="ruby">            error x.message</code>
+          <code class="ruby">            unit = nick.metric ? 'kg' : 'lb'</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="47">
           
           
-          <code class="ruby">            error x.backtrace.inspect</code>
+          <code class="ruby">            addLift(m, lift, weight, unit, reps)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="48">
           
           
+          <code class="ruby">        rescue Exception =&gt; x</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="49">
+          
+          
+          <code class="ruby">            error x.message</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="50">
+          
+          
+          <code class="ruby">            error x.backtrace.inspect</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="51">
+          
+          
           <code class="ruby">        	m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="never" data-hits="" data-linenumber="52">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="54">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="52">
+        <li class="covered" data-hits="1" data-linenumber="55">
           <span class="hits">1</span>
           
           <code class="ruby">    match /lift add (\w+) (\d+(?:\.\d+)?)\s?([a-zA-Z]+)(?:\s+(\d+))?/i, method: :addLift</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
+        <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
           <code class="ruby">    def addLift(m, lift, weight, unit, reps)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
-          
-          
-          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
-          
-          <code class="ruby">        begin</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
-          
-          <code class="ruby">            nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="57">
           
           
-          <code class="ruby">            reps ||= 1</code>
+          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="58">
           
           
-          <code class="ruby">            case unit</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="59">
-          
-          
-          <code class="ruby">            when /kgs?|kilo(?:gram)?s?/</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="60">
-          
-          
-          <code class="ruby">                unit = 'kg'</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="61">
-          
-          
-          <code class="ruby">            when /lbs?|pounds?/</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="62">
-          
-          
-          <code class="ruby">                unit = 'lb'</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
-          
-          <code class="ruby">            else raise &quot;Invalid unit&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="64">
-          
-          
-          <code class="ruby">            end</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="65">
-          
-          
-          <code class="ruby">            nick.lifts.first_or_create( :lift =&gt; lift.downcase ).update( :weight =&gt; weight, :unit =&gt; unit, :reps =&gt; reps )</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="66">
-          
-          
-          <code class="ruby">            m.reply &quot;LiftTracker | Added lift: #{lift}. Weight: #{weight}#{unit}. Reps: #{reps}&quot;, true</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="67">
-          
-          
-          <code class="ruby">        rescue Exception =&gt; x</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="68">
-          
-          
-          <code class="ruby">            error x.message</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="69">
-          
-          
-          <code class="ruby">            error x.backtrace.inspect</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="70">
-          
-          
-          <code class="ruby">    		m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="71">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="72">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="73">
-          
-          
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="74">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    match /lift (?:remove|rm) (\w+)/i, method: :removeLift</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="75">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def removeLift(m, lift)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="76">
-          
-          
-          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby">        </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="78">
-          
-          
           <code class="ruby">        begin</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="79">
+        <li class="missed" data-hits="0" data-linenumber="59">
           
           
           <code class="ruby">            nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="80">
+        <li class="missed" data-hits="0" data-linenumber="60">
           
           
-          <code class="ruby">            lift = nick.lifts.first( :lift =&gt; lift.downcase )</code>
+          <code class="ruby">            reps ||= 1</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="81">
+        <li class="missed" data-hits="0" data-linenumber="61">
           
           
-          <code class="ruby">            if lift.nil?</code>
+          <code class="ruby">            case unit</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="82">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">                raise &quot;Lift does not exist&quot;</code>
+          <code class="ruby">            when /kgs?|kilo(?:gram)?s?/</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="missed" data-hits="0" data-linenumber="63">
           
           
-          <code class="ruby">            else</code>
+          <code class="ruby">                unit = 'kg'</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby">                lift.destroy</code>
+          <code class="ruby">            when /lbs?|pounds?/</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="85">
+        <li class="missed" data-hits="0" data-linenumber="65">
           
           
-          <code class="ruby">                m.reply &quot;LiftTracker | Deleted lift: #{lift.lift}&quot;, true</code>
+          <code class="ruby">                unit = 'lb'</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">            else raise &quot;Invalid unit&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
           
           
           <code class="ruby">            end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="87">
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">            nick.lifts.first_or_create( :lift =&gt; lift.downcase ).update( :weight =&gt; weight, :unit =&gt; unit, :reps =&gt; reps )</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">            m.reply &quot;LiftTracker | Added lift: #{lift}. Weight: #{weight}#{unit}. Reps: #{reps}&quot;, true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="70">
           
           
           <code class="ruby">        rescue Exception =&gt; x</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="88">
+        <li class="missed" data-hits="0" data-linenumber="71">
           
           
           <code class="ruby">            error x.message</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="89">
+        <li class="missed" data-hits="0" data-linenumber="72">
           
           
           <code class="ruby">            error x.backtrace.inspect</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="90">
+        <li class="missed" data-hits="0" data-linenumber="73">
           
           
-          <code class="ruby">        	m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
+          <code class="ruby">    		m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="92">
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="76">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="94">
+        <li class="covered" data-hits="1" data-linenumber="77">
           <span class="hits">1</span>
           
-          <code class="ruby">    def to_kg (weight)</code>
+          <code class="ruby">    match /lift (?:remove|rm) (\w+)/i, method: :removeLift</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="95">
-          
-          
-          <code class="ruby">        (weight / 2.20462).round(2)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="96">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="97">
-          
-          
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="98">
+        <li class="covered" data-hits="1" data-linenumber="78">
           <span class="hits">1</span>
           
-          <code class="ruby">    def to_lb (weight)</code>
+          <code class="ruby">    def removeLift(m, lift)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="99">
+        <li class="missed" data-hits="0" data-linenumber="79">
           
           
-          <code class="ruby">        (weight * 2.20462).round(2)</code>
+          <code class="ruby">        return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="100">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="101">
+        <li class="missed" data-hits="0" data-linenumber="81">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">        begin</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="102">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="82">
           
-          <code class="ruby">    def getLifts (nick, metric = true)</code>
+          
+          <code class="ruby">            nick = Nick.first_or_create :nick =&gt; m.user.nick.downcase</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="103">
+        <li class="missed" data-hits="0" data-linenumber="83">
           
           
-          <code class="ruby">        lifts = []</code>
+          <code class="ruby">            lift = nick.lifts.first( :lift =&gt; lift.downcase )</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="104">
+        <li class="missed" data-hits="0" data-linenumber="84">
           
           
-          <code class="ruby">        nick.lifts.all(:fields=&gt;[:lift, :weight, :unit, :reps]).each { |lift|</code>
+          <code class="ruby">            if lift.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="105">
+        <li class="missed" data-hits="0" data-linenumber="85">
           
           
-          <code class="ruby">            if metric</code>
+          <code class="ruby">                raise &quot;Lift does not exist&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="106">
-          
-          
-          <code class="ruby">                case lift.unit</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="107">
-          
-          
-          <code class="ruby">                when 'kg'</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="108">
-          
-          
-          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{lift.weight}#{lift.unit}x#{lift.reps}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="109">
-          
-          
-          <code class="ruby">                when 'lb'</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="110">
-          
-          
-          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{to_kg(lift.weight)}kgx#{lift.reps}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby">                end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="112">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby">            else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="113">
+        <li class="missed" data-hits="0" data-linenumber="87">
           
           
-          <code class="ruby">                case lift.unit</code>
+          <code class="ruby">                lift.destroy</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="114">
+        <li class="missed" data-hits="0" data-linenumber="88">
           
           
-          <code class="ruby">                when 'kg'</code>
+          <code class="ruby">                m.reply &quot;LiftTracker | Deleted lift: #{lift.lift}&quot;, true</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="115">
-          
-          
-          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{to_lb(lift.weight)}lbx#{lift.reps}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="116">
-          
-          
-          <code class="ruby">                when 'lb'</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="117">
-          
-          
-          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{lift.weight}#{lift.unit}x#{lift.reps}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="118">
-          
-          
-          <code class="ruby">                end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="119">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
           <code class="ruby">            end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="120">
+        <li class="missed" data-hits="0" data-linenumber="90">
+          
+          
+          <code class="ruby">        rescue Exception =&gt; x</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="91">
+          
+          
+          <code class="ruby">            error x.message</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="92">
+          
+          
+          <code class="ruby">            error x.backtrace.inspect</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="93">
+          
+          
+          <code class="ruby">        	m.reply &quot;LiftTracker | Error | #{x.message}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="97">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def to_kg (weight)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
+          
+          <code class="ruby">        (weight / 2.20462).round(2)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="101">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def to_lb (weight)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="102">
+          
+          
+          <code class="ruby">        (weight * 2.20462).round(2)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="104">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="105">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def getLifts (nick, metric = true)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="106">
+          
+          
+          <code class="ruby">        lifts = []</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="107">
+          
+          
+          <code class="ruby">        nick.lifts.all(:fields=&gt;[:lift, :weight, :unit, :reps]).each { |lift|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="108">
+          
+          
+          <code class="ruby">            if metric</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="109">
+          
+          
+          <code class="ruby">                case lift.unit</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="110">
+          
+          
+          <code class="ruby">                when 'kg'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="111">
+          
+          
+          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{lift.weight}#{lift.unit}x#{lift.reps}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="112">
+          
+          
+          <code class="ruby">                when 'lb'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="113">
+          
+          
+          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{to_kg(lift.weight)}kgx#{lift.reps}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">                end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby">            else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="116">
+          
+          
+          <code class="ruby">                case lift.unit</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby">                when 'kg'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="118">
+          
+          
+          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{to_lb(lift.weight)}lbx#{lift.reps}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="119">
+          
+          
+          <code class="ruby">                when 'lb'</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="120">
+          
+          
+          <code class="ruby">                    lifts &lt;&lt; &quot;#{lift.lift}: #{lift.weight}#{lift.unit}x#{lift.reps}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby">                end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
+          <code class="ruby">            end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="123">
           
           
           <code class="ruby">        }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="121">
+        <li class="missed" data-hits="0" data-linenumber="124">
           
           
           <code class="ruby">        debug nick.lifts.all(:fields=&gt;[:lift, :weight, :unit, :reps]).inspect</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="122">
+        <li class="missed" data-hits="0" data-linenumber="125">
           
           
           <code class="ruby">        debug lifts.inspect</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="123">
+        <li class="missed" data-hits="0" data-linenumber="126">
           
           
           <code class="ruby">        lifts</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="never" data-hits="" data-linenumber="127">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="125">
+        <li class="never" data-hits="" data-linenumber="128">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="126">
+        <li class="covered" data-hits="1" data-linenumber="129">
           <span class="hits">1</span>
           
           <code class="ruby">    def getHeight(nick, metric = true)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="127">
-          
-          
-          <code class="ruby">        if metric</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="128">
-          
-          
-          <code class="ruby">            &quot;#{(nick.height / 100).round(2)}m&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="129">
-          
-          
-          <code class="ruby">        else</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="130">
           
           
-          <code class="ruby">            height_in_ft = (nick.height / 2.54 / 12)</code>
+          <code class="ruby">        if metric</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="131">
           
           
-          <code class="ruby">            &quot;#{height_in_ft.to_i}'#{((height_in_ft - height_in_ft.to_i)*12).round(0)}\&quot;&quot; #decimals * 12 /10 * 10</code>
+          <code class="ruby">            &quot;#{(nick.height / 100).round(2)}m&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="132">
           
           
-          <code class="ruby">        end</code>
+          <code class="ruby">        else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="133">
+        <li class="missed" data-hits="0" data-linenumber="133">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">            &quot;#{nick.height} cm&quot;.unit.to_s(:ft)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="134">
           
           
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="135">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def getWeight(nick, metric = true)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="136">
-          
-          
-          <code class="ruby">        if metric</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="137">
-          
-          
-          <code class="ruby">            &quot;#{nick.weight}kg&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="138">
-          
-          
-          <code class="ruby">        else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="139">
-          
-          
-          <code class="ruby">            &quot;#{(to_lb(nick.weight)).round(2)}lb&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="140">
-          
-          
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="141">
+        <li class="never" data-hits="" data-linenumber="135">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="142">
+        <li class="never" data-hits="" data-linenumber="136">
           
           
           <code class="ruby">    </code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="137">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def getWeight(nick, metric = true)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="138">
+          
+          
+          <code class="ruby">        if metric</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="139">
+          
+          
+          <code class="ruby">            &quot;#{nick.weight}kg&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="140">
+          
+          
+          <code class="ruby">        else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="141">
+          
+          
+          <code class="ruby">            &quot;#{(to_lb(nick.weight)).round(2)}lb&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="142">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="143">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="144">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="145">
           
           
           <code class="ruby">end</code>
