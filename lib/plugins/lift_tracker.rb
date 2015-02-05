@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+require 'ruby-units'
+require 'mathn'
+
 class LiftTracker
     include Cinch::Plugin
     include UtilityFunctions
@@ -127,8 +130,7 @@ class LiftTracker
         if metric
             "#{(nick.height / 100).round(2)}m"
         else
-            height_in_ft = (nick.height / 2.54 / 12)
-            "#{height_in_ft.to_i}'#{((height_in_ft - height_in_ft.to_i)*12).round(0)}\"" #decimals * 12 /10 * 10
+            "#{nick.height} cm".unit.to_s(:ft)
         end
     end
     
