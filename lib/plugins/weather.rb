@@ -39,7 +39,7 @@ class Weather
             
             conditions = wunderground.conditions_for argument
             
-            raise 'Unknown location' if conditions.nil?
+            raise 'Unknown location' if conditions.nil? || conditions["current_observation"].nil?
             
             city        = conditions["current_observation"]["display_location"]["full"]
             condition   = conditions["current_observation"]["weather"]
