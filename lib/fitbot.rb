@@ -16,6 +16,16 @@ class Hash ##nicer accesors for hashmap values
     end
 end
 
+class Object
+  ##
+  #   @person ? @person.name : nil
+  # vs
+  #   @person.try(:name)
+  def try(method)
+    send method if respond_to? method
+  end
+end
+
 class Fitbot
     require 'rubygems'
     require 'cinch'

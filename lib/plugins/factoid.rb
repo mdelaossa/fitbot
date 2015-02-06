@@ -16,6 +16,10 @@ class FactoidDB
         return $SHUTUP
     end
     
+    def getValues(factoid, channel = nil)
+        factoid.factoid_values.all(:network => @bot.irc.network.name, :channel => channel) + factoid.factoid_values.all(:network => nil, :channel => nil)
+    end
+    
     listen_to :channel
     def listen(m)
         unless m.message =~ /^\./ || $SHUTUP
@@ -24,14 +28,15 @@ class FactoidDB
             	            
                 factoid = Factoid.first :name => m.message.downcase
                 if !factoid.nil?
-                    m.reply "#{factoid.factoid_values.all.sample.value}", false
+                    factoid_value = getValues(factoid, m.channel).sample.value
                 else
                     Factoid.wildcard.all.each { |x| 
                         if m.message.downcase =~ /\b#{x.name}\b/
-                            m.reply "#{x.factoid_values.all.sample.value}", false
+                            factoid_value = getValues(x, m.channel).sample.value
                         end
                     }
                 end
+                m.reply factoid_value, false unless factoid_value.nil?
         	rescue Exception => x
                 error x.message
                 error x.backtrace.inspect
@@ -48,7 +53,10 @@ class FactoidDB
     		rows = ""
 
 			Factoid.all.each do |item|
-				rows = rows + item.name + "\n"
+				rows += item.name + "\n" 
+				item.factoid_values.each do |value|
+				    rows += "\t- #{value.value} | by: #{value.addedBy} in: #{value.network}/#{value.channel}\n"
+				end
 			end
 
 			url = pastebin.paste rows
@@ -92,7 +100,7 @@ class FactoidDB
                 m.reply "FactoidDB | No factoid found for key '#{name.downcase}'", true
             else        
                 values = []
-                factoid.factoid_values.all(:fields=>[:value]).each { |val| values << val.value }
+                getValues(factoid, m.channel).each { |val| values << val.value }
                 vals = values.join(" || ")
                 if vals.length > 400
                     pastebin = Pastebin.new
@@ -121,7 +129,7 @@ class FactoidDB
             if factoid.nil?
                 m.reply "FactoidDB | No factoid found for key '#{name.downcase}'", true
             else        
-                ans = factoid.factoid_values.first(:value.like => "%#{regex}%")
+                ans = getValues(factoid, m.channel).first :value.like => "%#{regex}%"
                 if ans.nil?
                     m.reply "FactoidDB | No factoid found containing '#{regex}' in key '#{name.downcase}'"
                 else
@@ -146,7 +154,7 @@ class FactoidDB
             if factoid.nil?
                 m.reply "FactoidDB | No factoid found for key '#{name.downcase}'", true
             else        
-                m.reply "FactoidDB | #{factoid.name} | #{factoid.factoid_values.all.sample.value}", true
+                m.reply "FactoidDB | #{factoid.name} | #{getValues(factoid, m.channel).sample.value}", true
             end
     	rescue Exception => x
             error x.message
@@ -170,7 +178,7 @@ class FactoidDB
                 end
             end
             factoid.update :wildcard => true
-            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getAuthOrNick(m.user) })
+            val = factoid.factoid_values.first_or_create :value => value,  :addedBy => getAuthOrNick(m.user), :network => @bot.irc.network.name, :channel => m.channel
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
         rescue Exception => x
@@ -193,7 +201,7 @@ class FactoidDB
                         return
                     end
                 end
-            val = factoid.factoid_values.first_or_create({ :value => value }, { :addedBy => getAuthOrNick(m.user) })
+            val = factoid.factoid_values.first_or_create :value => value , :addedBy => getAuthOrNick(m.user), :network => @bot.irc.network.name, :channel => m.channel
             m.reply "FactoidDB | Added: '#{name}' => '#{value}'"
             debug val.inspect
         rescue Exception => x
@@ -205,6 +213,7 @@ class FactoidDB
     
     match /fact(?:oid)? wildcard (?:on|off|toggle) (.+)/i, method: :toggleWildcard
     def toggleWildcard(m, name)
+        return unless check_admin(m.user)
         return unless ignore_nick(m.user.nick).nil?
         begin
             factoid = Factoid.first :name => name.downcase
@@ -281,7 +290,7 @@ match /fact(?:oid)? unprotect (.+)/i, method: :unprotectFactoid
                 if val.addedBy.nil?
                     m.reply "FactoidDB | No blame info for '#{factoid.name}' => '#{val.value}'", true
                 else
-                    m.reply "FactoidDB | '#{val.addedBy}' is to blame for: '#{factoid.name}' => '#{val.value}'", true
+                    m.reply "FactoidDB | '#{val.addedBy}' from '#{val.network}/#{val.channel}' is to blame for: '#{factoid.name}' => '#{val.value}'", true
                 end
             end
         rescue Exception => x

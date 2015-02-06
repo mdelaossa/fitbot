@@ -17,6 +17,7 @@ class Factoid
     def self.wildcard
         all(:wildcard => true)
     end
+    
 end
 
 class FactoidValue
@@ -25,6 +26,8 @@ class FactoidValue
     property :id,       Serial
     property :value,    String,     :length => 500
     property :addedBy,  String
+    property :network,  String,     :index => :chan_index
+    property :channel,  String,     :index => :chan_index ##composite index with :network
 end
 
 class Nick
