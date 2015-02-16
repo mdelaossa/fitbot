@@ -112,6 +112,11 @@ class Fitbot
                           :type     => :nickserv
                         }
                     end
+                    
+                    on :message, "ping" do |m|
+                        m.reply "pong!", true
+                    end
+                    
                 end
                 
                 Thread.current[:bot] = bot
