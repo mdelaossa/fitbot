@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-06T17:05:37+00:00">2015-02-06T17:05:37+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-16T21:51:32+00:00">2015-02-16T21:51:32+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">21.69%</span></span>
+    (<span class="covered_percent"><span class="red">21.67%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>30</b> files in total.
-    <b>1890</b> relevant lines. 
+    <b>1892</b> relevant lines. 
     <span class="green"><b>410</b> lines covered</span> and
-    <span class="red"><b>1480</b> lines missed </span>
+    <span class="red"><b>1482</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,11 +52,11 @@
       
       <tr>
         <td class="strong"><a href="#ce2cfb312822525c18d9bcf6029fad9bf679ee9b" class="src_link" title="lib/fitbot.rb">lib/fitbot.rb</a></td>
-        <td class="red strong">50.0 %</td>
-        <td>147</td>
-        <td>78</td>
+        <td class="red strong">48.75 %</td>
+        <td>152</td>
+        <td>80</td>
         <td>39</td>
-        <td>39</td>
+        <td>41</td>
         <td>0.5</td>
       </tr>
       
@@ -666,7 +666,7 @@
           <div class="file_list_container" id="Ungrouped">
   <h2>
     <span class="group_name">Ungrouped</span>
-    (<span class="covered_percent"><span class="red">49.02%</span></span>
+    (<span class="covered_percent"><span class="red">48.08%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -677,9 +677,9 @@
   <a name="Ungrouped"></a>
   <div>
     <b>3</b> files in total.
-    <b>102</b> relevant lines. 
+    <b>104</b> relevant lines. 
     <span class="green"><b>50</b> lines covered</span> and
-    <span class="red"><b>52</b> lines missed </span>
+    <span class="red"><b>54</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -697,11 +697,11 @@
       
       <tr>
         <td class="strong"><a href="#ce2cfb312822525c18d9bcf6029fad9bf679ee9b" class="src_link" title="lib/fitbot.rb">lib/fitbot.rb</a></td>
-        <td class="red strong">50.0 %</td>
-        <td>147</td>
-        <td>78</td>
+        <td class="red strong">48.75 %</td>
+        <td>152</td>
+        <td>80</td>
         <td>39</td>
-        <td>39</td>
+        <td>41</td>
         <td>0.5</td>
       </tr>
       
@@ -743,11 +743,11 @@
         <div class="source_table" id="ce2cfb312822525c18d9bcf6029fad9bf679ee9b">
   <div class="header">
     <h3>lib/fitbot.rb</h3>
-    <h4><span class="red">50.0 %</span> covered</h4>
+    <h4><span class="red">48.75 %</span> covered</h4>
     <div>
-      <b>78</b> relevant lines. 
+      <b>80</b> relevant lines. 
       <span class="green"><b>39</b> lines covered</span> and
-      <span class="red"><b>39</b> lines missed.</span>
+      <span class="red"><b>41</b> lines missed.</span>
     </div>
   </div>
   
@@ -1441,85 +1441,85 @@
         <li class="never" data-hits="" data-linenumber="115">
           
           
-          <code class="ruby">                end</code>
+          <code class="ruby">                    </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="116">
+        <li class="missed" data-hits="0" data-linenumber="116">
           
           
-          <code class="ruby">                </code>
+          <code class="ruby">                    on :message, &quot;ping&quot; do |m|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="117">
           
           
-          <code class="ruby">                Thread.current[:bot] = bot</code>
+          <code class="ruby">                        m.reply &quot;pong!&quot;, true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="118">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">                    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="119">
+        <li class="never" data-hits="" data-linenumber="119">
           
           
-          <code class="ruby">                bot.start</code>
+          <code class="ruby">                    </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="120">
           
           
-          <code class="ruby">            }</code>
+          <code class="ruby">                end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="121">
           
           
-          <code class="ruby">            </code>
+          <code class="ruby">                </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="122">
           
           
-          <code class="ruby">            @@bots &lt;&lt; thread</code>
+          <code class="ruby">                Thread.current[:bot] = bot</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="123">
           
           
-          <code class="ruby">        }</code>
+          <code class="ruby">    </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="missed" data-hits="0" data-linenumber="124">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">                bot.start</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="125">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">            }</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="126">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="126">
           
-          <code class="ruby">    def self.restart</code>
+          
+          <code class="ruby">            </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="127">
           
           
-          <code class="ruby">        self.stop</code>
+          <code class="ruby">            @@bots &lt;&lt; thread</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="128">
+        <li class="never" data-hits="" data-linenumber="128">
           
           
-          <code class="ruby">        self.start</code>
+          <code class="ruby">        }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="129">
@@ -1537,100 +1537,130 @@
         <li class="covered" data-hits="1" data-linenumber="131">
           <span class="hits">1</span>
           
-          <code class="ruby">    def self.stop</code>
+          <code class="ruby">    def self.restart</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="132">
           
           
-          <code class="ruby">        @@bots.each { |thread|</code>
+          <code class="ruby">        self.stop</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="133">
           
           
-          <code class="ruby">            thread[:bot].quit &quot;Quitting&quot;</code>
+          <code class="ruby">        self.start</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="134">
           
           
-          <code class="ruby">        }</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="135">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="136">
-          
-          
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="137">
+        <li class="covered" data-hits="1" data-linenumber="136">
           <span class="hits">1</span>
           
-          <code class="ruby">    @@bots.each {|thread| thread.join}</code>
+          <code class="ruby">    def self.stop</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="138">
+        <li class="missed" data-hits="0" data-linenumber="137">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">        @@bots.each { |thread|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="138">
+          
+          
+          <code class="ruby">            thread[:bot].quit &quot;Quitting&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="139">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby">        }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="140">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="141">
+        <li class="never" data-hits="" data-linenumber="141">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="142">
           <span class="hits">1</span>
           
-          <code class="ruby">trap('SIGTERM') do ##For some reason threads aren't stopping on heroku. Attempted fix</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="142">
-          
-          
-          <code class="ruby">    Fitbot.stop</code>
+          <code class="ruby">    @@bots.each {|thread| thread.join}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="143">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby">    </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="144">
           
           
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="145">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="145">
+        <li class="covered" data-hits="1" data-linenumber="146">
           <span class="hits">1</span>
           
-          <code class="ruby">trap('SIGINT') do ##Clean break on CTRL+C</code>
+          <code class="ruby">trap('SIGTERM') do ##For some reason threads aren't stopping on heroku. Attempted fix</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="146">
+        <li class="missed" data-hits="0" data-linenumber="147">
           
           
           <code class="ruby">    Fitbot.stop</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="147">
+        <li class="never" data-hits="" data-linenumber="148">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="149">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="150">
+          <span class="hits">1</span>
+          
+          <code class="ruby">trap('SIGINT') do ##Clean break on CTRL+C</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="151">
+          
+          
+          <code class="ruby">    Fitbot.stop</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="152">
           
           
           <code class="ruby">end</code>
