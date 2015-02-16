@@ -113,7 +113,7 @@ class Fitbot
                         }
                     end
                     
-                    on :message, /(?:\.)?ping/ do |m|
+                    on :message, /^(?:\.)?ping/ do |m|
                         m.reply "pong!", true
                     end
                     
