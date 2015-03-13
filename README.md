@@ -11,5 +11,4 @@ Some of these modules are currently not working but most work properly.
 Not working:
 Twitter
 Bing
-Wilks
 Translate

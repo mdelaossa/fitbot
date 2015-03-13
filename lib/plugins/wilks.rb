@@ -19,7 +19,7 @@ class Wilks
 			c=-0.002388645
 			d=-0.00113732
 			e=0.00000701863
-			f=-0.000000001291
+			f=-0.00000001291
 		else
 			a=594.31747775582
 			b=-27.23842536447
@@ -29,8 +29,10 @@ class Wilks
 			f=-0.00000009054
 		end
 
-		weight = weight/2.2 if scale=="lbs"
-		total = total/2.2 if scale=="lbs"
+		weight = weight/2.20462 if scale=="lbs"
+		total = total/2.20462 if scale=="lbs"
+		
+		debug "Wilks| gender: #{gender}, scale: #{scale}, weight: #{weight}, total: #{total}"
 
 		if reverse
 			total / (500/(a+b*weight+c*(weight**2)+d*(weight**3)+e*(weight**4)+f*(weight**5)))
@@ -41,9 +43,11 @@ class Wilks
     
     match /wilks (\w+) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\w+)/iu, method: :wilks
     def wilks(m, gender, weight, liftingTotal, unit)
-        ["female","woman","women"].include? gender ? gender = "female" : gender = "male"
+        ["female","woman","women"].include?(gender) ? gender = "female" : gender = "male"
         
-        ["lbs","pounds","pound","p","l"].include? unit ? unit = "lbs" : unit = "kgs"
+        ["lbs","pounds","pound","p","l"].include?(unit) ? unit = "lbs" : unit = "kgs"
+        
+        debug "Wilks| gender: #{gender}, unit: #{unit}, weight: #{weight}, total: #{liftingTotal}"
         
         reply = "Ratio: #{get_wilks(gender,weight,liftingTotal,unit)}"
         
