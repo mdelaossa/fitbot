@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-02-16T22:42:42+00:00">2015-02-16T22:42:42+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-13T16:47:20+00:00">2015-03-13T16:47:20+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">21.67%</span></span>
+    (<span class="covered_percent"><span class="red">21.65%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>30</b> files in total.
-    <b>1892</b> relevant lines. 
+    <b>1894</b> relevant lines. 
     <span class="green"><b>410</b> lines covered</span> and
-    <span class="red"><b>1482</b> lines missed </span>
+    <span class="red"><b>1484</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -312,11 +312,11 @@
       
       <tr>
         <td class="strong"><a href="#ec0d4006d19139b391cb688d6c61413bcbe4b840" class="src_link" title="lib/plugins/wilks.rb">lib/plugins/wilks.rb</a></td>
-        <td class="red strong">28.21 %</td>
-        <td>64</td>
-        <td>39</td>
+        <td class="red strong">26.83 %</td>
+        <td>68</td>
+        <td>41</td>
         <td>11</td>
-        <td>28</td>
+        <td>30</td>
         <td>0.3</td>
       </tr>
       
@@ -359,7 +359,7 @@
           <div class="file_list_container" id="Plugins">
   <h2>
     <span class="group_name">Plugins</span>
-    (<span class="covered_percent"><span class="red">20.13%</span></span>
+    (<span class="covered_percent"><span class="red">20.11%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -370,9 +370,9 @@
   <a name="Plugins"></a>
   <div>
     <b>27</b> files in total.
-    <b>1788</b> relevant lines. 
+    <b>1790</b> relevant lines. 
     <span class="green"><b>360</b> lines covered</span> and
-    <span class="red"><b>1428</b> lines missed </span>
+    <span class="red"><b>1430</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -640,11 +640,11 @@
       
       <tr>
         <td class="strong"><a href="#ec0d4006d19139b391cb688d6c61413bcbe4b840" class="src_link" title="lib/plugins/wilks.rb">lib/plugins/wilks.rb</a></td>
-        <td class="red strong">28.21 %</td>
-        <td>64</td>
-        <td>39</td>
+        <td class="red strong">26.83 %</td>
+        <td>68</td>
+        <td>41</td>
         <td>11</td>
-        <td>28</td>
+        <td>30</td>
         <td>0.3</td>
       </tr>
       
@@ -19541,11 +19541,11 @@
         <div class="source_table" id="ec0d4006d19139b391cb688d6c61413bcbe4b840">
   <div class="header">
     <h3>lib/plugins/wilks.rb</h3>
-    <h4><span class="red">28.21 %</span> covered</h4>
+    <h4><span class="red">26.83 %</span> covered</h4>
     <div>
-      <b>39</b> relevant lines. 
+      <b>41</b> relevant lines. 
       <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>28</b> lines missed.</span>
+      <span class="red"><b>30</b> lines missed.</span>
     </div>
   </div>
   
@@ -19681,7 +19681,7 @@
         <li class="missed" data-hits="0" data-linenumber="22">
           
           
-          <code class="ruby">			f=-0.000000001291</code>
+          <code class="ruby">			f=-0.00000001291</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
@@ -19741,91 +19741,91 @@
         <li class="missed" data-hits="0" data-linenumber="32">
           
           
-          <code class="ruby">		weight = weight/2.2 if scale==&quot;lbs&quot;</code>
+          <code class="ruby">		weight = weight/2.20462 if scale==&quot;lbs&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="33">
           
           
-          <code class="ruby">		total = total/2.2 if scale==&quot;lbs&quot;</code>
+          <code class="ruby">		total = total/2.20462 if scale==&quot;lbs&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">		</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="35">
           
           
+          <code class="ruby">		debug &quot;Wilks| gender: #{gender}, scale: #{scale}, weight: #{weight}, total: #{total}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="37">
+          
+          
           <code class="ruby">		if reverse</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="36">
-          
-          
-          <code class="ruby">			total / (500/(a+b*weight+c*(weight**2)+d*(weight**3)+e*(weight**4)+f*(weight**5)))</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby">		else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="38">
           
           
-          <code class="ruby">			total * (500/(a+b*weight+c*(weight**2)+d*(weight**3)+e*(weight**4)+f*(weight**5)))</code>
+          <code class="ruby">			total / (500/(a+b*weight+c*(weight**2)+d*(weight**3)+e*(weight**4)+f*(weight**5)))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">		end</code>
+          <code class="ruby">		else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="missed" data-hits="0" data-linenumber="40">
           
           
-          <code class="ruby">	end </code>
+          <code class="ruby">			total * (500/(a+b*weight+c*(weight**2)+d*(weight**3)+e*(weight**4)+f*(weight**5)))</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">	end </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="42">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">    match /wilks (\w+) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\w+)/iu, method: :wilks</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="45">
           <span class="hits">1</span>
           
           <code class="ruby">    def wilks(m, gender, weight, liftingTotal, unit)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="44">
-          
-          
-          <code class="ruby">        [&quot;female&quot;,&quot;woman&quot;,&quot;women&quot;].include? gender ? gender = &quot;female&quot; : gender = &quot;male&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="45">
-          
-          
-          <code class="ruby">        </code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="46">
           
           
-          <code class="ruby">        [&quot;lbs&quot;,&quot;pounds&quot;,&quot;pound&quot;,&quot;p&quot;,&quot;l&quot;].include? unit ? unit = &quot;lbs&quot; : unit = &quot;kgs&quot;</code>
+          <code class="ruby">        [&quot;female&quot;,&quot;woman&quot;,&quot;women&quot;].include?(gender) ? gender = &quot;female&quot; : gender = &quot;male&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
@@ -19837,7 +19837,7 @@
         <li class="missed" data-hits="0" data-linenumber="48">
           
           
-          <code class="ruby">        reply = &quot;Ratio: #{get_wilks(gender,weight,liftingTotal,unit)}&quot;</code>
+          <code class="ruby">        [&quot;lbs&quot;,&quot;pounds&quot;,&quot;pound&quot;,&quot;p&quot;,&quot;l&quot;].include?(unit) ? unit = &quot;lbs&quot; : unit = &quot;kgs&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
@@ -19849,67 +19849,67 @@
         <li class="missed" data-hits="0" data-linenumber="50">
           
           
-          <code class="ruby">        m.reply &quot;Wilks | #{reply}&quot;</code>
+          <code class="ruby">        debug &quot;Wilks| gender: #{gender}, unit: #{unit}, weight: #{weight}, total: #{liftingTotal}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="missed" data-hits="0" data-linenumber="52">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">        reply = &quot;Ratio: #{get_wilks(gender,weight,liftingTotal,unit)}&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="53">
           
-          <code class="ruby">    match /rwilks (\w+) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\w+)/iu, method: :rwilks</code>
+          
+          <code class="ruby">        </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="54">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="54">
           
-          <code class="ruby">    def rwilks(m, gender, weight, wilks, unit)</code>
+          
+          <code class="ruby">        m.reply &quot;Wilks | #{reply}&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
           <code class="ruby">    </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        [&quot;female&quot;,&quot;woman&quot;,&quot;women&quot;].include? gender ? gender = &quot;female&quot; : gender = &quot;male&quot;</code>
+          <code class="ruby">    match /rwilks (\w+) (\d+(?:\.\d+)?) (\d+(?:\.\d+)?) (\w+)/iu, method: :rwilks</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="58">
-          
-          
-          <code class="ruby">        [&quot;lbs&quot;,&quot;pounds&quot;,&quot;pound&quot;,&quot;p&quot;,&quot;l&quot;].include? unit ? unit = &quot;lbs&quot; : unit = &quot;kgs&quot;</code>
+          <code class="ruby">    def rwilks(m, gender, weight, wilks, unit)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">        </code>
+          <code class="ruby">    </code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="60">
           
           
-          <code class="ruby">        reply = &quot;Lifting total: #{get_wilks(gender,weight,wilks,unit,true)}&quot;</code>
+          <code class="ruby">        [&quot;female&quot;,&quot;woman&quot;,&quot;women&quot;].include? gender ? gender = &quot;female&quot; : gender = &quot;male&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
@@ -19921,16 +19921,40 @@
         <li class="missed" data-hits="0" data-linenumber="62">
           
           
-          <code class="ruby">        m.reply &quot;Wilks | #{reply}&quot;</code>
+          <code class="ruby">        [&quot;lbs&quot;,&quot;pounds&quot;,&quot;pound&quot;,&quot;p&quot;,&quot;l&quot;].include? unit ? unit = &quot;lbs&quot; : unit = &quot;kgs&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="63">
           
           
+          <code class="ruby">        </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="64">
+          
+          
+          <code class="ruby">        reply = &quot;Lifting total: #{get_wilks(gender,weight,wilks,unit,true)}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">        </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">        m.reply &quot;Wilks | #{reply}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="68">
           
           
           <code class="ruby">end</code>
