@@ -45,7 +45,7 @@ class Wilks
     def wilks(m, gender, weight, liftingTotal, unit)
         ["female","woman","women"].include?(gender) ? gender = "female" : gender = "male"
         
-        ["lbs","pounds","pound","p","l"].include?(unit) ? unit = "lbs" : unit = "kgs"
+        ["lbs","pounds","pound","p","l", "lb"].include?(unit) ? unit = "lbs" : unit = "kgs"
         
         debug "Wilks| gender: #{gender}, unit: #{unit}, weight: #{weight}, total: #{liftingTotal}"
         
