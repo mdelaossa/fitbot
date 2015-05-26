@@ -55,7 +55,7 @@
                 - LiftTracker
                 - FactoidDB
                 - IsUp
-                - VoteBan
+                - Voting
         
     - ##important for new server, note the space after the dash
         :server: 
