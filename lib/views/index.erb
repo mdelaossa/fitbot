@@ -75,17 +75,22 @@ alias: .get all &lt;key&gt;
                                                                                                                                       
 .factoid nprotect : Turns off global protect, everyone can use factoid system                        
 
-Module: VoteBan
+Module: Voting
 
 .voteban &lt;nick&gt; : Starts a vote for banning &lt;nick&gt;. 4 votes needed to ban or save. 5 minute timeout.
 alias: .vb &lt;nick&gt;
 
-.voteban cancel : Cancels the current vote. Only the initiator and admins can do this.
+.votequiet &lt;nick&gt; : Starts a vote for setting +q (freenode only) on &lt;nick&gt;. 4 votes needed to ban or save. 5 minute timeout.
+alias: .vq &lt;nick&gt;
+
+.votekick &lt;nick&gt; : Starts a vote for kicking &lt;nick&gt;. 4 votes needed to ban or save. 5 minute timeout.
+alias: .vk &lt;nick&gt;
+
+.voting cancel : Cancels the current vote. Only the initiator and admins can do this.
 
 .vote &lt;yes|no&gt; : Vote on current ballot.
 
-.voteban : Shows the current tally
-alias: .vb
+.voting : Shows the current tally
 
 </pre>
 </body>
