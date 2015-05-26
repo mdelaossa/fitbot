@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-26T18:39:53+00:00">2015-05-26T18:39:53+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-26T22:44:36+00:00">2015-05-26T22:44:36+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">21.79%</span></span>
+    (<span class="covered_percent"><span class="red">21.76%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>30</b> files in total.
-    <b>1914</b> relevant lines. 
+    <b>1916</b> relevant lines. 
     <span class="green"><b>417</b> lines covered</span> and
-    <span class="red"><b>1497</b> lines missed </span>
+    <span class="red"><b>1499</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -282,11 +282,11 @@
       
       <tr>
         <td class="strong"><a href="#582a7eb7a260d6923402a957ab8511761f99a433" class="src_link" title="lib/plugins/voting.rb">lib/plugins/voting.rb</a></td>
-        <td class="red strong">25.71 %</td>
-        <td>161</td>
-        <td>105</td>
+        <td class="red strong">25.23 %</td>
+        <td>165</td>
+        <td>107</td>
         <td>27</td>
-        <td>78</td>
+        <td>80</td>
         <td>0.3</td>
       </tr>
       
@@ -359,7 +359,7 @@
           <div class="file_list_container" id="Plugins">
   <h2>
     <span class="group_name">Plugins</span>
-    (<span class="covered_percent"><span class="red">20.28%</span></span>
+    (<span class="covered_percent"><span class="red">20.25%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -370,9 +370,9 @@
   <a name="Plugins"></a>
   <div>
     <b>27</b> files in total.
-    <b>1810</b> relevant lines. 
+    <b>1812</b> relevant lines. 
     <span class="green"><b>367</b> lines covered</span> and
-    <span class="red"><b>1443</b> lines missed </span>
+    <span class="red"><b>1445</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -610,11 +610,11 @@
       
       <tr>
         <td class="strong"><a href="#582a7eb7a260d6923402a957ab8511761f99a433" class="src_link" title="lib/plugins/voting.rb">lib/plugins/voting.rb</a></td>
-        <td class="red strong">25.71 %</td>
-        <td>161</td>
-        <td>105</td>
+        <td class="red strong">25.23 %</td>
+        <td>165</td>
+        <td>107</td>
         <td>27</td>
-        <td>78</td>
+        <td>80</td>
         <td>0.3</td>
       </tr>
       
@@ -17777,11 +17777,11 @@
         <div class="source_table" id="582a7eb7a260d6923402a957ab8511761f99a433">
   <div class="header">
     <h3>lib/plugins/voting.rb</h3>
-    <h4><span class="red">25.71 %</span> covered</h4>
+    <h4><span class="red">25.23 %</span> covered</h4>
     <div>
-      <b>105</b> relevant lines. 
+      <b>107</b> relevant lines. 
       <span class="green"><b>27</b> lines covered</span> and
-      <span class="red"><b>78</b> lines missed.</span>
+      <span class="red"><b>80</b> lines missed.</span>
     </div>
   </div>
   
@@ -18115,595 +18115,595 @@
         <li class="missed" data-hits="0" data-linenumber="55">
           
           
-          <code class="ruby">        @threshold = num</code>
+          <code class="ruby">        begin</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="56">
           
           
-          <code class="ruby">        m.reply &quot;Voting | Threshold changed to #{num}&quot;</code>
+          <code class="ruby">            @threshold = num.to_i</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="58">
-          
-          
-          <code class="ruby">    </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="59">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    match /voting$/i, method: :tally</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="60">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def tally(m)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="61">
-          
-          
-          <code class="ruby">        begin</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="62">
-          
-          
-          <code class="ruby">            ballot = find_ballot(m.channel)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
-          
-          <code class="ruby">            raise 'No vote in progress' if ballot.nil?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="64">
-          
-          
-          <code class="ruby">            m.reply &quot;Voting | #{ballot.tally}&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="65">
-          
-          
           <code class="ruby">        rescue Exception =&gt; e</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
+        <li class="missed" data-hits="0" data-linenumber="58">
           
           
           <code class="ruby">            m.reply &quot;Voting | Error: #{e}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="missed" data-hits="0" data-linenumber="60">
+          
+          
+          <code class="ruby">        m.reply &quot;Voting | Threshold changed to #{num}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">    </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="70">
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    match /voting$/i, method: :tally</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def tally(m)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="65">
+          
+          
+          <code class="ruby">        begin</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">            ballot = find_ballot(m.channel)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">            raise 'No vote in progress' if ballot.nil?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">            m.reply &quot;Voting | #{ballot.tally}&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">        rescue Exception =&gt; e</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="70">
+          
+          
+          <code class="ruby">            m.reply &quot;Voting | Error: #{e}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="74">
           <span class="hits">1</span>
           
           <code class="ruby">    match /vote (yes|no)$/i, method: :vote</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
+        <li class="covered" data-hits="1" data-linenumber="75">
           <span class="hits">1</span>
           
           <code class="ruby">	def vote(m, vote)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="72">
-          
-          
-          <code class="ruby">	    return unless ignore_nick(m.user.nick).nil?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="73">
-          
-          
-          <code class="ruby">	    begin</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="74">
-          
-          
-          <code class="ruby">	        raise &quot;Only registered nicks can vote&quot; if m.user.authname.nil? and @registered</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="75">
-          
-          
-          <code class="ruby">	        </code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="76">
           
           
-          <code class="ruby">	        ballot = find_ballot(m.channel)</code>
+          <code class="ruby">	    return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="77">
           
           
-          <code class="ruby">	        raise &quot;No vote in progress&quot; if ballot.nil?</code>
+          <code class="ruby">	    begin</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="78">
+        <li class="missed" data-hits="0" data-linenumber="78">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">	        raise &quot;Only registered nicks can vote&quot; if m.user.authname.nil? and @registered</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="79">
+        <li class="never" data-hits="" data-linenumber="79">
           
           
-          <code class="ruby">            ballot.vote vote, m.user </code>
+          <code class="ruby">	        </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="80">
+        <li class="missed" data-hits="0" data-linenumber="80">
           
           
-          <code class="ruby">            </code>
+          <code class="ruby">	        ballot = find_ballot(m.channel)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="81">
           
           
-          <code class="ruby">            if ballot.yes &gt;= @threshold </code>
+          <code class="ruby">	        raise &quot;No vote in progress&quot; if ballot.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="82">
-          
-          
-          <code class="ruby">                case ballot.type</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="83">
-          
-          
-          <code class="ruby">                when :ban</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="84">
-          
-          
-          <code class="ruby">                    m.channel.ban(ballot.defendant.mask(&quot;*!*@%h&quot;))</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="85">
-          
-          
-          <code class="ruby">		            m.channel.kick(ballot.defendant, &quot;The people have spoken. 30 minute ban.&quot;)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="86">
-          
-          
-          <code class="ruby">		            @@timer.in '30m' do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="87">
-          
-          
-          <code class="ruby">		                m.channel.unban(ballot.defendant.mask(&quot;*!*@%h&quot;))</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="88">
-          
-          
-          <code class="ruby">		            end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="89">
-          
-          
-          <code class="ruby">		        when :kick</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="90">
-          
-          
-          <code class="ruby">		            m.channel.kick(ballot.defendant, &quot;Buh bye&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="91">
-          
-          
-          <code class="ruby">		        when :quiet</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="92">
-          
-          
-          <code class="ruby">		            m.channel.mode(&quot;+q #{ballot.defendant.mask(&quot;*!*@%h&quot;)}&quot;)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="93">
-          
-          
-          <code class="ruby">		            m.channel.send(&quot;Quieted for 30 minutes&quot;)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="94">
-          
-          
-          <code class="ruby">		            @@timer.in '30m' do</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="95">
-          
-          
-          <code class="ruby">		                m.channel.mode(&quot;-q #{ballot.defendant.mask(&quot;*!*@%h&quot;)}&quot;)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="96">
-          
-          
-          <code class="ruby">		            end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="97">
-          
-          
-          <code class="ruby">		        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="98">
-          
-          
-          <code class="ruby">		        </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="99">
-          
-          
-          <code class="ruby">		        @ballots.delete ballot ##end ballot</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="100">
-          
-          
-          <code class="ruby">		        ballot.timeout_job.unschedule</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="101">
-          
-          
-          <code class="ruby">		        m.reply &quot;Voting | Another win for democracy!&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="102">
-          
-          
-          <code class="ruby">		        return</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="103">
-          
-          
-          <code class="ruby">            end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="104">
-          
-          
-          <code class="ruby">            </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="105">
-          
-          
-          <code class="ruby">            if ballot.no &gt;= @threshold</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="106">
-          
-          
-          <code class="ruby">                @ballots.delete ballot ##end ballot</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="107">
-          
-          
-          <code class="ruby">                ballot.timeout_job.unschedule</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="108">
-          
-          
-          <code class="ruby">		        m.reply &quot;Voting | Vote failed. #{ballot.defendant} got lucky this time.&quot; </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="109">
-          
-          
-          <code class="ruby">		        return</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="110">
-          
-          
-          <code class="ruby">            end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby">            </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="112">
-          
-          
-          <code class="ruby">            m.reply &quot;Voting | Vote added. #{ballot.tally}&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="113">
-          
-          
-          <code class="ruby">            </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="114">
-          
-          
-          <code class="ruby">	    rescue Exception =&gt; e</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="115">
-          
-          
-          <code class="ruby">	        m.reply &quot;Voting | Error occured: #{e}&quot;, true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="116">
-          
-          
-          <code class="ruby">	    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="117">
-          
-          
-          <code class="ruby">	end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="118">
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="119">
+        <li class="missed" data-hits="0" data-linenumber="83">
+          
+          
+          <code class="ruby">            ballot.vote vote, m.user </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">            </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="85">
+          
+          
+          <code class="ruby">            if ballot.yes &gt;= @threshold </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="86">
+          
+          
+          <code class="ruby">                case ballot.type</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">                when :ban</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="88">
+          
+          
+          <code class="ruby">                    m.channel.ban(ballot.defendant.mask(&quot;*!*@%h&quot;))</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="89">
+          
+          
+          <code class="ruby">		            m.channel.kick(ballot.defendant, &quot;The people have spoken. 30 minute ban.&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="90">
+          
+          
+          <code class="ruby">		            @@timer.in '30m' do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="91">
+          
+          
+          <code class="ruby">		                m.channel.unban(ballot.defendant.mask(&quot;*!*@%h&quot;))</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">		            end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">		        when :kick</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="94">
+          
+          
+          <code class="ruby">		            m.channel.kick(ballot.defendant, &quot;Buh bye&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">		        when :quiet</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="96">
+          
+          
+          <code class="ruby">		            m.channel.mode(&quot;+q #{ballot.defendant.mask(&quot;*!*@%h&quot;)}&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="97">
+          
+          
+          <code class="ruby">		            m.channel.send(&quot;Quieted for 30 minutes&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
+          
+          <code class="ruby">		            @@timer.in '30m' do</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="99">
+          
+          
+          <code class="ruby">		                m.channel.mode(&quot;-q #{ballot.defendant.mask(&quot;*!*@%h&quot;)}&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">		            end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="101">
+          
+          
+          <code class="ruby">		        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">		        </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="103">
+          
+          
+          <code class="ruby">		        @ballots.delete ballot ##end ballot</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="104">
+          
+          
+          <code class="ruby">		        ballot.timeout_job.unschedule</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="105">
+          
+          
+          <code class="ruby">		        m.reply &quot;Voting | Another win for democracy!&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="106">
+          
+          
+          <code class="ruby">		        return</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="107">
+          
+          
+          <code class="ruby">            end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="108">
+          
+          
+          <code class="ruby">            </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="109">
+          
+          
+          <code class="ruby">            if ballot.no &gt;= @threshold</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="110">
+          
+          
+          <code class="ruby">                @ballots.delete ballot ##end ballot</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="111">
+          
+          
+          <code class="ruby">                ballot.timeout_job.unschedule</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="112">
+          
+          
+          <code class="ruby">		        m.reply &quot;Voting | Vote failed. #{ballot.defendant} got lucky this time.&quot; </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="113">
+          
+          
+          <code class="ruby">		        return</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">            end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby">            </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="116">
+          
+          
+          <code class="ruby">            m.reply &quot;Voting | Vote added. #{ballot.tally}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby">            </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="118">
+          
+          
+          <code class="ruby">	    rescue Exception =&gt; e</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="119">
+          
+          
+          <code class="ruby">	        m.reply &quot;Voting | Error occured: #{e}&quot;, true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">	    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="122">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="123">
           <span class="hits">1</span>
           
           <code class="ruby">	match /voteban (.+)/i, method: :voteban</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="120">
+        <li class="covered" data-hits="1" data-linenumber="124">
           <span class="hits">1</span>
           
           <code class="ruby">	match /vb (.+)/i, method: :voteban</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="121">
+        <li class="covered" data-hits="1" data-linenumber="125">
           <span class="hits">1</span>
           
           <code class="ruby">	def voteban(m, defendant)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="122">
+        <li class="missed" data-hits="0" data-linenumber="126">
           
           
           <code class="ruby">		start_vote(m, defendant, :ban)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="123">
+        <li class="never" data-hits="" data-linenumber="127">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="124">
+        <li class="never" data-hits="" data-linenumber="128">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="125">
+        <li class="covered" data-hits="1" data-linenumber="129">
           <span class="hits">1</span>
           
           <code class="ruby">	match /votekick (.+)/i, method: :votekick</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="126">
+        <li class="covered" data-hits="1" data-linenumber="130">
           <span class="hits">1</span>
           
           <code class="ruby">	match /vk (.+)/i, method: :votekick</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="127">
+        <li class="covered" data-hits="1" data-linenumber="131">
           <span class="hits">1</span>
           
           <code class="ruby">	def votekick(m, defendant)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="128">
+        <li class="missed" data-hits="0" data-linenumber="132">
           
           
           <code class="ruby">	    start_vote(m, defendant, :kick)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="129">
+        <li class="never" data-hits="" data-linenumber="133">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="130">
+        <li class="never" data-hits="" data-linenumber="134">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="131">
+        <li class="covered" data-hits="1" data-linenumber="135">
           <span class="hits">1</span>
           
           <code class="ruby">	match /votequiet (.+)/i, method: :votequiet</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="132">
+        <li class="covered" data-hits="1" data-linenumber="136">
           <span class="hits">1</span>
           
           <code class="ruby">	match /vq (.+)/i, method: :votequiet</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="133">
+        <li class="covered" data-hits="1" data-linenumber="137">
           <span class="hits">1</span>
           
           <code class="ruby">	def votequiet(m, defendant)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="134">
+        <li class="missed" data-hits="0" data-linenumber="138">
           
           
           <code class="ruby">	    start_vote(m, defendant, :quiet)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="135">
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="never" data-hits="" data-linenumber="140">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="137">
+        <li class="covered" data-hits="1" data-linenumber="141">
           <span class="hits">1</span>
           
           <code class="ruby">	def start_vote(m, defendant, type)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="138">
+        <li class="missed" data-hits="0" data-linenumber="142">
           
           
           <code class="ruby">	    return unless ignore_nick(m.user.nick).nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="139">
+        <li class="missed" data-hits="0" data-linenumber="143">
           
           
           <code class="ruby">		begin</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="140">
+        <li class="missed" data-hits="0" data-linenumber="144">
           
           
           <code class="ruby">		    defendant = User(defendant)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="141">
+        <li class="never" data-hits="" data-linenumber="145">
           
           
           <code class="ruby">		    </code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="142">
+        <li class="missed" data-hits="0" data-linenumber="146">
           
           
           <code class="ruby">    	    raise 'Vote already in progress' unless find_ballot(m.channel).nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="143">
+        <li class="missed" data-hits="0" data-linenumber="147">
           
           
           <code class="ruby">    	    raise &quot;User not online&quot; if defendant.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="144">
+        <li class="missed" data-hits="0" data-linenumber="148">
           
           
           <code class="ruby">    	    raise &quot;User not online&quot; if defendant.host.nil?</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="145">
+        <li class="missed" data-hits="0" data-linenumber="149">
           
           
           <code class="ruby">    	    raise &quot;You can't #{type} that person!&quot; if check_admin(defendant)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="146">
+        <li class="missed" data-hits="0" data-linenumber="150">
           
           
           <code class="ruby">    	    raise &quot;Only registered nicks can vote&quot; if m.user.authname.nil? and @registered</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="147">
+        <li class="never" data-hits="" data-linenumber="151">
           
           
           <code class="ruby">    	    </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="148">
-          
-          
-          <code class="ruby">    	    ballot = Ballot.new(defendant, m.user, m.channel, type)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="149">
-          
-          
-          <code class="ruby">    	    @ballots &lt;&lt; ballot</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="150">
-          
-          
-          <code class="ruby">    	    </code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="151">
-          
-          
-          <code class="ruby">    	    ballot.timeout_job = @@timer.schedule_in '5m' do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="152">
           
           
-          <code class="ruby">    	        cancel(m)</code>
+          <code class="ruby">    	    ballot = Ballot.new(defendant, m.user, m.channel, type)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="153">
+        <li class="missed" data-hits="0" data-linenumber="153">
           
           
-          <code class="ruby">    	    end</code>
+          <code class="ruby">    	    @ballots &lt;&lt; ballot</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="154">
@@ -18715,40 +18715,64 @@
         <li class="missed" data-hits="0" data-linenumber="155">
           
           
-          <code class="ruby">    	    m.reply &quot;Voting | #{defendant} | Vote started! Please vote on this #{type} with .vote yes|no&quot;</code>
+          <code class="ruby">    	    ballot.timeout_job = @@timer.schedule_in '5m' do</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="156">
           
           
-          <code class="ruby">		rescue Exception =&gt; e</code>
+          <code class="ruby">    	        cancel(m)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="157">
+        <li class="never" data-hits="" data-linenumber="157">
           
           
-          <code class="ruby">			m.reply &quot;Voting | Error: #{e}&quot;</code>
+          <code class="ruby">    	    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="158">
           
           
+          <code class="ruby">    	    </code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="159">
+          
+          
+          <code class="ruby">    	    m.reply &quot;Voting | #{defendant} | Vote started! Please vote on this #{type} with .vote yes|no&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="160">
+          
+          
+          <code class="ruby">		rescue Exception =&gt; e</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="161">
+          
+          
+          <code class="ruby">			m.reply &quot;Voting | Error: #{e}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="162">
+          
+          
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="159">
+        <li class="never" data-hits="" data-linenumber="163">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="160">
+        <li class="never" data-hits="" data-linenumber="164">
           
           
           <code class="ruby">	</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="161">
+        <li class="never" data-hits="" data-linenumber="165">
           
           
           <code class="ruby">end</code>
