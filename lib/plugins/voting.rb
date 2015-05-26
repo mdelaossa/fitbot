@@ -152,7 +152,7 @@ class Voting
     	        cancel(m)
     	    end
     	    
-    	    m.reply "Voting | #{defendant} | Vote started! Please vote on this ban with .vote yes|no"
+    	    m.reply "Voting | #{defendant} | Vote started! Please vote on this #{type} with .vote yes|no"
 		rescue Exception => e
 			m.reply "Voting | Error: #{e}"
 		end
