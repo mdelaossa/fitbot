@@ -128,8 +128,8 @@ class Voting
 	    start_vote(m, defendant, :kick)
 	end
 	
-	match /votequiet (.+)/i, method: :votekick
-	match /vq (.+)/i, method: :votekick
+	match /votequiet (.+)/i, method: :votequiet
+	match /vq (.+)/i, method: :votequiet
 	def votequiet(m, defendant)
 	    start_vote(m, defendant, :quiet)
 	end
