@@ -52,7 +52,11 @@ class Voting
     match /voting threshold (\d+)/i, method: :threshold
     def threshold(m, num)
         return unless check_admin_kick(m)
-        @threshold = num
+        begin
+            @threshold = num.to_i
+        rescue Exception => e
+            m.reply "Voting | Error: #{e}"
+        end
         m.reply "Voting | Threshold changed to #{num}"
     end
     
