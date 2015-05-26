@@ -49,7 +49,7 @@ class Voting
         end
     end
     
-    match /voting threshold \d+/i, method: :threshold
+    match /voting threshold (\d+)/i, method: :threshold
     def threshold(m, num)
         return unless check_admin_kick(m)
         @threshold = num
