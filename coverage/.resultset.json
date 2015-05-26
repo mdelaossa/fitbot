@@ -2856,7 +2856,7 @@
         null,
         null
       ],
-      "/home/rof/src/github.com/mdelaossa/fitbot/lib/plugins/voteban.rb": [
+      "/home/rof/src/github.com/mdelaossa/fitbot/lib/plugins/voting.rb": [
         null,
         null,
         1,
@@ -3019,7 +3019,7 @@
         null,
         null
       ],
-      "/home/rof/src/github.com/mdelaossa/fitbot/lib/plugins/voteban/ballot.rb": [
+      "/home/rof/src/github.com/mdelaossa/fitbot/lib/plugins/voting/ballot.rb": [
         1,
         1,
         1,
@@ -3327,6 +3327,6 @@
         null
       ]
     },
-    "timestamp": 1432663313
+    "timestamp": 1432665357
   }
 }

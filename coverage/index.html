@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-26T18:01:53+00:00">2015-05-26T18:01:53+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-26T18:35:57+00:00">2015-05-26T18:35:57+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -281,7 +281,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#978a906cffb08edd79b8be4d7c48f62a8c41f921" class="src_link" title="lib/plugins/voteban.rb">lib/plugins/voteban.rb</a></td>
+        <td class="strong"><a href="#582a7eb7a260d6923402a957ab8511761f99a433" class="src_link" title="lib/plugins/voting.rb">lib/plugins/voting.rb</a></td>
         <td class="red strong">25.71 %</td>
         <td>161</td>
         <td>105</td>
@@ -291,7 +291,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#d2d6a0bd0a66e9df7831734cac803613ac08d295" class="src_link" title="lib/plugins/voteban/ballot.rb">lib/plugins/voteban/ballot.rb</a></td>
+        <td class="strong"><a href="#30732d4d989f1dfc58c2d03cd5011a20db37a740" class="src_link" title="lib/plugins/voting/ballot.rb">lib/plugins/voting/ballot.rb</a></td>
         <td class="red strong">34.62 %</td>
         <td>47</td>
         <td>26</td>
@@ -609,7 +609,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#978a906cffb08edd79b8be4d7c48f62a8c41f921" class="src_link" title="lib/plugins/voteban.rb">lib/plugins/voteban.rb</a></td>
+        <td class="strong"><a href="#582a7eb7a260d6923402a957ab8511761f99a433" class="src_link" title="lib/plugins/voting.rb">lib/plugins/voting.rb</a></td>
         <td class="red strong">25.71 %</td>
         <td>161</td>
         <td>105</td>
@@ -619,7 +619,7 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#d2d6a0bd0a66e9df7831734cac803613ac08d295" class="src_link" title="lib/plugins/voteban/ballot.rb">lib/plugins/voteban/ballot.rb</a></td>
+        <td class="strong"><a href="#30732d4d989f1dfc58c2d03cd5011a20db37a740" class="src_link" title="lib/plugins/voting/ballot.rb">lib/plugins/voting/ballot.rb</a></td>
         <td class="red strong">34.62 %</td>
         <td>47</td>
         <td>26</td>
@@ -17774,9 +17774,9 @@
   </pre>
 </div>
       
-        <div class="source_table" id="978a906cffb08edd79b8be4d7c48f62a8c41f921">
+        <div class="source_table" id="582a7eb7a260d6923402a957ab8511761f99a433">
   <div class="header">
-    <h3>lib/plugins/voteban.rb</h3>
+    <h3>lib/plugins/voting.rb</h3>
     <h4><span class="red">25.71 %</span> covered</h4>
     <div>
       <b>105</b> relevant lines. 
@@ -18097,7 +18097,7 @@
         <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
-          <code class="ruby">    match /voting threshold \d+/i, method: :threshold</code>
+          <code class="ruby">    match /voting threshold (\d+)/i, method: :threshold</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="53">
@@ -18571,13 +18571,13 @@
         <li class="covered" data-hits="1" data-linenumber="131">
           <span class="hits">1</span>
           
-          <code class="ruby">	match /votequiet (.+)/i, method: :votekick</code>
+          <code class="ruby">	match /votequiet (.+)/i, method: :votequiet</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="132">
           <span class="hits">1</span>
           
-          <code class="ruby">	match /vq (.+)/i, method: :votekick</code>
+          <code class="ruby">	match /vq (.+)/i, method: :votequiet</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="133">
@@ -18758,9 +18758,9 @@
   </pre>
 </div>
       
-        <div class="source_table" id="d2d6a0bd0a66e9df7831734cac803613ac08d295">
+        <div class="source_table" id="30732d4d989f1dfc58c2d03cd5011a20db37a740">
   <div class="header">
-    <h3>lib/plugins/voteban/ballot.rb</h3>
+    <h3>lib/plugins/voting/ballot.rb</h3>
     <h4><span class="red">34.62 %</span> covered</h4>
     <div>
       <b>26</b> relevant lines. 
