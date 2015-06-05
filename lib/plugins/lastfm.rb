@@ -284,8 +284,8 @@ class Lastfm
 			url = Nokogiri::XML(url)
 		
 
-            video = "Not Found"
-			return if url.xpath("//item[1]/title").text.length < 1
+            video = "Not Found" #TODO: fix
+			return # if url.xpath("//item[1]/title").text.length < 1
 
 			id = url.xpath("//item[1]/media:group/yt:videoid").text
 
