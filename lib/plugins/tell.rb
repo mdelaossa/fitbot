@@ -48,7 +48,7 @@ class Tell
       messages = Messages.all :recipient => m.user.nick.downcase, :channel => m.channel, :network => @bot.irc.network.name
       if !messages.empty?
         formatted_message = "✉ | #{messages[0].text} · from #{messages[0].sender} · #{relative_time(messages[0].sent_at.to_time)}"
-        formatted_message += " · Reimaining: #{messages.size - 1}" if messages.size > 1
+        formatted_message += " · Remaining: #{messages.size - 1}" if messages.size > 1
         messages[0].destroy
         m.reply(formatted_message, true)
       end
